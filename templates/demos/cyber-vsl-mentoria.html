@@ -1,0 +1,305 @@
+<!doctype html>
+<html lang="pt-BR" class="dark">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Inner Circle — Demo Cyber VSL · Mentoria</title>
+<meta name="description" content="Exemplo de página de oferta Cyber VSL para nicho mentoria · alto ticket." />
+<meta name="robots" content="noindex" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  darkMode: 'class',
+  theme: {
+    extend: {
+      colors: {
+        ink: { 950: '#0a0907', 900: '#100e0b', 800: '#181410', 700: '#221c16' },
+        paper: { 100: '#fdfbf5', 200: '#f7f3e8', 300: '#ebe4d1', 400: '#d4c8aa', 500: '#a89e8d' },
+        amber: { 400: '#f7dc70', 500: '#e8b547', 600: '#d4a017', 700: '#b08410' },
+      },
+      fontFamily: {
+        sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+        serif: ['"Instrument Serif"', 'Georgia', 'serif'],
+        mono: ['"JetBrains Mono"', 'ui-monospace', 'monospace'],
+      },
+    },
+  },
+};
+</script>
+
+<style>
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Plus Jakarta Sans', sans-serif; -webkit-font-smoothing: antialiased; background: #0a0907; color: #fdfbf5; }
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/></filter><rect width='200' height='200' filter='url(%23n)' opacity='0.35'/></svg>");
+    opacity: 0.05; pointer-events: none; z-index: 100; mix-blend-mode: overlay;
+  }
+  .accent-text { background: linear-gradient(180deg, #f7dc70 0%, #e8b547 55%, #b08410 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .lift { transition: transform .3s ease, border-color .3s; }
+  .lift:hover { transform: translateY(-3px); }
+  .reveal { opacity: 0; transform: translateY(16px); transition: opacity .7s ease, transform .7s ease; }
+  .reveal.in { opacity: 1; transform: translateY(0); }
+  .demo-banner { background: linear-gradient(90deg, rgba(232,181,71,0.15), rgba(232,181,71,0.05)); }
+  .vsl-glow { background: radial-gradient(ellipse at center, rgba(232,181,71,0.22), transparent 65%), linear-gradient(135deg, #100e0b, #0a0907); }
+  details summary { cursor: pointer; list-style: none; }
+  details summary::-webkit-details-marker { display: none; }
+</style>
+</head>
+
+<body class="antialiased">
+
+<!-- Demo strip -->
+<div class="demo-banner border-b border-amber-500/20 text-center py-2 px-4 text-[11px] sm:text-xs font-mono tracking-wider uppercase text-amber-400">
+  <span class="text-paper-300/80">Demo · Cyber VSL · Mentoria · Alto Ticket</span>
+  <span class="mx-2 opacity-30">·</span>
+  <a href="../cyber-vsl.html" class="hover:text-amber-300 transition underline-offset-2 hover:underline">← Voltar às variações</a>
+</div>
+
+<!-- Header -->
+<header class="sticky top-0 z-40 border-b border-white/5 bg-ink-950/80 backdrop-blur-md">
+  <div class="max-w-5xl mx-auto px-4 sm:px-6 h-14 flex items-center justify-between">
+    <div class="flex items-center gap-2">
+      <span class="w-7 h-7 rounded-lg bg-amber-500/20 border border-amber-500/30 grid place-items-center text-amber-400 text-xs font-bold">IC</span>
+      <span class="font-semibold text-sm tracking-tight">Inner <span class="text-amber-400">Circle</span></span>
+    </div>
+    <a href="#oferta" class="hidden sm:inline-flex items-center h-9 px-5 rounded-full bg-amber-500 hover:bg-amber-400 text-ink-950 text-[11px] font-bold tracking-wider uppercase transition">
+      Aplicar para vaga
+    </a>
+  </div>
+</header>
+
+<main>
+
+<!-- Hero + VSL -->
+<section class="relative pt-10 sm:pt-14 pb-16 overflow-hidden">
+  <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[400px] rounded-full bg-amber-500/10 blur-[100px] pointer-events-none"></div>
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center relative">
+    <div class="reveal inline-flex items-center gap-2 px-3 py-1 rounded-full border border-amber-500/25 bg-amber-500/10 text-[10px] sm:text-[11px] font-mono tracking-wider uppercase text-amber-400 mb-6">
+      <span class="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse"></span>
+      Vagas limitadas · aplicação obrigatória
+    </div>
+    <h1 class="reveal text-3xl sm:text-5xl lg:text-[3.25rem] font-extrabold leading-[1.05] tracking-tight">Escale para <span class="font-serif italic font-normal accent-text">7 dígitos</span><br class="hidden sm:block"/> com mentoria 1:1.</h1>
+    <p class="reveal mt-5 text-base sm:text-lg text-paper-300/90 max-w-2xl mx-auto leading-relaxed">
+      Assista o vídeo abaixo e descubra o protocolo de 3 passos que já transformou o corpo de milhares de mulheres — com acompanhamento e garantia total.
+    </p>
+
+    <!-- VSL -->
+    <div class="reveal mt-10 rounded-2xl overflow-hidden border border-white/10 shadow-[0_24px_80px_-24px_rgba(232,181,71,0.35)]">
+      <div class="aspect-video relative vsl-glow grid place-items-center" id="vsl-wrap">
+        <div class="absolute top-4 left-4 inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-black/50 border border-white/10 text-[10px] font-mono tracking-wider uppercase text-paper-300">
+          <span class="w-1.5 h-1.5 rounded-full bg-red-500"></span> VSL · 14:22
+        </div>
+        <button type="button" id="play-btn" class="group relative w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-amber-500 hover:bg-amber-400 text-ink-950 grid place-items-center transition shadow-[0_0_40px_rgba(232,181,71,0.5)]">
+          <span class="absolute inset-0 rounded-full bg-amber-400/30 animate-ping"></span>
+          <svg class="relative w-8 h-8 ml-1" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7L8 5z"/></svg>
+        </button>
+        <p class="absolute bottom-5 text-[11px] tracking-[0.2em] uppercase text-paper-400 font-mono">▶ Assista antes de continuar</p>
+      </div>
+    </div>
+
+    <motion class="reveal mt-6 flex flex-wrap justify-center gap-4 text-[11px] text-paper-400 font-mono tracking-wider uppercase">
+      <span class="inline-flex items-center gap-1.5"><svg class="w-3.5 h-3.5 text-amber-400" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m5 12 5 5L20 7"/></svg> Aplicação restrita</span>
+      <span class="inline-flex items-center gap-1.5"><svg class="w-3.5 h-3.5 text-amber-400" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m5 12 5 5L20 7"/></svg> Cases nome a nome</span>
+      <span class="inline-flex items-center gap-1.5"><svg class="w-3.5 h-3.5 text-amber-400" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m5 12 5 5L20 7"/></svg> Garantia condicional</span>
+    </div>
+  </div>
+</section>
+
+<!-- Countdown -->
+<section class="border-y border-white/5 bg-ink-900/50 py-8">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center">
+    <p class="text-[11px] font-mono tracking-[0.2em] uppercase text-amber-400 mb-4">Oferta encerra em</p>
+    <div class="flex justify-center gap-3 sm:gap-4" id="countdown">
+      <div class="bg-ink-800 border border-white/10 rounded-xl px-4 sm:px-6 py-3 min-w-[72px]">
+        <div class="text-3xl sm:text-4xl font-extrabold tabular text-paper-100" data-unit="h">07</div>
+        <div class="text-[10px] font-mono tracking-wider uppercase text-paper-400 mt-1">horas</div>
+      </div>
+      <div class="bg-ink-800 border border-white/10 rounded-xl px-4 sm:px-6 py-3 min-w-[72px]">
+        <div class="text-3xl sm:text-4xl font-extrabold tabular text-paper-100" data-unit="m">42</div>
+        <div class="text-[10px] font-mono tracking-wider uppercase text-paper-400 mt-1">min</div>
+      </div>
+      <div class="bg-ink-800 border border-white/10 rounded-xl px-4 sm:px-6 py-3 min-w-[72px]">
+        <div class="text-3xl sm:text-4xl font-extrabold tabular text-amber-400" data-unit="s">18</div>
+        <div class="text-[10px] font-mono tracking-wider uppercase text-paper-400 mt-1">seg</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Antes / Depois -->
+<section class="py-16 sm:py-20">
+  <div class="max-w-5xl mx-auto px-4 sm:px-6">
+    <div class="reveal text-center mb-10">
+      <p class="text-[11px] font-mono tracking-[0.2em] uppercase text-amber-400">Resultados reais</p>
+      <h2 class="mt-2 text-2xl sm:text-3xl font-extrabold">Cases recentes</h2>
+    </div>
+    <div class="reveal grid sm:grid-cols-3 gap-4">
+      <article class="lift rounded-2xl border border-white/10 bg-ink-900/60 overflow-hidden">
+        <div class="aspect-[3/4] bg-gradient-to-br from-ink-800 to-ink-700 grid place-items-end p-4">
+          <span class="text-[10px] font-mono uppercase tracking-wider px-2 py-1 rounded bg-black/50 text-paper-300">80k → 310k/mês</span>
+        </div>
+        <div class="p-4"><p class="font-semibold text-sm">Founder SaaS</p><p class="text-xs text-paper-400 mt-0.5">São Paulo</p></div>
+      </article>
+      <article class="lift rounded-2xl border border-amber-500/30 bg-ink-900/60 overflow-hidden ring-1 ring-amber-500/20">
+        <div class="aspect-[3/4] bg-gradient-to-br from-amber-600/20 to-ink-800 grid place-items-end p-4">
+          <span class="text-[10px] font-mono uppercase tracking-wider px-2 py-1 rounded bg-amber-500/20 text-amber-300 border border-amber-500/30">40k → 1.2M/trim</span>
+        </div>
+        <div class="p-4"><p class="font-semibold text-sm">E-commerce</p><p class="text-xs text-paper-400 mt-0.5">Curitiba</p></div>
+      </article>
+      <article class="lift rounded-2xl border border-white/10 bg-ink-900/60 overflow-hidden">
+        <div class="aspect-[3/4] bg-gradient-to-br from-ink-800 to-ink-700 grid place-items-end p-4">
+          <span class="text-[10px] font-mono uppercase tracking-wider px-2 py-1 rounded bg-black/50 text-paper-300">25k → 180k/mês</span>
+        </div>
+        <div class="p-4"><p class="font-semibold text-sm">Infoproduto</p><p class="text-xs text-paper-400 mt-0.5">BH</p></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- O que você recebe -->
+<section class="py-16 sm:py-20 border-t border-white/5 bg-ink-900/30">
+  <div class="max-w-5xl mx-auto px-4 sm:px-6 grid lg:grid-cols-2 gap-10 items-center">
+    <div class="reveal">
+      <p class="text-[11px] font-mono tracking-[0.2em] uppercase text-amber-400">O programa inclui</p>
+      <h2 class="mt-2 text-2xl sm:text-3xl font-extrabold leading-tight">Mentoria premium<br/>com acesso direto.</h2>
+      <ul class="mt-6 space-y-3 text-sm text-paper-300">
+        <li class="flex gap-3"><svg class="w-5 h-5 text-amber-400 shrink-0" fill="none" stroke="currentColor" stroke-width="2.4" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m5 12 5 5L20 7"/></svg> 12 calls 1:1</li>
+        <li class="flex gap-3"><svg class="w-5 h-5 text-amber-400 shrink-0" fill="none" stroke="currentColor" stroke-width="2.4" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m5 12 5 5L20 7"/></svg> Auditoria de funil</li>
+        <li class="flex gap-3"><svg class="w-5 h-5 text-amber-400 shrink-0" fill="none" stroke="currentColor" stroke-width="2.4" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m5 12 5 5L20 7"/></svg> Playbook de ops</li>
+        <li class="flex gap-3"><svg class="w-5 h-5 text-amber-400 shrink-0" fill="none" stroke="currentColor" stroke-width="2.4" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m5 12 5 5L20 7"/></svg> Canal privado 24/7</li>
+      </ul>
+    </div>
+    <div class="reveal flex justify-center">
+      <div class="relative w-48 h-48 rounded-full border-2 border-amber-500/40 bg-amber-500/10 grid place-items-center text-center p-6">
+        <div class="absolute -top-2 -right-2 w-10 h-10 rounded-full bg-amber-500 grid place-items-center text-ink-950">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m5 12 5 5L20 7"/></svg>
+        </div>
+        <p class="text-[10px] font-mono tracking-wider uppercase text-amber-400">Selo</p>
+        <p class="text-lg font-bold leading-tight mt-1">Seleção por<br/>aplicação</p>
+        <p class="text-[10px] text-paper-400 mt-2 font-mono">8 vagas · trimestre</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Depoimentos -->
+<section class="py-16 sm:py-20">
+  <div class="max-w-5xl mx-auto px-4 sm:px-6">
+    <div class="reveal text-center mb-10">
+      <h2 class="text-2xl sm:text-3xl font-extrabold">Founders no programa</h2>
+    </div>
+    <div class="reveal grid md:grid-cols-2 gap-4">
+      <blockquote class="p-6 rounded-2xl border border-white/10 bg-ink-900/50">
+        <p class="text-sm text-paper-300 leading-relaxed">""Dobrei o faturamento em 5 meses. O olhar estratégico vale cada centavo.""</p>
+        <footer class="mt-4 flex items-center gap-3">
+          <span class="w-9 h-9 rounded-full bg-amber-500/20 border border-amber-500/30 grid place-items-center text-xs font-bold text-amber-400">JM</span>
+          <div><p class="text-sm font-semibold">João M. · CEO</p><p class="text-[11px] text-paper-400 font-mono">★★★★★ · Verificado</p></div>
+        </footer>
+      </blockquote>
+      <blockquote class="p-6 rounded-2xl border border-white/10 bg-ink-900/50">
+        <p class="text-sm text-paper-300 leading-relaxed">""Montei time e parei de apagar incêndio. Previsibilidade de caixa.""</p>
+        <footer class="mt-4 flex items-center gap-3">
+          <span class="w-9 h-9 rounded-full bg-amber-500/20 border border-amber-500/30 grid place-items-center text-xs font-bold text-amber-400">FS</span>
+          <div><p class="text-sm font-semibold">Fernanda S.</p><p class="text-[11px] text-paper-400 font-mono">★★★★★ · Verificado</p></div>
+        </footer>
+      </blockquote>
+    </div>
+  </div>
+</section>
+
+<!-- Garantia -->
+<section class="py-12 border-y border-amber-500/20 bg-amber-500/5">
+  <div class="max-w-3xl mx-auto px-4 sm:px-6 text-center reveal">
+    <div class="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-amber-500/20 border border-amber-500/30 mb-4">
+      <svg class="w-7 h-7 text-amber-400" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75m-3-7.036A11.959 11.959 0 0 1 3.598 6 11.99 11.99 0 0 0 3 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285Z"/></svg>
+    </div>
+    <h2 class="text-xl sm:text-2xl font-extrabold">Garantia condicional de performance</h2>
+    <p class="mt-3 text-sm text-paper-300 leading-relaxed">Sem avanço mensurável em 90 dias, estendemos +60 dias sem custo.</p>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="py-16 sm:py-20">
+  <div class="max-w-2xl mx-auto px-4 sm:px-6">
+    <div class="reveal text-center mb-8">
+      <h2 class="text-2xl font-extrabold">Perguntas frequentes</h2>
+    </div>
+    <div class="reveal space-y-3">
+      <details class="group rounded-xl border border-white/10 bg-ink-900/50 overflow-hidden">
+        <summary class="flex items-center justify-between p-4 text-sm font-semibold">Faturamento mínimo?<span class="text-amber-400 group-open:rotate-45 transition">+</span></summary>
+        <p class="px-4 pb-4 text-sm text-paper-400">A partir de R$ 30k/mês com margem para investir em estrutura.</p>
+      </details>
+      <details class="group rounded-xl border border-white/10 bg-ink-900/50 overflow-hidden">
+        <summary class="flex items-center justify-between p-4 text-sm font-semibold">Quantas vagas?<span class="text-amber-400 group-open:rotate-45 transition">+</span></summary>
+        <p class="px-4 pb-4 text-sm text-paper-400">8 por trimestre. Análise da aplicação em 48h úteis.</p>
+      </details>
+      <details class="group rounded-xl border border-white/10 bg-ink-900/50 overflow-hidden">
+        <summary class="flex items-center justify-between p-4 text-sm font-semibold">É presencial?<span class="text-amber-400 group-open:rotate-45 transition">+</span></summary>
+        <p class="px-4 pb-4 text-sm text-paper-400">Híbrido: online + 1 imersão presencial inclusa.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- Oferta / Checkout -->
+<section id="oferta" class="py-16 sm:py-24 bg-gradient-to-b from-ink-900/80 to-ink-950 border-t border-white/5">
+  <div class="max-w-lg mx-auto px-4 sm:px-6">
+    <div class="reveal rounded-3xl border border-amber-500/30 bg-ink-900/80 p-6 sm:p-8 text-center shadow-[0_24px_80px_-24px_rgba(232,181,71,0.4)]">
+      <p class="text-[11px] font-mono tracking-[0.2em] uppercase text-amber-400">Oferta especial hoje</p>
+      <p class="mt-4 text-paper-400 text-sm line-through">De R$ 48.000</p>
+      <p class="text-4xl sm:text-5xl font-extrabold accent-text">R$ 24.997</p>
+      <p class="text-xs text-paper-400 mt-1 font-mono">ou 12× de R$ 2.499</p>
+      <ul class="mt-6 text-left text-sm text-paper-300 space-y-2">
+        <li class="flex gap-2"><span class="text-amber-400">✓</span> 12 sessões 1:1</li>
+        <li class="flex gap-2"><span class="text-amber-400">✓</span> Auditoria de funil</li>
+        <li class="flex gap-2"><span class="text-amber-400">✓</span> Imersão presencial</li>
+        <li class="flex gap-2"><span class="text-amber-400">✓</span> Garantia condicional</li>
+      </ul>
+      <a href="#" class="mt-8 flex items-center justify-center gap-2 w-full h-14 rounded-full bg-amber-500 hover:bg-amber-400 text-ink-950 font-bold text-sm tracking-wider uppercase transition shadow-[0_0_40px_rgba(232,181,71,0.35)]">
+        Aplicar para vaga agora →
+      </a>
+      <p class="mt-4 text-[10px] text-paper-500 font-mono tracking-wider uppercase">Pagamento seguro · Acesso imediato</p>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="border-t border-white/5 py-8 text-center text-[11px] text-paper-500 font-mono tracking-wider">
+  <p>Demonstração · Template Cyber VSL · Mentoria · Alto Ticket · <a href="../cyber-vsl.html" class="text-amber-500 hover:text-amber-400 transition">Audiência de Ouro</a></p>
+  <p class="mt-2 opacity-60">Conteúdo fictício para fins de preview. Não constitui oferta real.</p>
+</footer>
+
+<script>
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+document.getElementById('play-btn')?.addEventListener('click', () => {
+  const wrap = document.getElementById('vsl-wrap');
+  wrap.innerHTML = '<div class="absolute inset-0 grid place-items-center text-paper-400 text-sm font-mono tracking-wider uppercase p-8 text-center">▶ Player do YouTube/Vimeo entra aqui<br/><span class="text-[11px] text-paper-500 mt-2 normal-case">(demo — sem vídeo real)</span></div>';
+});
+
+let total = 7 * 3600 + 42 * 60 + 18;
+setInterval(() => {
+  total = Math.max(0, total - 1);
+  const h = Math.floor(total / 3600);
+  const m = Math.floor((total % 3600) / 60);
+  const s = total % 60;
+  const pad = n => String(n).padStart(2, '0');
+  document.querySelector('[data-unit="h"]').textContent = pad(h);
+  document.querySelector('[data-unit="m"]').textContent = pad(m);
+  document.querySelector('[data-unit="s"]').textContent = pad(s);
+}, 1000);
+</script>
+
+</body>
+</html>
