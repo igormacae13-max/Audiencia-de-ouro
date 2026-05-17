@@ -337,6 +337,7 @@ const variations = [
     headline: 'Resultado em 30 dias.',
     bullets: ['Antes/depois galeria', 'Selo médico', 'Garantia de 30 dias'],
     avgRoas: '3.8x',
+    demoUrl: 'demos/cyber-vsl-saude.html',
   },
   {
     id: 'financas', name: 'Cyber VSL · Finanças', niche: 'Trading, investimentos, renda extra',
@@ -434,7 +435,7 @@ function variationCard(v, i) {
           <span class="font-mono text-gold-400 font-bold">${v.avgRoas}</span>
         </div>
         <div class="mt-5 flex gap-2">
-          <a href="#" class="flex-1 inline-flex items-center justify-center gap-1.5 h-10 rounded-full border border-white/10 hover:border-white/25 hover:bg-white/[0.03] text-xs font-semibold tracking-wider uppercase text-paper-200 transition">
+          <a href="${v.demoUrl || '#'}" class="flex-1 inline-flex items-center justify-center gap-1.5 h-10 rounded-full border border-white/10 hover:border-white/25 hover:bg-white/[0.03] text-xs font-semibold tracking-wider uppercase text-paper-200 transition ${v.demoUrl ? '' : 'pointer-events-none opacity-50'}">
             <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M14 3h7v7M10 14 21 3M21 14v7H3V3h7"/></svg>
             Ver Demo
           </a>
