@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Audiência de Ouro — Wireframes</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Kalam:wght@300;400;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="wireframe-styles.css" />
+
+  <style>
+    html, body { margin: 0; padding: 0; height: 100%; background: #1a1815; }
+    body { font-family: 'Kalam', sans-serif; }
+    #root { width: 100%; height: 100vh; }
+  </style>
+
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+</head>
+<body>
+  <div id="root"></div>
+
+  <script type="text/babel" src="design-canvas.jsx"></script>
+  <script type="text/babel" src="wireframes/atoms.jsx"></script>
+  <script type="text/babel" src="wireframes/w1-editorial.jsx"></script>
+  <script type="text/babel" src="wireframes/w2-bento.jsx"></script>
+  <script type="text/babel" src="wireframes/w3-cinema.jsx"></script>
+  <script type="text/babel" src="wireframes/w4-catalogo.jsx"></script>
+
+  <script type="text/babel" data-presets="env,react">
+    const { DesignCanvas, DCSection, DCArtboard } = window;
+
+    function App() {
+      return (
+        <DesignCanvas
+          title="Audiência de Ouro · wireframes"
+          subtitle="4 direções estruturais — escolha uma (ou misture) e a gente parte pra alta fidelidade"
+        >
+          <DCSection
+            id="landing"
+            title="Landing one-page · 4 direções"
+            subtitle="Cada artboard cobre a página completa: header → hero → serviços → catálogo → processo → CTA + FAQ. Clique pra abrir em foco."
+          >
+            <DCArtboard id="w1" label="01 · Editorial Premium" width={1280} height={3400}>
+              <window.W1_Editorial />
+            </DCArtboard>
+            <DCArtboard id="w2" label="02 · Bento Vault" width={1280} height={3300}>
+              <window.W2_Bento />
+            </DCArtboard>
+            <DCArtboard id="w3" label="03 · Cinema VSL" width={1280} height={3500}>
+              <window.W3_Cinema />
+            </DCArtboard>
+            <DCArtboard id="w4" label="04 · Catálogo-first" width={1280} height={3500}>
+              <window.W4_Catalogo />
+            </DCArtboard>
+          </DCSection>
+        </DesignCanvas>
+      );
+    }
+
+    // Wait for all wireframe components to load
+    function mount() {
+      if (!window.W1_Editorial || !window.W2_Bento || !window.W3_Cinema || !window.W4_Catalogo || !window.DesignCanvas) {
+        return setTimeout(mount, 50);
+      }
+      ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+    }
+    mount();
+  </script>
+</body>
+</html>

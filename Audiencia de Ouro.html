@@ -1,0 +1,1115 @@
+<!doctype html>
+<html lang="pt-BR" class="dark">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Audiência de Ouro — Marketing Digital que escala</title>
+<meta name="description" content="Tráfego pago, sites de alta conversão e CRO em um só lugar. Estrutura completa para escalar seu faturamento — sem amadorismo digital." />
+<meta property="og:title" content="Audiência de Ouro — Marketing Digital que escala" />
+<meta property="og:description" content="Anúncios que vendem. Sites que convertem. Estrutura completa para escalar seu faturamento." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  darkMode: 'class',
+  theme: {
+    extend: {
+      colors: {
+        ink: { 950: '#0a0907', 900: '#100e0b', 800: '#181410', 700: '#221c16', 600: '#2d251c', 500: '#3a3025' },
+        paper: { 50: '#fdfbf5', 100: '#f7f3e8', 200: '#ebe4d1', 300: '#d4c8aa', 400: '#a89e8d', 500: '#6b6358' },
+        gold: { 50: '#fdf6dc', 100: '#fbecae', 200: '#f7dc70', 300: '#f0c63d', 400: '#e8b547', 500: '#d4a017', 600: '#b08410', 700: '#8a660e' },
+      },
+      fontFamily: {
+        sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+        serif: ['"Instrument Serif"', 'Georgia', 'serif'],
+        mono: ['"JetBrains Mono"', 'ui-monospace', 'monospace'],
+      },
+      fontSize: {
+        'display': ['clamp(2.75rem, 7vw, 6.5rem)', { lineHeight: '0.95', letterSpacing: '-0.035em' }],
+        'display-sm': ['clamp(2rem, 4.5vw, 3.75rem)', { lineHeight: '1', letterSpacing: '-0.03em' }],
+      },
+      boxShadow: {
+        'gold': '0 18px 60px -18px rgba(232,181,71,0.45)',
+        'card': '0 1px 0 rgba(255,255,255,0.04) inset, 0 18px 40px -24px rgba(0,0,0,0.6)',
+      },
+      animation: {
+        'shimmer': 'shimmer 3s linear infinite',
+        'float': 'float 6s ease-in-out infinite',
+      },
+      keyframes: {
+        shimmer: { '0%': { backgroundPosition: '-200% 0' }, '100%': { backgroundPosition: '200% 0' } },
+        float: { '0%,100%': { transform: 'translateY(0)' }, '50%': { transform: 'translateY(-8px)' } },
+      },
+    },
+  },
+  plugins: [
+    function ({ addVariant }) {
+      addVariant('light', 'html:not(.dark) &');
+    },
+  ],
+};
+</script>
+
+<style>
+  :root { color-scheme: dark; }
+  html { scroll-behavior: smooth; }
+  html.dark { color-scheme: dark; background: #0a0907; }
+  html:not(.dark) { color-scheme: light; background: #fdfbf5; }
+  body { font-family: 'Plus Jakarta Sans', sans-serif; -webkit-font-smoothing: antialiased; }
+
+  /* Subtle grain on dark mode */
+  .dark body::before {
+    content: '';
+    position: fixed; inset: 0;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/></filter><rect width='200' height='200' filter='url(%23n)' opacity='0.35'/></svg>");
+    opacity: 0.06;
+    pointer-events: none;
+    z-index: 100;
+    mix-blend-mode: overlay;
+  }
+
+  /* Aurora glow blobs */
+  .aurora { position: absolute; border-radius: 50%; filter: blur(80px); pointer-events: none; opacity: 0.5; }
+
+  /* Gradient text */
+  .gold-text { background: linear-gradient(180deg, #f7dc70 0%, #e8b547 60%, #b08410 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .gold-shimmer { background: linear-gradient(110deg, #b08410 0%, #f7dc70 35%, #fdf6dc 50%, #f7dc70 65%, #b08410 100%); background-size: 200% 100%; -webkit-background-clip: text; background-clip: text; color: transparent; animation: shimmer 4.5s linear infinite; }
+
+  /* Card hover lift */
+  .lift { transition: transform .35s cubic-bezier(.2,.7,.2,1), border-color .3s, background .3s; }
+  .lift:hover { transform: translateY(-4px); }
+
+  /* Reveal on scroll */
+  .reveal { opacity: 0; transform: translateY(20px); transition: opacity .9s cubic-bezier(.2,.7,.2,1), transform .9s cubic-bezier(.2,.7,.2,1); }
+  .reveal.in { opacity: 1; transform: translateY(0); }
+  .reveal-delay-1 { transition-delay: .08s; }
+  .reveal-delay-2 { transition-delay: .16s; }
+  .reveal-delay-3 { transition-delay: .24s; }
+
+  /* Border with subtle gradient on dark */
+  .dark .ring-grad { position: relative; }
+  .dark .ring-grad::before {
+    content: ''; position: absolute; inset: 0; border-radius: inherit; padding: 1px;
+    background: linear-gradient(180deg, rgba(232,181,71,0.35), rgba(232,181,71,0.04) 40%, transparent);
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor; mask-composite: exclude;
+    pointer-events: none;
+  }
+
+  /* Marquee */
+  @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+  .marquee-track { animation: marquee 32s linear infinite; }
+
+  /* Custom dotted underline */
+  .uline { background-image: linear-gradient(currentColor, currentColor); background-size: 100% 1px; background-repeat: no-repeat; background-position: 0 100%; }
+
+  /* FAQ */
+  details[open] summary .faq-icon { transform: rotate(45deg); }
+  details summary { list-style: none; cursor: pointer; }
+  details summary::-webkit-details-marker { display: none; }
+  details .faq-body { display: grid; grid-template-rows: 0fr; transition: grid-template-rows .4s ease; }
+  details[open] .faq-body { grid-template-rows: 1fr; }
+  details .faq-inner { overflow: hidden; }
+
+  /* Tiny browser frame for template previews */
+  .frame { background: #14110e; border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; overflow: hidden; position: relative; }
+  .frame-bar { display: flex; gap: 5px; padding: 9px 12px; background: rgba(255,255,255,0.02); border-bottom: 1px solid rgba(255,255,255,0.05); }
+  .frame-bar i { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.12); }
+  .light .frame { background: #ffffff; border-color: rgba(0,0,0,0.08); }
+  .light .frame-bar { background: rgba(0,0,0,0.02); border-bottom-color: rgba(0,0,0,0.06); }
+  .light .frame-bar i { background: rgba(0,0,0,0.12); }
+
+  /* Spotlight cursor light on hero */
+  .spotlight { position: absolute; width: 600px; height: 600px; pointer-events: none; background: radial-gradient(circle, rgba(232,181,71,0.18), transparent 65%); transform: translate(-50%, -50%); transition: opacity .4s; }
+
+  /* Number ticker style */
+  .tabular { font-variant-numeric: tabular-nums; }
+
+  /* nav blur */
+  .navbar { backdrop-filter: saturate(160%) blur(14px); -webkit-backdrop-filter: saturate(160%) blur(14px); }
+
+  /* Selection */
+  ::selection { background: rgba(232,181,71,0.35); color: #0a0907; }
+  .dark ::selection { color: #fdf6dc; }
+
+  /* =================== LIGHT MODE OVERRIDES =================== */
+  /* When html does NOT have .dark, invert the dark-themed surfaces */
+  html:not(.dark) { background: #fdfbf5; }
+  html:not(.dark) body { background: #fdfbf5; color: #100e0b; }
+  html:not(.dark) body::before { display: none; }
+
+  /* Surfaces — solid */
+  html:not(.dark) .bg-ink-950 { background-color: #fdfbf5 !important; }
+  html:not(.dark) .bg-ink-900 { background-color: #ffffff !important; }
+  html:not(.dark) .bg-ink-800 { background-color: #f7f3e8 !important; }
+
+  /* Surfaces — translucent (header, footer, cards) */
+  html:not(.dark) .bg-ink-950\/70 { background-color: rgba(253,251,245,0.75) !important; }
+  html:not(.dark) .bg-ink-950\/50 { background-color: rgba(253,251,245,0.6) !important; }
+  html:not(.dark) .bg-ink-900\/80 { background-color: rgba(255,255,255,0.85) !important; }
+  html:not(.dark) .bg-ink-900\/60 { background-color: rgba(255,255,255,0.7) !important; }
+  html:not(.dark) .bg-ink-900\/50 { background-color: rgba(255,255,255,0.6) !important; }
+  html:not(.dark) .bg-ink-900\/40 { background-color: rgba(255,255,255,0.5) !important; }
+
+  /* Text colors */
+  html:not(.dark) .text-paper-100 { color: #0a0907 !important; }
+  html:not(.dark) .text-paper-200 { color: #181410 !important; }
+  html:not(.dark) .text-paper-300 { color: #3a3025 !important; }
+  html:not(.dark) .text-paper-300\/80 { color: rgba(58,48,37,0.78) !important; }
+  html:not(.dark) .text-paper-400 { color: #6b6358 !important; }
+  html:not(.dark) .text-paper-400\/60 { color: rgba(107,99,88,0.62) !important; }
+  html:not(.dark) .text-paper-400\/80 { color: rgba(107,99,88,0.8) !important; }
+  html:not(.dark) .text-paper-500 { color: #8a8175 !important; }
+
+  /* Borders (white-alpha → black-alpha) */
+  html:not(.dark) .border-white\/5 { border-color: rgba(0,0,0,0.06) !important; }
+  html:not(.dark) .border-white\/10 { border-color: rgba(0,0,0,0.1) !important; }
+  html:not(.dark) .border-white\/15 { border-color: rgba(0,0,0,0.15) !important; }
+  html:not(.dark) .border-white\/20 { border-color: rgba(0,0,0,0.2) !important; }
+  html:not(.dark) .hover\:border-white\/25:hover { border-color: rgba(0,0,0,0.25) !important; }
+  html:not(.dark) .hover\:border-white\/30:hover { border-color: rgba(0,0,0,0.3) !important; }
+
+  /* Translucent fills (white-alpha → near-black-alpha for contrast) */
+  html:not(.dark) .bg-white\/5 { background-color: rgba(16,14,11,0.04) !important; }
+  html:not(.dark) .bg-white\/10 { background-color: rgba(16,14,11,0.08) !important; }
+  html:not(.dark) .bg-white\/15 { background-color: rgba(16,14,11,0.12) !important; }
+  html:not(.dark) .bg-white\/20 { background-color: rgba(16,14,11,0.16) !important; }
+  html:not(.dark) .bg-white\/\[0\.03\] { background-color: rgba(16,14,11,0.025) !important; }
+  html:not(.dark) .bg-white\/\[0\.04\] { background-color: rgba(16,14,11,0.04) !important; }
+  html:not(.dark) .bg-white\/\[0\.08\] { background-color: rgba(16,14,11,0.07) !important; }
+
+  /* Hover translucent */
+  html:not(.dark) .hover\:bg-white\/\[0\.03\]:hover { background-color: rgba(16,14,11,0.035) !important; }
+  html:not(.dark) .hover\:bg-white\/\[0\.08\]:hover { background-color: rgba(16,14,11,0.07) !important; }
+
+  /* Mini chart bars — improve contrast on light */
+  html:not(.dark) .bg-ink-900\/80 .bg-white\/10 { background-color: rgba(16,14,11,0.12) !important; }
+  html:not(.dark) .bg-ink-900\/80 .bg-white\/15 { background-color: rgba(16,14,11,0.18) !important; }
+  html:not(.dark) .bg-ink-900\/80 .bg-white\/20 { background-color: rgba(16,14,11,0.25) !important; }
+
+  /* Black overlays on VSL → light card */
+  html:not(.dark) .bg-black\/60 {
+    background-color: rgba(255,255,255,0.88) !important;
+    color: #100e0b !important;
+    border-color: rgba(0,0,0,0.08) !important;
+  }
+  html:not(.dark) .bg-black\/60 .text-paper-200 { color: #181410 !important; }
+  html:not(.dark) .bg-black\/60 .text-paper-300 { color: #3a3025 !important; }
+
+  /* Aurora glows — dim in light */
+  html:not(.dark) .aurora { opacity: 0.35; mix-blend-mode: multiply; }
+
+  /* Grid backdrop dot color */
+  html:not(.dark) main { color: #100e0b; }
+
+  /* Gold accent text needs subtle adjustment for legibility on white */
+  html:not(.dark) .gold-text { background: linear-gradient(180deg, #d4a017 0%, #b08410 60%, #8a660e 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  html:not(.dark) .gold-shimmer { background: linear-gradient(110deg, #8a660e, #d4a017 35%, #f0c63d 50%, #d4a017 65%, #8a660e 100%); background-size: 200% 100%; -webkit-background-clip: text; background-clip: text; color: transparent; }
+  html:not(.dark) .text-gold-300 { color: #b08410 !important; }
+  html:not(.dark) .text-gold-400 { color: #b08410 !important; }
+  html:not(.dark) .border-gold-400\/20 { border-color: rgba(176,132,16,0.3) !important; }
+  html:not(.dark) .border-gold-400\/30 { border-color: rgba(176,132,16,0.4) !important; }
+  html:not(.dark) .bg-gold-400\/10 { background-color: rgba(232,181,71,0.18) !important; }
+
+  /* Frame previews already have .light overrides earlier in this stylesheet */
+
+  /* Marquee text */
+  html:not(.dark) .text-paper-400\/60 { color: rgba(107,99,88,0.7) !important; }
+
+  /* Dividers via gradient — fine, no change */
+
+  /* Footer subtle */
+  html:not(.dark) footer { background: #f7f3e8; }
+
+  /* Avatar gradients in cases — fine */
+
+  /* Filter buttons inactive state needs proper contrast */
+  html:not(.dark) .filter-btn:not(.active) {
+    background-color: rgba(16,14,11,0.04) !important;
+    border-color: rgba(0,0,0,0.1) !important;
+    color: #181410 !important;
+  }
+
+  /* Bento "tráfego" card month labels under chart */
+  html:not(.dark) .font-mono.text-paper-400 { color: #6b6358 !important; }
+</style>
+</head>
+
+<body class="bg-ink-950 dark:bg-ink-950 text-paper-100 dark:text-paper-100 light:bg-paper-50 antialiased">
+
+<!-- =================== HEADER =================== -->
+<header class="navbar fixed top-0 inset-x-0 z-50 border-b border-white/5 bg-ink-950/70 dark:bg-ink-950/70 light:bg-paper-50/80 light:border-black/5">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8 h-16 flex items-center justify-between">
+    <!-- Logo -->
+    <a href="#top" class="flex items-center gap-2.5 group" aria-label="Audiência de Ouro">
+      <span class="relative w-8 h-8 flex items-center justify-center">
+        <span class="absolute inset-0 rounded-full bg-gold-400/10 blur-md group-hover:bg-gold-400/25 transition"></span>
+        <svg viewBox="0 0 24 24" fill="none" class="relative w-6 h-6 text-gold-400" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 2v1.5M4.2 4.2l1 1M2 12h1.5M5.2 18.8l1-1M19.8 5.2l-1 1M22 12h-1.5M18.8 18.8l-1-1"/>
+          <path d="M9 18h6M10 21h4M9 14a5 5 0 1 1 6 0c-.6.45-1 1-1 1.7V17h-4v-1.3c0-.7-.4-1.25-1-1.7Z"/>
+        </svg>
+      </span>
+      <span class="font-semibold tracking-tight text-[15px] text-paper-100 dark:text-paper-100 light:text-ink-900">
+        Audiência <span class="text-gold-400">de Ouro</span>
+      </span>
+    </a>
+
+    <!-- Nav -->
+    <nav class="hidden lg:flex items-center gap-9 text-[13px] text-paper-300/80">
+      <a href="#servicos" class="hover:text-paper-100 transition">Serviços</a>
+      <a href="#catalogo" class="hover:text-paper-100 transition">Catálogo</a>
+      <a href="#processo" class="hover:text-paper-100 transition">Processo</a>
+      <a href="#faq" class="hover:text-paper-100 transition">FAQ</a>
+    </nav>
+
+    <!-- Actions -->
+    <div class="flex items-center gap-2">
+      <button id="theme-toggle" aria-label="Alternar tema" class="w-9 h-9 rounded-full border border-white/10 hover:border-gold-400/40 hover:bg-white/[0.03] grid place-items-center transition group">
+        <svg class="w-4 h-4 dark:block hidden text-paper-300 group-hover:text-gold-400 transition" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/></svg>
+        <svg class="w-4 h-4 dark:hidden text-ink-800" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path stroke-linecap="round" d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+      </button>
+      <a href="#contato" class="group relative inline-flex items-center gap-1.5 px-4 sm:px-5 h-9 rounded-full bg-gold-400 hover:bg-gold-300 text-ink-950 font-semibold text-[13px] transition shadow-[0_0_0_1px_rgba(232,181,71,0.4),0_8px_30px_-8px_rgba(232,181,71,0.5)]">
+        Falar com a gente
+        <svg class="w-3.5 h-3.5 transition group-hover:translate-x-0.5" fill="none" stroke="currentColor" stroke-width="2.4" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
+  </div>
+</header>
+
+<main id="top" class="pt-16">
+
+<!-- =================== HERO =================== -->
+<section class="relative overflow-hidden">
+  <!-- Background ornaments -->
+  <div class="aurora dark:block hidden" style="top:-200px; left:-150px; width:600px; height:600px; background: radial-gradient(circle, rgba(232,181,71,0.35), transparent 60%);"></div>
+  <div class="aurora dark:block hidden" style="top:100px; right:-200px; width:700px; height:700px; background: radial-gradient(circle, rgba(176,132,16,0.22), transparent 60%);"></div>
+  <div id="spotlight" class="spotlight dark:block hidden opacity-0"></div>
+
+  <!-- Grid backdrop -->
+  <div class="absolute inset-0 opacity-[0.04] dark:opacity-[0.06] pointer-events-none" style="background-image: linear-gradient(to right, currentColor 1px, transparent 1px), linear-gradient(to bottom, currentColor 1px, transparent 1px); background-size: 80px 80px;"></div>
+
+  <div class="relative max-w-7xl mx-auto px-5 sm:px-8 pt-16 sm:pt-24 pb-20">
+    <!-- Eyebrow -->
+    <div class="reveal flex items-center justify-center gap-2 mb-8">
+      <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/[0.04] border border-white/10 backdrop-blur text-[11px] tracking-[0.18em] uppercase text-paper-300 font-medium">
+        <span class="relative flex w-1.5 h-1.5"><span class="absolute inset-0 rounded-full bg-gold-400 animate-ping opacity-75"></span><span class="relative w-1.5 h-1.5 rounded-full bg-gold-400"></span></span>
+        Marketing digital · estrutura completa
+      </span>
+    </div>
+
+    <!-- Headline -->
+    <h1 class="reveal text-display font-extrabold text-center max-w-5xl mx-auto">
+      Anúncios que <span class="font-serif italic font-normal gold-shimmer">vendem</span>.<br/>
+      Sites que <span class="font-serif italic font-normal gold-shimmer">convertem</span>.
+    </h1>
+
+    <p class="reveal reveal-delay-1 mt-7 text-lg sm:text-xl text-paper-300 max-w-2xl mx-auto text-center text-balance leading-relaxed">
+      A estrutura completa pra escalar seu faturamento — tráfego, site e otimização rodando juntos, sem amadorismo digital.
+    </p>
+
+    <!-- CTAs -->
+    <div class="reveal reveal-delay-2 mt-10 flex flex-wrap items-center justify-center gap-3">
+      <a href="#contato" class="group inline-flex items-center gap-2 px-7 h-12 rounded-full bg-gold-400 hover:bg-gold-300 text-ink-950 font-semibold transition shadow-gold">
+        Diagnóstico gratuito
+        <svg class="w-4 h-4 transition group-hover:translate-x-0.5" fill="none" stroke="currentColor" stroke-width="2.4" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+      <a href="#catalogo" class="inline-flex items-center gap-2 px-7 h-12 rounded-full border border-white/15 hover:border-white/30 hover:bg-white/[0.03] text-paper-100 font-medium transition backdrop-blur">
+        Ver catálogo de sites
+      </a>
+    </div>
+
+    <!-- Trust bar -->
+    <div class="reveal reveal-delay-3 mt-10 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-[12px] text-paper-400 tracking-wide">
+      <span class="inline-flex items-center gap-1.5"><svg class="w-3.5 h-3.5 text-gold-400" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m5 12 5 5L20 7"/></svg> Sem fidelidade</span>
+      <span class="opacity-30">·</span>
+      <span class="inline-flex items-center gap-1.5"><svg class="w-3.5 h-3.5 text-gold-400" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m5 12 5 5L20 7"/></svg> Hospedagem grátis 1º ano</span>
+      <span class="opacity-30">·</span>
+      <span class="inline-flex items-center gap-1.5"><svg class="w-3.5 h-3.5 text-gold-400" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m5 12 5 5L20 7"/></svg> Entrega em 7 dias</span>
+    </div>
+
+    <!-- VSL -->
+    <div class="reveal reveal-delay-3 mt-16 sm:mt-20 max-w-5xl mx-auto">
+      <div class="ring-grad relative rounded-2xl overflow-hidden bg-ink-900 border border-white/5 shadow-card">
+        <div class="aspect-video relative grid place-items-center overflow-hidden">
+          <!-- Placeholder background -->
+          <div class="absolute inset-0" style="background: radial-gradient(ellipse at center, rgba(232,181,71,0.18), transparent 60%), linear-gradient(135deg, #14110e, #100e0b);"></div>
+          <!-- Subtle pattern -->
+          <div class="absolute inset-0 opacity-30" style="background-image: repeating-linear-gradient(45deg, transparent 0 14px, rgba(232,181,71,0.04) 14px 15px);"></div>
+          <!-- Floating tags -->
+          <div class="absolute top-5 left-5 inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-black/60 border border-white/10 backdrop-blur text-[11px] tracking-wider uppercase text-paper-200">
+            <span class="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse"></span> ao vivo · R$ 12M+ gerados
+          </div>
+          <div class="absolute bottom-5 right-5 inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-black/60 border border-white/10 backdrop-blur text-[11px] tracking-wider uppercase text-paper-300">
+            01:30 · legendado
+          </div>
+          <!-- Play button -->
+          <button id="play-btn" class="group relative grid place-items-center w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-gold-400 hover:bg-gold-300 text-ink-950 transition shadow-gold">
+            <span class="absolute inset-0 rounded-full bg-gold-400/40 animate-ping"></span>
+            <svg class="relative w-7 h-7 sm:w-8 sm:h-8 ml-1" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7L8 5z"/></svg>
+          </button>
+          <div class="absolute bottom-6 left-1/2 -translate-x-1/2 text-[12px] tracking-[0.2em] uppercase text-paper-300/80 font-medium">▶ Assista 90 segundos</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Stats -->
+    <div class="reveal mt-16 grid grid-cols-2 lg:grid-cols-4 gap-px bg-white/5 rounded-2xl overflow-hidden border border-white/5">
+      <div class="bg-ink-900 p-6 sm:p-8">
+        <div class="text-4xl sm:text-5xl font-extrabold tabular gold-text">R$12M+</div>
+        <div class="mt-2 text-[11px] tracking-[0.18em] uppercase text-paper-400">Faturamento gerado</div>
+      </div>
+      <div class="bg-ink-900 p-6 sm:p-8">
+        <div class="text-4xl sm:text-5xl font-extrabold tabular text-paper-100">184</div>
+        <div class="mt-2 text-[11px] tracking-[0.18em] uppercase text-paper-400">Clientes ativos</div>
+      </div>
+      <div class="bg-ink-900 p-6 sm:p-8">
+        <div class="text-4xl sm:text-5xl font-extrabold tabular text-paper-100">&lt;1<span class="text-paper-400 text-2xl align-top">s</span></div>
+        <div class="mt-2 text-[11px] tracking-[0.18em] uppercase text-paper-400">Tempo de carregamento</div>
+      </div>
+      <div class="bg-ink-900 p-6 sm:p-8">
+        <div class="text-4xl sm:text-5xl font-extrabold tabular text-paper-100">4.9<span class="text-gold-400">★</span></div>
+        <div class="mt-2 text-[11px] tracking-[0.18em] uppercase text-paper-400">Avaliação média</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Marca registrada / clientes marquee -->
+  <div class="relative border-y border-white/5 py-6 overflow-hidden">
+    <div class="flex marquee-track gap-12 whitespace-nowrap text-paper-400/60 text-sm font-medium tracking-wider uppercase">
+      <!-- Repeat 2x for seamless loop -->
+      <template id="marquee-items">
+        <span>★ Confiada por marcas em todo o Brasil</span>
+        <span>⌬ +184 contas ativas</span>
+        <span>⊹ Operação 100% remota</span>
+        <span>◆ Cases em e-commerce, B2B, infoprodutos</span>
+        <span>✦ Stack: Meta · Google · TikTok · GA4</span>
+        <span>◇ Entrega 7 dias úteis</span>
+      </template>
+      <div class="flex gap-12" id="m1"></div>
+      <div class="flex gap-12" id="m2" aria-hidden="true"></div>
+    </div>
+  </div>
+</section>
+
+<!-- =================== BENTO SERVIÇOS =================== -->
+<section id="servicos" class="relative py-24 sm:py-32">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8">
+    <div class="reveal flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-12">
+      <div>
+        <div class="text-[11px] tracking-[0.2em] uppercase text-gold-400 font-semibold font-mono">§ 01 — Pilares</div>
+        <h2 class="mt-3 text-display-sm font-extrabold max-w-2xl">
+          Três frentes. <span class="font-serif italic font-normal gold-text">Uma máquina.</span>
+        </h2>
+      </div>
+      <p class="text-paper-300 max-w-md lg:text-right">
+        Cada pilar resolve um buraco no seu funil. Juntos, viram uma operação que escala.
+      </p>
+    </div>
+
+    <!-- Bento Grid -->
+    <div class="grid grid-cols-1 lg:grid-cols-6 gap-4 sm:gap-5">
+
+      <!-- Tráfego pago (big) -->
+      <article class="reveal lift ring-grad lg:col-span-4 lg:row-span-2 bg-ink-900/80 rounded-3xl border border-white/5 p-8 sm:p-10 flex flex-col justify-between min-h-[420px] relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-1/2 h-1/2 opacity-50" style="background: radial-gradient(circle at top right, rgba(232,181,71,0.18), transparent 60%);"></div>
+        <div class="relative">
+          <div class="inline-flex items-center gap-2 px-2.5 py-1 rounded-full bg-gold-400/10 text-gold-300 text-[10px] tracking-[0.16em] uppercase font-semibold border border-gold-400/20">
+            <span class="w-1 h-1 rounded-full bg-gold-400"></span> 01 · Tráfego Pago
+          </div>
+          <h3 class="mt-6 text-4xl sm:text-5xl font-extrabold tracking-tight max-w-md">
+            Escala que <span class="font-serif italic font-normal gold-text">não para</span>.
+          </h3>
+          <p class="mt-5 text-paper-300 max-w-lg leading-relaxed">
+            Gestão diária em Meta, Google e TikTok. Criativos testados em lote, ROAS rastreado por canal, otimização contínua de campanhas.
+          </p>
+          <ul class="mt-6 grid sm:grid-cols-2 gap-x-6 gap-y-2 text-sm text-paper-200">
+            <li class="flex items-center gap-2"><svg class="w-3.5 h-3.5 text-gold-400 shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m5 12 5 5L20 7"/></svg> Criativos quinzenais</li>
+            <li class="flex items-center gap-2"><svg class="w-3.5 h-3.5 text-gold-400 shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m5 12 5 5L20 7"/></svg> Pixel + GA4 implementados</li>
+            <li class="flex items-center gap-2"><svg class="w-3.5 h-3.5 text-gold-400 shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m5 12 5 5L20 7"/></svg> Relatórios semanais</li>
+            <li class="flex items-center gap-2"><svg class="w-3.5 h-3.5 text-gold-400 shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m5 12 5 5L20 7"/></svg> Lookalikes + retargeting</li>
+          </ul>
+        </div>
+        <!-- Mini chart -->
+        <div class="relative mt-8">
+          <div class="flex items-end gap-1.5 h-20">
+            <template>bars</template>
+            <div class="flex-1 bg-white/10 rounded-sm" style="height:32%"></div>
+            <div class="flex-1 bg-white/10 rounded-sm" style="height:48%"></div>
+            <div class="flex-1 bg-white/10 rounded-sm" style="height:38%"></div>
+            <div class="flex-1 bg-white/15 rounded-sm" style="height:58%"></div>
+            <div class="flex-1 bg-white/15 rounded-sm" style="height:52%"></div>
+            <div class="flex-1 bg-gold-400/80 rounded-sm" style="height:72%"></div>
+            <div class="flex-1 bg-white/15 rounded-sm" style="height:62%"></div>
+            <div class="flex-1 bg-white/20 rounded-sm" style="height:78%"></div>
+            <div class="flex-1 bg-gold-400/80 rounded-sm" style="height:86%"></div>
+            <div class="flex-1 bg-white/20 rounded-sm" style="height:74%"></div>
+            <div class="flex-1 bg-gold-400 rounded-sm" style="height:96%"></div>
+            <div class="flex-1 bg-white/20 rounded-sm" style="height:82%"></div>
+          </div>
+          <div class="mt-3 flex justify-between text-[10px] uppercase tracking-widest text-paper-400 font-mono">
+            <span>jan</span><span>fev</span><span>mar</span><span>abr</span><span>mai</span><span class="text-gold-400">jun ↗</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Sites <1s -->
+      <article class="reveal reveal-delay-1 lift ring-grad lg:col-span-2 bg-ink-900/80 rounded-3xl border border-white/5 p-7 relative overflow-hidden">
+        <div class="inline-flex items-center gap-2 px-2.5 py-1 rounded-full bg-white/[0.04] text-paper-200 text-[10px] tracking-[0.16em] uppercase font-semibold border border-white/10">
+          02 · Sites
+        </div>
+        <h3 class="mt-5 text-3xl font-extrabold tracking-tight">
+          Código puro.<br/><span class="gold-text">&lt; 1 segundo.</span>
+        </h3>
+        <p class="mt-4 text-sm text-paper-300 leading-relaxed">
+          HTML5 + Tailwind feito à mão. Sem WordPress, sem builder pesado, sem gordura.
+        </p>
+        <div class="mt-6 font-mono text-[11px] text-paper-400/80 space-y-1">
+          <div class="flex justify-between"><span>Lighthouse Performance</span><span class="text-gold-400">99</span></div>
+          <div class="flex justify-between"><span>First Contentful Paint</span><span class="text-gold-400">0.4s</span></div>
+          <div class="flex justify-between"><span>Total bundle</span><span class="text-gold-400">38 kb</span></div>
+        </div>
+      </article>
+
+      <!-- CRO -->
+      <article class="reveal reveal-delay-2 lift lg:col-span-2 bg-gradient-to-br from-gold-400 to-gold-500 text-ink-950 rounded-3xl p-7 relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-32 h-32 opacity-20" style="background: radial-gradient(circle, rgba(0,0,0,0.5), transparent 70%);"></div>
+        <div class="inline-flex items-center gap-2 px-2.5 py-1 rounded-full bg-ink-950/15 text-ink-950 text-[10px] tracking-[0.16em] uppercase font-bold">
+          03 · CRO
+        </div>
+        <h3 class="mt-5 text-3xl font-extrabold tracking-tight">
+          Otimização<br/>contínua.
+        </h3>
+        <p class="mt-4 text-sm text-ink-900/80 leading-relaxed">
+          A/B test mensal, heatmaps, análise de funil. A conversão sempre subindo.
+        </p>
+        <div class="mt-6 flex items-center gap-1">
+          <span class="text-3xl font-extrabold">+38%</span>
+          <span class="text-xs uppercase tracking-wider ml-2 opacity-70">conversão média<br/>nos primeiros 90 dias</span>
+        </div>
+      </article>
+
+      <!-- Extras row -->
+      <article class="reveal lift lg:col-span-3 bg-ink-900/60 rounded-2xl border border-white/5 p-6 flex items-center gap-4">
+        <div class="w-11 h-11 rounded-xl bg-white/[0.04] border border-white/10 grid place-items-center text-gold-400 shrink-0">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 20h9M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+        </div>
+        <div class="flex-1 min-w-0">
+          <div class="text-[10px] tracking-[0.16em] uppercase text-paper-400 font-mono font-semibold">+ extra</div>
+          <div class="mt-1 font-semibold text-paper-100">Copywriting de oferta</div>
+          <div class="text-xs text-paper-400 mt-0.5">Headline, garantia, FAQ — escritos pra converter.</div>
+        </div>
+        <svg class="w-4 h-4 text-paper-400 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </article>
+
+      <article class="reveal reveal-delay-1 lift lg:col-span-3 bg-ink-900/60 rounded-2xl border border-white/5 p-6 flex items-center gap-4">
+        <div class="w-11 h-11 rounded-xl bg-white/[0.04] border border-white/10 grid place-items-center text-gold-400 shrink-0">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 3v18h18M7 14l4-4 4 4 5-7"/></svg>
+        </div>
+        <div class="flex-1 min-w-0">
+          <div class="text-[10px] tracking-[0.16em] uppercase text-paper-400 font-mono font-semibold">+ extra</div>
+          <div class="mt-1 font-semibold text-paper-100">Pixel, GA4 & dashboards</div>
+          <div class="text-xs text-paper-400 mt-0.5">Tudo rastreado, do clique à venda confirmada.</div>
+        </div>
+        <svg class="w-4 h-4 text-paper-400 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- =================== CATÁLOGO =================== -->
+<section id="catalogo" class="relative py-24 sm:py-32 border-t border-white/5">
+  <!-- Subtle bg -->
+  <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-gold-400/30 to-transparent"></div>
+
+  <div class="max-w-7xl mx-auto px-5 sm:px-8">
+    <div class="reveal flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-12">
+      <div>
+        <div class="text-[11px] tracking-[0.2em] uppercase text-gold-400 font-semibold font-mono">§ 02 — Vitrine</div>
+        <h2 class="mt-3 text-display-sm font-extrabold">
+          O <span class="font-serif italic font-normal gold-text">catálogo</span>.
+        </h2>
+        <p class="mt-3 text-paper-300 max-w-xl">
+          Seis modelos testados em mercado real. Cada um otimizado pra um tipo de oferta. Clica no demo, navega como se fosse seu.
+        </p>
+      </div>
+      <!-- Filters -->
+      <div class="flex flex-wrap gap-2" id="filters">
+        <button data-filter="all" class="filter-btn active px-3.5 h-9 rounded-full bg-gold-400 text-ink-950 text-[11px] font-semibold tracking-wider uppercase transition">Todos · 6</button>
+        <button data-filter="vsl" class="filter-btn px-3.5 h-9 rounded-full bg-white/[0.04] hover:bg-white/[0.08] border border-white/10 text-paper-200 text-[11px] font-semibold tracking-wider uppercase transition">VSL</button>
+        <button data-filter="ecom" class="filter-btn px-3.5 h-9 rounded-full bg-white/[0.04] hover:bg-white/[0.08] border border-white/10 text-paper-200 text-[11px] font-semibold tracking-wider uppercase transition">E-commerce</button>
+        <button data-filter="b2b" class="filter-btn px-3.5 h-9 rounded-full bg-white/[0.04] hover:bg-white/[0.08] border border-white/10 text-paper-200 text-[11px] font-semibold tracking-wider uppercase transition">B2B</button>
+        <button data-filter="oferta" class="filter-btn px-3.5 h-9 rounded-full bg-white/[0.04] hover:bg-white/[0.08] border border-white/10 text-paper-200 text-[11px] font-semibold tracking-wider uppercase transition">Oferta</button>
+      </div>
+    </div>
+
+    <!-- Grid -->
+    <div id="catalog-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+      <!-- Cards inserted via template below -->
+    </div>
+
+    <!-- See more -->
+    <div class="reveal mt-12 text-center">
+      <p class="text-paper-400 text-sm">Não viu o que precisava? <a href="#contato" class="text-gold-400 hover:text-gold-300 underline-offset-4 hover:underline">A gente cria do zero pra você.</a></p>
+    </div>
+  </div>
+</section>
+
+<!-- =================== PROCESSO =================== -->
+<section id="processo" class="relative py-24 sm:py-32 border-t border-white/5">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8">
+    <div class="reveal text-center max-w-2xl mx-auto mb-16">
+      <div class="text-[11px] tracking-[0.2em] uppercase text-gold-400 font-semibold font-mono">§ 03 — Processo</div>
+      <h2 class="mt-3 text-display-sm font-extrabold">
+        Três passos. <span class="font-serif italic font-normal gold-text">Zero fricção.</span>
+      </h2>
+      <p class="mt-4 text-paper-300">
+        Do briefing ao site no ar em 7 dias úteis. Sem dor de cabeça técnica, sem termos que ninguém entende.
+      </p>
+    </div>
+
+    <!-- Steps -->
+    <div class="relative grid md:grid-cols-3 gap-5">
+      <!-- Connector line (desktop only) -->
+      <div class="hidden md:block absolute top-12 left-[16.67%] right-[16.67%] h-px bg-gradient-to-r from-gold-400/0 via-gold-400/30 to-gold-400/0 pointer-events-none"></div>
+
+      <!-- Step 1 -->
+      <article class="reveal relative bg-ink-900/60 rounded-3xl border border-white/5 p-8 ring-grad">
+        <div class="flex items-center gap-4 mb-5">
+          <div class="relative w-12 h-12 rounded-full bg-gold-400 text-ink-950 grid place-items-center font-extrabold text-xl shadow-gold">
+            1
+          </div>
+          <div class="text-[11px] tracking-[0.18em] uppercase text-paper-400 font-mono">Passo 01</div>
+        </div>
+        <h3 class="text-2xl font-bold mb-3">Escolha o layout</h3>
+        <p class="text-paper-300 text-sm leading-relaxed">
+          Você navega o catálogo, vê os demos ao vivo e escolhe o modelo que combina com a sua oferta. Sem custo, sem compromisso.
+        </p>
+        <div class="mt-6 pt-5 border-t border-white/5 flex items-center gap-2 text-xs text-paper-400">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6l4 2"/></svg>
+          15 minutos
+        </div>
+      </article>
+
+      <!-- Step 2 -->
+      <article class="reveal reveal-delay-1 relative bg-ink-900/60 rounded-3xl border border-white/5 p-8 ring-grad">
+        <div class="flex items-center gap-4 mb-5">
+          <div class="relative w-12 h-12 rounded-full bg-gold-400 text-ink-950 grid place-items-center font-extrabold text-xl shadow-gold">
+            2
+          </div>
+          <div class="text-[11px] tracking-[0.18em] uppercase text-paper-400 font-mono">Passo 02</div>
+        </div>
+        <h3 class="text-2xl font-bold mb-3">A gente personaliza</h3>
+        <p class="text-paper-300 text-sm leading-relaxed">
+          Logo, cores, copy, oferta e imagens — tudo conversado, tudo seu. Revisões inclusas até você aprovar.
+        </p>
+        <div class="mt-6 pt-5 border-t border-white/5 flex items-center gap-2 text-xs text-paper-400">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6l4 2"/></svg>
+          3 a 5 dias úteis
+        </div>
+      </article>
+
+      <!-- Step 3 -->
+      <article class="reveal reveal-delay-2 relative bg-gradient-to-br from-gold-400/[0.08] to-transparent rounded-3xl border border-gold-400/30 p-8 ring-grad">
+        <div class="flex items-center gap-4 mb-5">
+          <div class="relative w-12 h-12 rounded-full bg-gold-400 text-ink-950 grid place-items-center font-extrabold text-xl shadow-gold">
+            3
+          </div>
+          <div class="text-[11px] tracking-[0.18em] uppercase text-gold-400 font-mono">Passo 03 · Final</div>
+        </div>
+        <h3 class="text-2xl font-bold mb-3">Seu site vai ao ar</h3>
+        <p class="text-paper-300 text-sm leading-relaxed">
+          Domínio configurado, hospedagem grátis no 1º ano, pixels e GA4 rodando. Você só precisa olhar os números subindo.
+        </p>
+        <div class="mt-6 pt-5 border-t border-gold-400/20 flex items-center gap-2 text-xs text-gold-300">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m5 12 5 5L20 7"/></svg>
+          Pronto pra escalar
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- =================== DEPOIMENTOS / CASES =================== -->
+<section class="relative py-24 sm:py-32 border-t border-white/5">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8">
+    <div class="reveal text-center max-w-2xl mx-auto mb-14">
+      <div class="text-[11px] tracking-[0.2em] uppercase text-gold-400 font-semibold font-mono">§ 04 — Prova social</div>
+      <h2 class="mt-3 text-display-sm font-extrabold">
+        Quem já <span class="font-serif italic font-normal gold-text">colheu</span>.
+      </h2>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-5">
+      <!-- Case 1 -->
+      <figure class="reveal bg-ink-900/60 rounded-2xl border border-white/5 p-7 ring-grad">
+        <div class="flex items-center gap-1 text-gold-400 mb-4">
+          <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+        </div>
+        <blockquote class="text-paper-100 text-lg leading-relaxed font-medium">
+          “Passamos de R$ 80k pra R$ 340k/mês em 6 meses. O site novo carrega antes do anúncio terminar de carregar — virou outra coisa.”
+        </blockquote>
+        <figcaption class="mt-6 flex items-center gap-3">
+          <div class="w-10 h-10 rounded-full bg-gradient-to-br from-gold-300 to-gold-600 grid place-items-center font-bold text-ink-950">R</div>
+          <div>
+            <div class="font-semibold text-sm">Rafael Mendes</div>
+            <div class="text-xs text-paper-400">CEO · e-commerce de suplementos</div>
+          </div>
+        </figcaption>
+        <div class="mt-5 pt-5 border-t border-white/5 flex justify-between text-xs">
+          <span class="text-paper-400">ROAS</span>
+          <span class="font-mono text-gold-400 font-semibold">2.1 → 4.8</span>
+        </div>
+      </figure>
+
+      <!-- Case 2 -->
+      <figure class="reveal reveal-delay-1 bg-ink-900/60 rounded-2xl border border-white/5 p-7 ring-grad">
+        <div class="flex items-center gap-1 text-gold-400 mb-4">
+          <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+        </div>
+        <blockquote class="text-paper-100 text-lg leading-relaxed font-medium">
+          “Eu já tinha tentado três agências antes. Foi a primeira vez que entendi pra onde meu dinheiro tava indo. Resultado: dobramos em 90 dias.”
+        </blockquote>
+        <figcaption class="mt-6 flex items-center gap-3">
+          <div class="w-10 h-10 rounded-full bg-gradient-to-br from-gold-300 to-gold-600 grid place-items-center font-bold text-ink-950">J</div>
+          <div>
+            <div class="font-semibold text-sm">Juliana Castro</div>
+            <div class="text-xs text-paper-400">Fundadora · infoproduto financeiro</div>
+          </div>
+        </figcaption>
+        <div class="mt-5 pt-5 border-t border-white/5 flex justify-between text-xs">
+          <span class="text-paper-400">Receita / mês</span>
+          <span class="font-mono text-gold-400 font-semibold">+112%</span>
+        </div>
+      </figure>
+
+      <!-- Case 3 -->
+      <figure class="reveal reveal-delay-2 bg-ink-900/60 rounded-2xl border border-white/5 p-7 ring-grad">
+        <div class="flex items-center gap-1 text-gold-400 mb-4">
+          <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+        </div>
+        <blockquote class="text-paper-100 text-lg leading-relaxed font-medium">
+          “7 dias do briefing ao no ar. Conversão da landing pulou de 1.4% pra 4.2%. Pago em duas semanas de tráfego.”
+        </blockquote>
+        <figcaption class="mt-6 flex items-center gap-3">
+          <div class="w-10 h-10 rounded-full bg-gradient-to-br from-gold-300 to-gold-600 grid place-items-center font-bold text-ink-950">P</div>
+          <div>
+            <div class="font-semibold text-sm">Pedro Albuquerque</div>
+            <div class="text-xs text-paper-400">Diretor · SaaS B2B</div>
+          </div>
+        </figcaption>
+        <div class="mt-5 pt-5 border-t border-white/5 flex justify-between text-xs">
+          <span class="text-paper-400">CR landing page</span>
+          <span class="font-mono text-gold-400 font-semibold">1.4% → 4.2%</span>
+        </div>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- =================== CTA + FAQ =================== -->
+<section id="contato" class="relative py-24 sm:py-32 border-t border-white/5 overflow-hidden">
+  <!-- Aurora bg -->
+  <div class="aurora dark:block hidden" style="bottom:-200px; left:50%; transform:translateX(-50%); width:900px; height:600px; background: radial-gradient(ellipse, rgba(232,181,71,0.18), transparent 70%);"></div>
+
+  <div class="relative max-w-7xl mx-auto px-5 sm:px-8">
+    <div class="grid lg:grid-cols-5 gap-12 lg:gap-16">
+      <!-- CTA side -->
+      <div class="lg:col-span-2 lg:sticky lg:top-24 self-start">
+        <div class="reveal">
+          <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-gold-400/10 border border-gold-400/30 text-gold-300 text-[11px] tracking-[0.18em] uppercase font-semibold">
+            Vamos conversar
+          </div>
+          <h2 class="mt-6 text-display-sm font-extrabold">
+            Pronto pra <span class="font-serif italic font-normal gold-shimmer">crescer?</span>
+          </h2>
+          <p class="mt-5 text-paper-300 leading-relaxed">
+            Diagnóstico gratuito de 20 minutos no WhatsApp. Sem script de vendedor, sem proposta antes da hora.
+            Só uma conversa pra entender se faz sentido a gente trabalhar junto.
+          </p>
+
+          <div class="mt-8 flex flex-col sm:flex-row gap-3">
+            <a href="https://wa.me/" class="group inline-flex items-center justify-center gap-2 px-6 h-12 rounded-full bg-gold-400 hover:bg-gold-300 text-ink-950 font-semibold transition shadow-gold">
+              <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.15-1.77-.87-2.04-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.95 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.5-.17-.01-.37-.01-.57-.01-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.49 0 1.47 1.07 2.89 1.22 3.09.15.2 2.1 3.2 5.07 4.48.71.31 1.26.49 1.69.63.71.23 1.36.19 1.87.12.57-.09 1.77-.72 2.02-1.42.25-.7.25-1.29.17-1.42-.07-.13-.27-.2-.57-.35Zm-5.45 7.46h-.01a9.9 9.9 0 0 1-5.04-1.38l-.36-.21-3.75.98 1-3.66-.24-.38a9.86 9.86 0 0 1-1.51-5.26C2.14 6.5 6.59 2.06 12.06 2.06c2.65 0 5.14 1.03 7.01 2.91a9.83 9.83 0 0 1 2.9 6.99c0 5.47-4.45 9.91-9.92 9.91Z"/></svg>
+              WhatsApp agora
+            </a>
+            <a href="#" class="inline-flex items-center justify-center gap-2 px-6 h-12 rounded-full border border-white/15 hover:border-white/30 hover:bg-white/[0.03] text-paper-100 font-medium transition">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path stroke-linecap="round" d="M16 2v4M8 2v4M3 10h18"/></svg>
+              Agendar reunião
+            </a>
+          </div>
+
+          <ul class="mt-8 space-y-2.5 text-sm text-paper-300">
+            <li class="flex items-center gap-2.5"><svg class="w-4 h-4 text-gold-400 shrink-0" fill="none" stroke="currentColor" stroke-width="2.4" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m5 12 5 5L20 7"/></svg> Sem fidelidade ou contrato longo</li>
+            <li class="flex items-center gap-2.5"><svg class="w-4 h-4 text-gold-400 shrink-0" fill="none" stroke="currentColor" stroke-width="2.4" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m5 12 5 5L20 7"/></svg> Hospedagem e domínio do 1º ano por nossa conta</li>
+            <li class="flex items-center gap-2.5"><svg class="w-4 h-4 text-gold-400 shrink-0" fill="none" stroke="currentColor" stroke-width="2.4" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m5 12 5 5L20 7"/></svg> Entrega em 7 dias úteis garantida</li>
+            <li class="flex items-center gap-2.5"><svg class="w-4 h-4 text-gold-400 shrink-0" fill="none" stroke="currentColor" stroke-width="2.4" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m5 12 5 5L20 7"/></svg> Suporte direto comigo, sem atendimento robotizado</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- FAQ side -->
+      <div class="lg:col-span-3">
+        <div class="reveal">
+          <div class="text-[11px] tracking-[0.2em] uppercase text-gold-400 font-semibold font-mono mb-6">§ FAQ — perguntas frequentes</div>
+
+          <div class="space-y-2" id="faq">
+            <details class="group bg-ink-900/60 rounded-2xl border border-white/5 hover:border-white/10 transition" open>
+              <summary class="flex items-start justify-between gap-4 p-6">
+                <span class="font-semibold text-paper-100 text-base sm:text-lg">Quanto tempo demora a entrega completa do site?</span>
+                <span class="faq-icon shrink-0 w-7 h-7 rounded-full bg-white/[0.04] border border-white/10 grid place-items-center text-gold-400 transition-transform">
+                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 5v14M5 12h14"/></svg>
+                </span>
+              </summary>
+              <div class="faq-body"><div class="faq-inner px-6 pb-6 text-paper-300 text-sm leading-relaxed">
+                Padrão: 7 dias úteis a partir da aprovação do briefing. Esse prazo já inclui customização completa (logo, cores, copy, imagens), revisões e go-live com domínio e hospedagem configurados. Para projetos urgentes existe opção express em 72h com sobretaxa.
+              </div></div>
+            </details>
+
+            <details class="group bg-ink-900/60 rounded-2xl border border-white/5 hover:border-white/10 transition">
+              <summary class="flex items-start justify-between gap-4 p-6">
+                <span class="font-semibold text-paper-100 text-base sm:text-lg">Hospedagem e domínio estão inclusos no valor?</span>
+                <span class="faq-icon shrink-0 w-7 h-7 rounded-full bg-white/[0.04] border border-white/10 grid place-items-center text-gold-400 transition-transform">
+                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 5v14M5 12h14"/></svg>
+                </span>
+              </summary>
+              <div class="faq-body"><div class="faq-inner px-6 pb-6 text-paper-300 text-sm leading-relaxed">
+                Sim — no primeiro ano, hospedagem premium e domínio .com.br estão por nossa conta. A partir do segundo ano, custo direto sem markup (~R$ 150/ano). Você é dono do domínio do dia 1 e pode migrar quando quiser, sem amarração.
+              </div></div>
+            </details>
+
+            <details class="group bg-ink-900/60 rounded-2xl border border-white/5 hover:border-white/10 transition">
+              <summary class="flex items-start justify-between gap-4 p-6">
+                <span class="font-semibold text-paper-100 text-base sm:text-lg">Posso pedir alterações depois que o site for ao ar?</span>
+                <span class="faq-icon shrink-0 w-7 h-7 rounded-full bg-white/[0.04] border border-white/10 grid place-items-center text-gold-400 transition-transform">
+                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 5v14M5 12h14"/></svg>
+                </span>
+              </summary>
+              <div class="faq-body"><div class="faq-inner px-6 pb-6 text-paper-300 text-sm leading-relaxed">
+                Claro. Pequenas alterações (texto, imagem, ajuste de copy) entram no plano de manutenção mensal. Mudanças estruturais grandes são orçadas à parte, mas sempre com preço transparente — sem surpresa.
+              </div></div>
+            </details>
+
+            <details class="group bg-ink-900/60 rounded-2xl border border-white/5 hover:border-white/10 transition">
+              <summary class="flex items-start justify-between gap-4 p-6">
+                <span class="font-semibold text-paper-100 text-base sm:text-lg">Funciona pra qualquer nicho?</span>
+                <span class="faq-icon shrink-0 w-7 h-7 rounded-full bg-white/[0.04] border border-white/10 grid place-items-center text-gold-400 transition-transform">
+                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 5v14M5 12h14"/></svg>
+                </span>
+              </summary>
+              <div class="faq-body"><div class="faq-inner px-6 pb-6 text-paper-300 text-sm leading-relaxed">
+                A estrutura serve pra qualquer negócio digital — e-commerce, infoproduto, serviço, SaaS, B2B. O que muda é o template recomendado e a abordagem de tráfego. Áreas reguladas (saúde, finanças) têm processo de aprovação mais cuidadoso, mas atendemos.
+              </div></div>
+            </details>
+
+            <details class="group bg-ink-900/60 rounded-2xl border border-white/5 hover:border-white/10 transition">
+              <summary class="flex items-start justify-between gap-4 p-6">
+                <span class="font-semibold text-paper-100 text-base sm:text-lg">Qual a forma de pagamento? Tem fidelidade?</span>
+                <span class="faq-icon shrink-0 w-7 h-7 rounded-full bg-white/[0.04] border border-white/10 grid place-items-center text-gold-400 transition-transform">
+                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 5v14M5 12h14"/></svg>
+                </span>
+              </summary>
+              <div class="faq-body"><div class="faq-inner px-6 pb-6 text-paper-300 text-sm leading-relaxed">
+                Site: parcela em até 6x no cartão ou Pix com desconto. Gestão de tráfego e CRO são mensais, sem fidelidade — você pode cancelar com 30 dias de aviso. A gente trabalha pra te entregar resultado, não pra te prender em contrato.
+              </div></div>
+            </details>
+
+            <details class="group bg-ink-900/60 rounded-2xl border border-white/5 hover:border-white/10 transition">
+              <summary class="flex items-start justify-between gap-4 p-6">
+                <span class="font-semibold text-paper-100 text-base sm:text-lg">Preciso já ter tráfego rodando antes?</span>
+                <span class="faq-icon shrink-0 w-7 h-7 rounded-full bg-white/[0.04] border border-white/10 grid place-items-center text-gold-400 transition-transform">
+                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 5v14M5 12h14"/></svg>
+                </span>
+              </summary>
+              <div class="faq-body"><div class="faq-inner px-6 pb-6 text-paper-300 text-sm leading-relaxed">
+                Não. A gente trabalha tanto com quem está começando do zero quanto com quem já investe em ads. Pra quem começa, montamos a estrutura completa (BM, contas, pixel, criativos) e damos o pontapé inicial. Pra quem já roda, fazemos auditoria e otimização do que existe.
+              </div></div>
+            </details>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =================== FOOTER =================== -->
+<footer class="border-t border-white/5 bg-ink-950/50">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8 py-12">
+    <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-8">
+      <div>
+        <div class="flex items-center gap-2.5">
+          <span class="relative w-7 h-7 flex items-center justify-center">
+            <svg viewBox="0 0 24 24" fill="none" class="w-5 h-5 text-gold-400" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M9 18h6M10 21h4M9 14a5 5 0 1 1 6 0c-.6.45-1 1-1 1.7V17h-4v-1.3c0-.7-.4-1.25-1-1.7Z"/>
+            </svg>
+          </span>
+          <span class="font-semibold tracking-tight text-paper-100">Audiência <span class="text-gold-400">de Ouro</span></span>
+        </div>
+        <p class="mt-3 text-sm text-paper-400 max-w-sm">
+          Marketing digital com estrutura completa: tráfego pago, sites de alta conversão e CRO.
+        </p>
+      </div>
+      <div class="flex flex-wrap gap-8 text-sm">
+        <div>
+          <div class="text-[10px] tracking-[0.2em] uppercase text-paper-400 font-mono mb-3">Navegar</div>
+          <ul class="space-y-1.5 text-paper-300">
+            <li><a href="#servicos" class="hover:text-paper-100">Serviços</a></li>
+            <li><a href="#catalogo" class="hover:text-paper-100">Catálogo</a></li>
+            <li><a href="#processo" class="hover:text-paper-100">Processo</a></li>
+            <li><a href="#faq" class="hover:text-paper-100">FAQ</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="text-[10px] tracking-[0.2em] uppercase text-paper-400 font-mono mb-3">Contato</div>
+          <ul class="space-y-1.5 text-paper-300">
+            <li><a href="https://wa.me/" class="hover:text-paper-100">WhatsApp</a></li>
+            <li><a href="https://instagram.com/audienciadeouro" class="hover:text-paper-100">Instagram</a></li>
+            <li><a href="mailto:contato@audienciadeouro.com" class="hover:text-paper-100">E-mail</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="mt-10 pt-6 border-t border-white/5 flex flex-col sm:flex-row justify-between gap-3 text-xs text-paper-500">
+      <span>© 2026 Audiência de Ouro · Todos os direitos reservados</span>
+      <span class="font-mono">v1.0 · feito à mão, sem builder</span>
+    </div>
+  </div>
+</footer>
+
+</main>
+
+<!-- =================== JS =================== -->
+<script>
+// === Theme toggle ===
+const themeBtn = document.getElementById('theme-toggle');
+const root = document.documentElement;
+const savedTheme = localStorage.getItem('ado-theme');
+if (savedTheme === 'light') root.classList.remove('dark');
+themeBtn.addEventListener('click', () => {
+  root.classList.toggle('dark');
+  localStorage.setItem('ado-theme', root.classList.contains('dark') ? 'dark' : 'light');
+});
+
+// === Reveal on scroll ===
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('in');
+      io.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+// === Spotlight effect on hero ===
+const spotlight = document.getElementById('spotlight');
+const heroSection = spotlight && spotlight.closest('section');
+if (spotlight && heroSection) {
+  heroSection.addEventListener('mousemove', (e) => {
+    const r = heroSection.getBoundingClientRect();
+    spotlight.style.left = (e.clientX - r.left) + 'px';
+    spotlight.style.top = (e.clientY - r.top) + 'px';
+    spotlight.style.opacity = '1';
+  });
+  heroSection.addEventListener('mouseleave', () => { spotlight.style.opacity = '0'; });
+}
+
+// === Marquee fill ===
+const items = [
+  '★ Confiada por marcas em todo o Brasil',
+  '⌬ +184 contas ativas',
+  '⊹ Operação 100% remota',
+  '◆ Cases em e-commerce, B2B, infoprodutos',
+  '✦ Stack: Meta · Google · TikTok · GA4',
+  '◇ Entrega em 7 dias úteis',
+];
+const m1 = document.getElementById('m1');
+const m2 = document.getElementById('m2');
+items.forEach(t => {
+  const s1 = document.createElement('span'); s1.textContent = t; s1.className = 'shrink-0';
+  const s2 = document.createElement('span'); s2.textContent = t; s2.className = 'shrink-0';
+  m1.appendChild(s1); m2.appendChild(s2);
+});
+
+// === Catalog data + render ===
+const templates = [
+  {
+    id: 't1', name: 'Premium Clean', tags: ['institucional', 'b2b'], cats: ['b2b'],
+    desc: 'Site institucional limpo, foco em autoridade. Ideal pra serviços de alto ticket.',
+    accent: 'neutral', featured: true,
+  },
+  {
+    id: 't2', name: 'Cyber VSL', tags: ['VSL', 'oferta'], cats: ['vsl', 'oferta'],
+    desc: 'Página de oferta com vídeo no topo, contador, garantia, depoimentos e checkout.',
+    accent: 'dark',
+    escolherUrl: 'templates/cyber-vsl.html',
+    escolherLabel: 'Ver variações →',
+  },
+  {
+    id: 't3', name: 'Corporate Trust', tags: ['B2B', 'institucional'], cats: ['b2b'],
+    desc: 'Para empresas que vendem pra outras empresas. Cases, certificações, formulário.',
+    accent: 'blue',
+  },
+  {
+    id: 't4', name: 'Shopify Pro', tags: ['E-commerce', 'lojavirtual'], cats: ['ecom'],
+    desc: 'Loja virtual otimizada pra tráfego pago. Checkout em 2 cliques, recuperação de carrinho.',
+    accent: 'gold',
+  },
+  {
+    id: 't5', name: 'Lead Magnet', tags: ['captura', 'isca'], cats: ['oferta'],
+    desc: 'Página de captura curta e direta. Ímã digital + nutrição por e-mail integrada.',
+    accent: 'soft',
+  },
+  {
+    id: 't6', name: 'Black Friday', tags: ['oferta', 'urgência'], cats: ['oferta', 'ecom'],
+    desc: 'Página de oferta com contador, escassez e gatilhos de urgência. Pico de conversão.',
+    accent: 'red',
+  },
+];
+
+function previewSVG(accent) {
+  // Mini stylized template preview (abstract)
+  const variants = {
+    neutral: `
+      <div class="absolute inset-0 p-4 flex flex-col gap-2.5">
+        <div class="h-1.5 w-12 bg-gold-400/70 rounded"></div>
+        <div class="h-3.5 w-3/4 bg-white/80 rounded"></div>
+        <div class="h-2 w-2/3 bg-white/30 rounded"></div>
+        <div class="mt-auto grid grid-cols-3 gap-1.5">
+          <div class="h-8 bg-white/10 rounded"></div>
+          <div class="h-8 bg-white/10 rounded"></div>
+          <div class="h-8 bg-gold-400/40 rounded"></div>
+        </div>
+      </div>`,
+    dark: `
+      <div class="absolute inset-0 p-4 flex flex-col gap-2">
+        <div class="h-1.5 w-10 bg-red-400/70 rounded"></div>
+        <div class="h-3 w-5/6 bg-white/80 rounded"></div>
+        <div class="flex-1 my-1.5 bg-gradient-to-br from-gold-400/30 to-transparent rounded grid place-items-center">
+          <div class="w-7 h-7 rounded-full bg-gold-400 grid place-items-center">
+            <div class="w-0 h-0 border-l-[6px] border-l-ink-950 border-t-[4px] border-t-transparent border-b-[4px] border-b-transparent ml-0.5"></div>
+          </div>
+        </div>
+        <div class="h-6 bg-gold-400/80 rounded"></div>
+      </div>`,
+    blue: `
+      <div class="absolute inset-0 p-4 flex flex-col gap-2">
+        <div class="flex items-center justify-between">
+          <div class="h-1.5 w-10 bg-white/40 rounded"></div>
+          <div class="h-1.5 w-5 bg-white/40 rounded"></div>
+        </div>
+        <div class="h-3 w-2/3 bg-white/80 rounded mt-1"></div>
+        <div class="grid grid-cols-2 gap-1.5 mt-auto">
+          <div class="h-12 bg-white/10 rounded"></div>
+          <div class="h-12 bg-white/10 rounded"></div>
+        </div>
+        <div class="h-6 bg-gold-400/70 rounded mt-1"></div>
+      </div>`,
+    gold: `
+      <div class="absolute inset-0 p-4 flex flex-col gap-2">
+        <div class="h-1.5 w-8 bg-gold-400 rounded"></div>
+        <div class="grid grid-cols-3 gap-1.5 mt-1">
+          <div class="aspect-square bg-white/10 rounded"></div>
+          <div class="aspect-square bg-gold-400/30 rounded"></div>
+          <div class="aspect-square bg-white/10 rounded"></div>
+          <div class="aspect-square bg-white/10 rounded"></div>
+          <div class="aspect-square bg-white/10 rounded"></div>
+          <div class="aspect-square bg-white/10 rounded"></div>
+        </div>
+        <div class="h-5 bg-gold-400 rounded mt-1"></div>
+      </div>`,
+    soft: `
+      <div class="absolute inset-0 p-4 flex flex-col items-center justify-center gap-2 text-center">
+        <div class="h-3 w-5/6 bg-white/80 rounded"></div>
+        <div class="h-1.5 w-3/4 bg-white/30 rounded"></div>
+        <div class="h-1.5 w-1/2 bg-white/30 rounded"></div>
+        <div class="h-6 w-full bg-white/10 rounded mt-1"></div>
+        <div class="h-6 w-full bg-gold-400/80 rounded"></div>
+      </div>`,
+    red: `
+      <div class="absolute inset-0 p-4 flex flex-col gap-2">
+        <div class="flex justify-between items-center">
+          <div class="h-1.5 w-8 bg-red-400 rounded"></div>
+          <div class="flex gap-0.5">
+            <div class="w-4 h-5 bg-white/80 rounded-sm flex items-center justify-center text-[7px] text-ink-950 font-bold">07</div>
+            <div class="w-4 h-5 bg-white/80 rounded-sm flex items-center justify-center text-[7px] text-ink-950 font-bold">14</div>
+            <div class="w-4 h-5 bg-white/80 rounded-sm flex items-center justify-center text-[7px] text-ink-950 font-bold">22</div>
+          </div>
+        </div>
+        <div class="h-3 w-full bg-white/80 rounded mt-1"></div>
+        <div class="h-2 w-2/3 bg-red-400/50 rounded"></div>
+        <div class="mt-auto h-7 bg-red-500 rounded grid place-items-center text-[10px] text-white font-bold">-70% HOJE</div>
+      </div>`,
+  };
+  return variants[accent] || variants.neutral;
+}
+
+function templateCard(t, featured) {
+  return `
+    <article class="reveal lift template-card group bg-ink-900/60 rounded-2xl border border-white/5 hover:border-gold-400/30 transition overflow-hidden flex flex-col ${featured ? 'lg:col-span-2 lg:row-span-2' : ''}" data-cats="${t.cats.join(',')}">
+      <div class="frame relative ${featured ? 'aspect-[16/10]' : 'aspect-[4/3]'} ${featured ? 'min-h-[260px]' : ''} m-3 mb-0">
+        <div class="frame-bar"><i></i><i></i><i></i></div>
+        <div class="absolute inset-x-0 top-[28px] bottom-0">
+          ${previewSVG(t.accent)}
+        </div>
+        ${featured ? '<div class="absolute top-3 right-3 z-10 inline-flex items-center gap-1 px-2 py-1 rounded-full bg-gold-400 text-ink-950 text-[10px] font-bold tracking-wider uppercase">★ Destaque</div>' : ''}
+      </div>
+      <div class="p-5 sm:p-6 flex flex-col flex-1">
+        <div class="flex items-start justify-between gap-3">
+          <h3 class="text-xl sm:text-2xl font-bold tracking-tight">${t.name}</h3>
+          <span class="text-[10px] font-mono text-paper-400 tracking-wider mt-1.5">#${String(templates.indexOf(t)+1).padStart(2,'0')}</span>
+        </div>
+        <div class="mt-2 flex flex-wrap gap-1.5">
+          ${t.tags.map((tag, i) => `<span class="px-2 py-0.5 rounded-full text-[10px] font-mono tracking-wider uppercase ${i === 0 ? 'bg-gold-400/10 text-gold-300 border border-gold-400/20' : 'bg-white/[0.04] text-paper-300 border border-white/10'}">${tag}</span>`).join('')}
+        </div>
+        <p class="mt-3 text-sm text-paper-300 leading-relaxed flex-1">${t.desc}</p>
+        <div class="mt-5 flex gap-2">
+          <a href="#" class="flex-1 inline-flex items-center justify-center gap-1.5 h-10 rounded-full border border-white/10 hover:border-white/25 hover:bg-white/[0.03] text-xs font-semibold tracking-wider uppercase text-paper-200 transition">
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M14 3h7v7M10 14 21 3M21 14v7H3V3h7"/></svg>
+            Ver Demo
+          </a>
+          <a href="${t.escolherUrl || '#contato'}" class="flex-1 inline-flex items-center justify-center gap-1.5 h-10 rounded-full bg-gold-400 hover:bg-gold-300 text-ink-950 text-xs font-bold tracking-wider uppercase transition">
+            ${t.escolherLabel || 'Escolher'}
+          </a>
+        </div>
+      </div>
+    </article>`;
+}
+
+const grid = document.getElementById('catalog-grid');
+grid.innerHTML = templates.map(t => templateCard(t, t.featured)).join('');
+// Re-observe newly added .reveal
+document.querySelectorAll('.template-card.reveal').forEach(el => io.observe(el));
+
+// === Filter ===
+document.querySelectorAll('.filter-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.filter-btn').forEach(b => {
+      b.classList.remove('active','bg-gold-400','text-ink-950');
+      b.classList.add('bg-white/[0.04]','border','border-white/10','text-paper-200');
+    });
+    btn.classList.add('active','bg-gold-400','text-ink-950');
+    btn.classList.remove('bg-white/[0.04]','border','border-white/10','text-paper-200');
+    const f = btn.dataset.filter;
+    document.querySelectorAll('.template-card').forEach(c => {
+      const cats = (c.dataset.cats || '').split(',');
+      const show = f === 'all' || cats.includes(f);
+      c.style.display = show ? '' : 'none';
+    });
+  });
+});
+
+// === Play button (placeholder) ===
+const playBtn = document.getElementById('play-btn');
+if (playBtn) {
+  playBtn.addEventListener('click', () => {
+    playBtn.closest('.aspect-video').innerHTML = '<div class="absolute inset-0 grid place-items-center text-paper-300 text-sm">▶ Player do YouTube/Vimeo entra aqui</div>';
+  });
+}
+</script>
+
+</body>
+</html>

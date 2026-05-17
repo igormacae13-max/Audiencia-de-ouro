@@ -1,0 +1,319 @@
+/* === Wireframe shared styles — sketchy low-fi vibe === */
+:root {
+  --ink: #1a1815;
+  --ink-soft: #5a554e;
+  --ink-faint: #a8a097;
+  --paper: #faf7f0;
+  --paper-warm: #f3eee2;
+  --gold: #d4a017;
+  --gold-soft: #e8c25c;
+  --gold-pale: #f7e7b5;
+  --rule: #c8c0b3;
+
+  --font-hand: 'Caveat', 'Kalam', cursive;
+  --font-note: 'Kalam', 'Caveat', cursive;
+  --font-mono: 'JetBrains Mono', 'Courier New', monospace;
+}
+
+* { box-sizing: border-box; }
+
+.wf {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-note);
+  width: 100%;
+  min-height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Paper texture - subtle dot grid */
+.wf::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle, var(--rule) 0.6px, transparent 0.6px);
+  background-size: 24px 24px;
+  opacity: 0.25;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.wf > * { position: relative; z-index: 1; }
+
+/* Direction header strip */
+.wf-tag {
+  position: absolute;
+  top: 18px; right: 22px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  z-index: 10;
+}
+
+.wf-tag b { color: var(--gold); font-weight: 700; }
+
+/* Sketch box - the universal placeholder */
+.sk {
+  border: 1.5px dashed var(--ink-soft);
+  border-radius: 6px;
+  position: relative;
+  background: rgba(255,255,255,0.4);
+}
+.sk-solid {
+  border: 1.5px solid var(--ink);
+  border-radius: 6px;
+  background: rgba(255,255,255,0.6);
+}
+.sk-gold {
+  border: 1.5px solid var(--gold);
+  background: rgba(245, 220, 130, 0.18);
+  border-radius: 6px;
+}
+.sk-dark {
+  background: var(--ink);
+  color: var(--paper);
+  border-radius: 6px;
+}
+.sk-pill {
+  border-radius: 999px;
+}
+
+/* image / video placeholder */
+.ph {
+  border: 1.5px solid var(--ink-soft);
+  background:
+    repeating-linear-gradient(
+      135deg,
+      transparent 0 8px,
+      var(--rule) 8px 9px
+    );
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--ink-soft);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.ph-gold {
+  background:
+    repeating-linear-gradient(
+      135deg,
+      transparent 0 8px,
+      var(--gold-soft) 8px 9px
+    );
+  border-color: var(--gold);
+  color: var(--ink);
+}
+
+/* Handwritten heading */
+.hand {
+  font-family: var(--font-hand);
+  font-weight: 700;
+  line-height: 0.95;
+  letter-spacing: -0.01em;
+}
+
+.label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+
+.note {
+  font-family: var(--font-hand);
+  font-size: 16px;
+  color: var(--gold);
+}
+
+/* arrows + connectors */
+.arrow {
+  font-family: var(--font-hand);
+  color: var(--gold);
+}
+
+/* Section helpers */
+.section {
+  padding: 56px 60px;
+  border-bottom: 1.5px dashed var(--rule);
+}
+.section-title-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 28px;
+  gap: 18px;
+}
+
+/* Header row */
+.wf-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 22px 60px;
+  border-bottom: 1.5px solid var(--ink);
+}
+.wf-header .logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-hand);
+  font-size: 26px;
+  font-weight: 700;
+}
+.wf-header .nav {
+  display: flex;
+  gap: 28px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+.wf-header .cta {
+  background: var(--ink);
+  color: var(--paper);
+  padding: 10px 22px;
+  border-radius: 999px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+/* Bulb glyph (logo mark, rough) */
+.bulb {
+  width: 22px; height: 22px;
+  border: 2px solid var(--gold);
+  border-radius: 50% 50% 40% 40% / 60% 60% 40% 40%;
+  position: relative;
+  flex-shrink: 0;
+}
+.bulb::after {
+  content: '';
+  position: absolute;
+  bottom: -4px; left: 50%;
+  transform: translateX(-50%);
+  width: 8px; height: 3px;
+  background: var(--gold);
+  border-radius: 1px;
+}
+
+/* tiny annotation arrow */
+.annot {
+  position: absolute;
+  font-family: var(--font-hand);
+  font-size: 15px;
+  color: var(--gold);
+  pointer-events: none;
+  z-index: 5;
+}
+
+.divider {
+  height: 1.5px;
+  background: var(--ink);
+  width: 100%;
+}
+.divider-dashed {
+  height: 0; width: 100%;
+  border-top: 1.5px dashed var(--rule);
+}
+
+/* small dots row (e.g. carousel indicators) */
+.dots {
+  display: flex; gap: 6px;
+}
+.dots span {
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: var(--ink-faint);
+}
+.dots span.on { background: var(--ink); }
+
+/* Tag pill */
+.tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 10px;
+  border: 1px solid var(--ink-soft);
+  border-radius: 999px;
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  background: var(--paper);
+}
+.tag-gold { border-color: var(--gold); background: var(--gold-pale); color: var(--ink); }
+
+/* Stat */
+.stat-num {
+  font-family: var(--font-hand);
+  font-size: 64px;
+  line-height: 1;
+  font-weight: 700;
+}
+.stat-num.gold { color: var(--gold); }
+
+/* Squiggle underline (SVG-free, via gradient) */
+.squiggle {
+  display: inline-block;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 8'><path d='M0 4 Q5 0 10 4 T20 4 T30 4 T40 4' fill='none' stroke='%23d4a017' stroke-width='2'/></svg>");
+  background-repeat: repeat-x;
+  background-position: bottom left;
+  background-size: 40px 6px;
+  padding-bottom: 6px;
+}
+
+/* Play triangle for video placeholder */
+.play {
+  width: 56px; height: 56px;
+  border-radius: 50%;
+  background: var(--ink);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.play::after {
+  content: '';
+  width: 0; height: 0;
+  border-left: 14px solid var(--gold);
+  border-top: 9px solid transparent;
+  border-bottom: 9px solid transparent;
+  margin-left: 4px;
+}
+.play-lg { width: 88px; height: 88px; }
+.play-lg::after { border-left-width: 22px; border-top-width: 14px; border-bottom-width: 14px; }
+
+/* FAQ row */
+.faq-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 4px;
+  border-bottom: 1.5px solid var(--ink);
+  font-family: var(--font-hand);
+  font-size: 22px;
+}
+.faq-row .plus {
+  font-family: var(--font-mono);
+  font-size: 18px;
+  color: var(--gold);
+}
+
+/* Scribble accent (used sparingly) */
+.scribble {
+  font-family: var(--font-hand);
+  color: var(--gold);
+  font-size: 18px;
+  transform: rotate(-4deg);
+  display: inline-block;
+}
