@@ -117,11 +117,23 @@ tailwind.config = {
 
   /* Tiny browser frame for template previews */
   .frame { background: #14110e; border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; overflow: hidden; position: relative; }
-  .frame-bar { display: flex; gap: 5px; padding: 9px 12px; background: rgba(255,255,255,0.02); border-bottom: 1px solid rgba(255,255,255,0.05); }
+  .frame-bar { display: flex; gap: 5px; padding: 9px 12px; background: rgba(255,255,255,0.02); border-bottom: 1px solid rgba(255,255,255,0.05); z-index: 10; position: relative; }
   .frame-bar i { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.12); }
   .light .frame { background: #ffffff; border-color: rgba(0,0,0,0.08); }
   .light .frame-bar { background: rgba(0,0,0,0.02); border-bottom-color: rgba(0,0,0,0.06); }
   .light .frame-bar i { background: rgba(0,0,0,0.12); }
+
+  /* Dynamic Preview Scaling */
+  .preview-container { position: absolute; inset: 0; top: 28px; overflow: hidden; background: #0a0907; }
+  .preview-iframe {
+    width: 1280px; height: 900px; /* Fixed desktop base */
+    border: none; transform-origin: top left;
+    pointer-events: none; /* Prevent interaction inside the card */
+    transition: opacity 0.5s ease;
+  }
+  .preview-loading { position: absolute; inset: 0; display: flex; items-center; justify-content: center; background: #14110e; z-index: 5; }
+  .preview-loading::after { content: ''; width: 20px; height: 20px; border: 2px solid rgba(232,181,71,0.2); border-top-color: #e8b547; border-radius: 50%; animation: spin 0.8s linear infinite; }
+  @keyframes spin { to { transform: rotate(360deg); } }
 
   /* Spotlight cursor light on hero */
   .spotlight { position: absolute; width: 600px; height: 600px; pointer-events: none; background: radial-gradient(circle, rgba(232,181,71,0.18), transparent 65%); transform: translate(-50%, -50%); transition: opacity .4s; }
@@ -558,6 +570,34 @@ tailwind.config = {
   </div>
 </section>
 
+<!-- =================== PORTFÓLIO PREMIUM =================== -->
+<section id="portfolio" class="relative py-24 sm:py-32 border-t border-white/5">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8">
+    <div class="reveal flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-12">
+      <div>
+        <div class="text-[11px] tracking-[0.2em] uppercase text-gold-400 font-semibold font-mono">§ 03 — Resultados</div>
+        <h2 class="mt-3 text-display-sm font-extrabold">
+          Portfólio <span class="font-serif italic font-normal gold-text">Premium</span>.
+        </h2>
+        <p class="mt-3 text-paper-300 max-w-xl">
+          Cases reais de quem escalou com a gente. Do tráfego milionário ao site de alta conversão.
+        </p>
+      </div>
+      <!-- Portfolio Filters -->
+      <div class="flex flex-wrap gap-2" id="portfolio-filters">
+        <button data-p-filter="all" class="p-filter-btn active px-3.5 h-9 rounded-full bg-gold-400 text-ink-950 text-[11px] font-semibold tracking-wider uppercase transition">Todos os Projetos</button>
+        <button data-p-filter="traffic" class="p-filter-btn px-3.5 h-9 rounded-full bg-white/[0.04] hover:bg-white/[0.08] border border-white/10 text-paper-200 text-[11px] font-semibold tracking-wider uppercase transition">Tráfego Pago</button>
+        <button data-p-filter="sites" class="p-filter-btn px-3.5 h-9 rounded-full bg-white/[0.04] hover:bg-white/[0.08] border border-white/10 text-paper-200 text-[11px] font-semibold tracking-wider uppercase transition">Sites & Landing Pages</button>
+      </div>
+    </div>
+
+    <!-- Grid -->
+    <div id="portfolio-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+      <!-- Portfolio items via JS -->
+    </div>
+  </div>
+</section>
+
 <!-- =================== PROCESSO =================== -->
 <section id="processo" class="relative py-24 sm:py-32 border-t border-white/5">
   <div class="max-w-7xl mx-auto px-5 sm:px-8">
@@ -940,11 +980,13 @@ const templates = [
     id: 't1', name: 'Premium Clean', tags: ['institucional', 'b2b'], cats: ['b2b'],
     desc: 'Site institucional limpo, foco em autoridade. Ideal pra serviços de alto ticket.',
     accent: 'neutral', featured: true,
+    demoUrl: 'templates/demos/cyber-vsl-mentoria.html', // Placeholder for actual demo
   },
   {
     id: 't2', name: 'Cyber VSL', tags: ['VSL', 'oferta'], cats: ['vsl', 'oferta'],
     desc: 'Página de oferta com vídeo no topo, contador, garantia, depoimentos e checkout.',
     accent: 'dark',
+    demoUrl: 'templates/demos/cyber-vsl-saude.html',
     escolherUrl: 'templates/cyber-vsl.html',
     escolherLabel: 'Ver variações →',
   },
@@ -952,23 +994,61 @@ const templates = [
     id: 't3', name: 'Corporate Trust', tags: ['B2B', 'institucional'], cats: ['b2b'],
     desc: 'Para empresas que vendem pra outras empresas. Cases, certificações, formulário.',
     accent: 'blue',
+    demoUrl: 'templates/demos/cyber-vsl-financas.html',
   },
   {
     id: 't4', name: 'Shopify Pro', tags: ['E-commerce', 'lojavirtual'], cats: ['ecom'],
     desc: 'Loja virtual otimizada pra tráfego pago. Checkout em 2 cliques, recuperação de carrinho.',
     accent: 'gold',
+    demoUrl: 'templates/demos/cyber-vsl-suplementos.html',
   },
   {
     id: 't5', name: 'Lead Magnet', tags: ['captura', 'isca'], cats: ['oferta'],
     desc: 'Página de captura curta e direta. Ímã digital + nutrição por e-mail integrada.',
     accent: 'soft',
+    demoUrl: 'templates/demos/cyber-vsl-curso.html',
   },
   {
     id: 't6', name: 'Black Friday', tags: ['oferta', 'urgência'], cats: ['oferta', 'ecom'],
     desc: 'Página de oferta com contador, escassez e gatilhos de urgência. Pico de conversão.',
     accent: 'red',
+    demoUrl: 'templates/demos/cyber-vsl-carreira.html',
   },
 ];
+
+/**
+ * Renders a dynamic preview using an iframe.
+ * It uses CSS scaling to fit a 1280px wide desktop view into the card frame.
+ */
+function renderPreview(url, accent) {
+  if (!url) return previewSVG(accent);
+  
+  // Use a unique ID for each preview to handle scaling after mount
+  const id = 'pv-' + Math.random().toString(36).substr(2, 9);
+  
+  // Script to handle scaling dynamically based on container width
+  setTimeout(() => {
+    const container = document.getElementById(id);
+    if (!container) return;
+    const iframe = container.querySelector('iframe');
+    const scale = container.offsetWidth / 1280;
+    iframe.style.transform = `scale(${scale})`;
+    
+    // Hide loader when iframe finishes loading
+    iframe.onload = () => {
+      const loader = container.querySelector('.preview-loading');
+      if (loader) loader.style.opacity = '0';
+      setTimeout(() => loader && loader.remove(), 500);
+      iframe.style.opacity = '1';
+    };
+  }, 0);
+
+  return `
+    <div id="${id}" class="preview-container">
+      <div class="preview-loading"></div>
+      <iframe src="${url}" class="preview-iframe" loading="lazy" style="opacity: 0;"></iframe>
+    </div>`;
+}
 
 function previewSVG(accent) {
   // Mini stylized template preview (abstract)
@@ -1052,9 +1132,7 @@ function templateCard(t, featured) {
     <article class="reveal lift template-card group bg-ink-900/60 rounded-2xl border border-white/5 hover:border-gold-400/30 transition overflow-hidden flex flex-col ${featured ? 'lg:col-span-2 lg:row-span-2' : ''}" data-cats="${t.cats.join(',')}">
       <div class="frame relative ${featured ? 'aspect-[16/10]' : 'aspect-[4/3]'} ${featured ? 'min-h-[260px]' : ''} m-3 mb-0">
         <div class="frame-bar"><i></i><i></i><i></i></div>
-        <div class="absolute inset-x-0 top-[28px] bottom-0">
-          ${previewSVG(t.accent)}
-        </div>
+        ${renderPreview(t.demoUrl, t.accent)}
         ${featured ? '<div class="absolute top-3 right-3 z-10 inline-flex items-center gap-1 px-2 py-1 rounded-full bg-gold-400 text-ink-950 text-[10px] font-bold tracking-wider uppercase">★ Destaque</div>' : ''}
       </div>
       <div class="p-5 sm:p-6 flex flex-col flex-1">
@@ -1067,7 +1145,7 @@ function templateCard(t, featured) {
         </div>
         <p class="mt-3 text-sm text-paper-300 leading-relaxed flex-1">${t.desc}</p>
         <div class="mt-5 flex gap-2">
-          <a href="#" class="flex-1 inline-flex items-center justify-center gap-1.5 h-10 rounded-full border border-white/10 hover:border-white/25 hover:bg-white/[0.03] text-xs font-semibold tracking-wider uppercase text-paper-200 transition">
+          <a href="${t.demoUrl || '#'}" target="_blank" class="flex-1 inline-flex items-center justify-center gap-1.5 h-10 rounded-full border border-white/10 hover:border-white/25 hover:bg-white/[0.03] text-xs font-semibold tracking-wider uppercase text-paper-200 transition">
             <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M14 3h7v7M10 14 21 3M21 14v7H3V3h7"/></svg>
             Ver Demo
           </a>
@@ -1097,6 +1175,144 @@ document.querySelectorAll('.filter-btn').forEach(btn => {
     document.querySelectorAll('.template-card').forEach(c => {
       const cats = (c.dataset.cats || '').split(',');
       const show = f === 'all' || cats.includes(f);
+      c.style.display = show ? '' : 'none';
+    });
+  });
+});
+
+// === Portfolio data + render ===
+const portfolio = [
+  {
+    id: 'p1', name: 'Elite Suplementos', type: 'traffic', niche: 'E-commerce',
+    desc: 'Escala agressiva em Meta Ads com foco em ROAS e LTV.',
+    tags: ['Meta Ads', 'E-commerce'],
+    metrics: [
+      { label: 'ROAS médio', value: '5.2x' },
+      { label: 'Faturamento', value: 'R$ 1.2M' },
+      { label: 'CPA', value: 'R$ 14,20' }
+    ],
+    accent: 'green'
+  },
+  {
+    id: 'p2', name: 'Master Finanças', type: 'sites', niche: 'Info-produtos',
+    desc: 'Landing page de alta conversão para lançamento de mentoria premium.',
+    tags: ['Landing Page', 'CRO'],
+    demoUrl: 'templates/demos/cyber-vsl-financas.html',
+    accent: 'blue'
+  },
+  {
+    id: 'p3', name: 'Nexus SaaS', type: 'traffic', niche: 'B2B / SaaS',
+    desc: 'Geração de leads qualificados para software de gestão empresarial.',
+    tags: ['Google Ads', 'LinkedIn'],
+    metrics: [
+      { label: 'Leads / Mês', value: '+450' },
+      { label: 'CPL', value: 'R$ 8,50' },
+      { label: 'Taxa Conv.', value: '18%' }
+    ],
+    accent: 'blue'
+  },
+  {
+    id: 'p4', name: 'Clínica Sorriso', type: 'traffic', niche: 'Negócio Local',
+    desc: 'Lotamos a agenda da clínica em 30 dias com tráfego geolocalizado.',
+    tags: ['Meta Ads', 'Google Maps'],
+    metrics: [
+      { label: 'Agendamentos', value: '+120' },
+      { label: 'ROI', value: '12x' }
+    ],
+    accent: 'gold'
+  },
+  {
+    id: 'p5', name: 'BioCare Cosméticos', type: 'sites', niche: 'E-commerce',
+    desc: 'Redesign completo da loja focando em experiência mobile e checkout.',
+    tags: ['Shopify', 'Design UI'],
+    demoUrl: 'templates/demos/cyber-vsl-saude.html',
+    accent: 'soft'
+  }
+];
+
+function renderTrafficPreview(p) {
+  const palettes = {
+    green: '#16a34a',
+    blue: '#2563eb',
+    gold: '#e8b547',
+    soft: '#a89e8d'
+  };
+  const color = palettes[p.accent] || palettes.gold;
+  
+  return `
+    <div class="absolute inset-0 p-5 flex flex-col justify-center bg-gradient-to-br from-ink-800 to-ink-950">
+      <div class="flex items-end gap-1.5 h-16 mb-6 opacity-40">
+        <div class="flex-1 bg-white/10 rounded-sm" style="height:30%"></div>
+        <div class="flex-1 bg-white/10 rounded-sm" style="height:45%"></div>
+        <div class="flex-1 bg-white/20 rounded-sm" style="height:60%"></div>
+        <div class="flex-1 bg-white/20 rounded-sm" style="height:55%"></div>
+        <div class="flex-1 rounded-sm" style="height:80%; background:${color}aa"></div>
+        <div class="flex-1 rounded-sm" style="height:95%; background:${color}"></div>
+      </div>
+      <div class="space-y-4">
+        ${p.metrics.map(m => `
+          <div class="flex items-center justify-between border-b border-white/5 pb-2">
+            <span class="text-[10px] uppercase tracking-widest text-paper-400 font-mono">${m.label}</span>
+            <span class="text-xl font-extrabold text-paper-100 tabular">${m.value}</span>
+          </div>
+        `).join('')}
+      </div>
+    </div>`;
+}
+
+function portfolioCard(p) {
+  const isTraffic = p.type === 'traffic';
+  return `
+    <article class="reveal lift portfolio-card group bg-ink-900/60 rounded-2xl border border-white/5 hover:border-gold-400/30 transition overflow-hidden flex flex-col ring-grad" data-type="${p.type}">
+      <div class="frame relative aspect-[4/3] m-3 mb-0">
+        <div class="frame-bar"><i></i><i></i><i></i></div>
+        ${isTraffic ? renderTrafficPreview(p) : renderPreview(p.demoUrl, p.accent)}
+      </div>
+      <div class="p-5 sm:p-6 flex flex-col flex-1">
+        <div class="flex items-start justify-between gap-3">
+          <h3 class="text-xl font-bold tracking-tight">${p.name}</h3>
+          <span class="text-[10px] font-mono text-paper-400 tracking-wider mt-1.5">#${p.id.toUpperCase()}</span>
+        </div>
+        <div class="mt-2 flex flex-wrap gap-1.5">
+          ${p.tags.map((tag, i) => `<span class="px-2 py-0.5 rounded-full text-[10px] font-mono tracking-wider uppercase ${i === 0 ? 'bg-gold-400/10 text-gold-300 border border-gold-400/20' : 'bg-white/[0.04] text-paper-300 border border-white/10'}">${tag}</span>`).join('')}
+        </div>
+        <p class="mt-3 text-sm text-paper-300 leading-relaxed flex-1">${p.desc}</p>
+        <div class="mt-5 flex gap-2">
+          ${isTraffic ? `
+            <a href="#contato" class="flex-1 inline-flex items-center justify-center gap-1.5 h-10 rounded-full bg-gold-400 hover:bg-gold-300 text-ink-950 text-xs font-bold tracking-wider uppercase transition">
+              Ver Estudo de Caso
+            </a>
+          ` : `
+            <a href="${p.demoUrl}" target="_blank" class="flex-1 inline-flex items-center justify-center gap-1.5 h-10 rounded-full border border-white/10 hover:border-white/25 hover:bg-white/[0.03] text-xs font-semibold tracking-wider uppercase text-paper-200 transition">
+              Ver Site Live
+            </a>
+            <a href="#contato" class="flex-1 inline-flex items-center justify-center gap-1.5 h-10 rounded-full bg-gold-400 hover:bg-gold-300 text-ink-950 text-xs font-bold tracking-wider uppercase transition">
+              Solicitar Similar
+            </a>
+          `}
+        </div>
+      </div>
+    </article>`;
+}
+
+const pGrid = document.getElementById('portfolio-grid');
+pGrid.innerHTML = portfolio.map(p => portfolioCard(p)).join('');
+// Re-observe newly added .reveal
+document.querySelectorAll('.portfolio-card.reveal').forEach(el => io.observe(el));
+
+// === Portfolio Filter ===
+document.querySelectorAll('.p-filter-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.p-filter-btn').forEach(b => {
+      b.classList.remove('active','bg-gold-400','text-ink-950');
+      b.classList.add('bg-white/[0.04]','border','border-white/10','text-paper-200');
+    });
+    btn.classList.add('active','bg-gold-400','text-ink-950');
+    btn.classList.remove('bg-white/[0.04]','border','border-white/10','text-paper-200');
+    const f = btn.dataset.pFilter;
+    document.querySelectorAll('.portfolio-card').forEach(c => {
+      const type = c.dataset.type;
+      const show = f === 'all' || type === f;
       c.style.display = show ? '' : 'none';
     });
   });

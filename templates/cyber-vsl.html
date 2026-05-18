@@ -85,11 +85,23 @@ tailwind.config = {
 
   /* Browser-frame preview */
   .frame { background: #14110e; border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; overflow: hidden; position: relative; }
-  .frame-bar { display: flex; gap: 5px; padding: 9px 12px; background: rgba(255,255,255,0.02); border-bottom: 1px solid rgba(255,255,255,0.05); }
+  .frame-bar { display: flex; gap: 5px; padding: 9px 12px; background: rgba(255,255,255,0.02); border-bottom: 1px solid rgba(255,255,255,0.05); z-index: 10; position: relative; }
   .frame-bar i { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.12); }
   html:not(.dark) .frame { background: #ffffff; border-color: rgba(0,0,0,0.08); }
   html:not(.dark) .frame-bar { background: rgba(0,0,0,0.02); border-bottom-color: rgba(0,0,0,0.06); }
   html:not(.dark) .frame-bar i { background: rgba(0,0,0,0.12); }
+
+  /* Dynamic Preview Scaling */
+  .preview-container { position: absolute; inset: 0; top: 28px; overflow: hidden; background: #0a0907; }
+  .preview-iframe {
+    width: 1280px; height: 900px;
+    border: none; transform-origin: top left;
+    pointer-events: none;
+    transition: opacity 0.5s ease;
+  }
+  .preview-loading { position: absolute; inset: 0; display: flex; items-center; justify-content: center; background: #14110e; z-index: 5; }
+  .preview-loading::after { content: ''; width: 20px; height: 20px; border: 2px solid rgba(232,181,71,0.2); border-top-color: #e8b547; border-radius: 50%; animation: spin 0.8s linear infinite; }
+  @keyframes spin { to { transform: rotate(360deg); } }
 
   ::selection { background: rgba(232,181,71,0.35); color: #0a0907; }
   .dark ::selection { color: #fdf6dc; }
@@ -381,6 +393,36 @@ const variations = [
   },
 ];
 
+/**
+ * Renders a dynamic preview using an iframe.
+ * Scaled from 1280px to fit the container.
+ */
+function renderPreview(url, accent) {
+  if (!url) return variationPreview(accent);
+  const id = 'pv-' + Math.random().toString(36).substr(2, 9);
+  
+  setTimeout(() => {
+    const container = document.getElementById(id);
+    if (!container) return;
+    const iframe = container.querySelector('iframe');
+    const scale = container.offsetWidth / 1280;
+    iframe.style.transform = `scale(${scale})`;
+    
+    iframe.onload = () => {
+      const loader = container.querySelector('.preview-loading');
+      if (loader) loader.style.opacity = '0';
+      setTimeout(() => loader && loader.remove(), 500);
+      iframe.style.opacity = '1';
+    };
+  }, 0);
+
+  return `
+    <div id="${id}" class="preview-container">
+      <div class="preview-loading"></div>
+      <iframe src="${url}" class="preview-iframe" loading="lazy" style="opacity: 0;"></iframe>
+    </div>`;
+}
+
 function variationPreview(accent) {
   // Stylized mini-VSL layout with niche-specific accent
   const palettes = {
@@ -421,9 +463,7 @@ function variationCard(v, i) {
     <article class="reveal reveal-delay-${delay} lift variation-card group bg-ink-900/60 rounded-2xl border border-white/5 hover:border-gold-400/30 transition overflow-hidden flex flex-col ring-grad" data-cats="${v.cats.join(',')}">
       <div class="frame relative aspect-[4/3] m-3 mb-0">
         <div class="frame-bar"><i></i><i></i><i></i></div>
-        <div class="absolute inset-x-0 top-[28px] bottom-0">
-          ${variationPreview(v.accent)}
-        </div>
+        ${renderPreview(v.demoUrl, v.accent)}
       </div>
       <div class="p-5 sm:p-6 flex flex-col flex-1">
         <div class="flex items-start justify-between gap-3">
