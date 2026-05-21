@@ -91,12 +91,37 @@ tailwind.config = {
   html:not(.dark) .frame-bar { background: rgba(0,0,0,0.02); border-bottom-color: rgba(0,0,0,0.06); }
   html:not(.dark) .frame-bar i { background: rgba(0,0,0,0.12); }
 
-  /* Dynamic Preview Scaling */
-  .preview-container { position: absolute; inset: 0; top: 28px; overflow: hidden; background: #0a0907; }
+  /* Dynamic Preview Scaling & Scroll */
+  .preview-container { position: absolute; inset: 0; top: 28px; overflow: hidden; background: #0a0907; display: flex; flex-direction: column; }
+  
+  /* Demo Internal Top Bar */
+  .demo-top-bar {
+    height: 26px; background: #1a1714; border-bottom: 1px solid rgba(255,255,255,0.05);
+    display: flex; items-center; justify-content: space-between; padding: 0 12px;
+    z-index: 20; flex-shrink: 0;
+  }
+  .demo-breadcrumb { font-family: 'JetBrains Mono', monospace; font-size: 8px; color: #a89e8d; letter-spacing: 0.1em; text-transform: uppercase; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .demo-back-link { font-family: 'JetBrains Mono', monospace; font-size: 8px; color: #d4a017; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; white-space: nowrap; }
+
+  .preview-scroll-area {
+    flex: 1; overflow-y: auto; overflow-x: hidden;
+    background: #0a0907; overscroll-behavior: contain;
+    position: relative;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255,255,255,0.2) transparent;
+  }
+
+  /* Custom Scrollbar Styles */
+  .preview-scroll-area::-webkit-scrollbar { width: 5px; }
+  .preview-scroll-area::-webkit-scrollbar-track { background: transparent; }
+  .preview-scroll-area::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.15); border-radius: 10px; }
+  .preview-scroll-area::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.3); }
+
+  .preview-iframe-wrapper { position: relative; width: 100%; height: 2500px; /* Large height to allow scrolling */ }
+
   .preview-iframe {
-    width: 1280px; height: 900px;
+    width: 1280px; height: 100%;
     border: none; transform-origin: top left;
-    pointer-events: none;
     transition: opacity 0.5s ease;
   }
   .preview-loading { position: absolute; inset: 0; display: flex; items-center; justify-content: center; background: #14110e; z-index: 5; }
@@ -394,10 +419,10 @@ const variations = [
 ];
 
 /**
- * Renders a dynamic preview using an iframe.
+ * Renders an interactive, scrollable demo preview.
  * Scaled from 1280px to fit the container.
  */
-function renderPreview(url, accent) {
+function renderPreview(url, accent, name = "Template") {
   if (!url) return variationPreview(accent);
   const id = 'pv-' + Math.random().toString(36).substr(2, 9);
   
@@ -405,7 +430,10 @@ function renderPreview(url, accent) {
     const container = document.getElementById(id);
     if (!container) return;
     const iframe = container.querySelector('iframe');
-    const scale = container.offsetWidth / 1280;
+    const scrollArea = container.querySelector('.preview-scroll-area');
+    const scale = scrollArea.offsetWidth / 1280;
+    
+    iframe.style.width = '1280px';
     iframe.style.transform = `scale(${scale})`;
     
     iframe.onload = () => {
@@ -419,7 +447,23 @@ function renderPreview(url, accent) {
   return `
     <div id="${id}" class="preview-container">
       <div class="preview-loading"></div>
-      <iframe src="${url}" class="preview-iframe" loading="lazy" style="opacity: 0;"></iframe>
+
+      <!-- Internal Demo Top Bar -->
+      <div class="demo-top-bar">
+        <div class="demo-breadcrumb">
+          DEMO — ${name}
+        </div>
+        <div class="demo-back-link">
+          • Voltar às variações
+        </div>
+      </div>
+
+      <!-- Isolated Scroll Area -->
+      <div class="preview-scroll-area">
+        <div class="preview-iframe-wrapper">
+          <iframe src="${url}" class="preview-iframe" loading="lazy" style="opacity: 0;"></iframe>
+        </div>
+      </div>
     </div>`;
 }
 
