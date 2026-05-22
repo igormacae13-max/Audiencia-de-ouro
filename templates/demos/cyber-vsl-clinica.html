@@ -1,0 +1,688 @@
+<!doctype html>
+<html lang="pt-BR" class="dark">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Clínica Pro — Demo Institucional · B2B · Saúde &amp; Estética</title>
+<meta name="description" content="Template institucional para clínicas: estética, odontologia e veterinária. B2B de alto padrão." />
+<meta name="robots" content="noindex" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  darkMode: 'class',
+  theme: {
+    extend: {
+      fontFamily: {
+        sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+        serif: ['"Instrument Serif"', 'Georgia', 'serif'],
+        mono: ['"JetBrains Mono"', 'ui-monospace', 'monospace'],
+      },
+    },
+  },
+};
+</script>
+
+<style>
+  :root { --acc: 200, 79, 132; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Plus Jakarta Sans', sans-serif; -webkit-font-smoothing: antialiased; background: #0c0608; color: #f5e8ef; transition: background .5s, color .5s; }
+  body::before { content:''; position:fixed; inset:0; background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/></filter><rect width='200' height='200' filter='url(%23n)' opacity='0.35'/></svg>"); opacity:.05; pointer-events:none; z-index:100; mix-blend-mode:overlay; }
+
+  /* CSS-var-driven accent utilities */
+  .c-acc  { color: rgb(var(--acc)); }
+  .bg-acc { background: rgb(var(--acc)); }
+  .bg-acc-10 { background: rgba(var(--acc),.10); }
+  .bg-acc-15 { background: rgba(var(--acc),.15); }
+  .bg-acc-20 { background: rgba(var(--acc),.20); }
+  .border-acc    { border-color: rgb(var(--acc)); }
+  .border-acc-25 { border-color: rgba(var(--acc),.25); }
+  .border-acc-30 { border-color: rgba(var(--acc),.30); }
+  .border-acc-15 { border-color: rgba(var(--acc),.15); }
+  .shadow-acc { box-shadow: 0 0 32px rgba(var(--acc),.38); }
+  .ring-acc { box-shadow: 0 0 0 1px rgba(var(--acc),.15); }
+  .top-line::before { content:''; position:absolute; top:0; left:1.5rem; right:1.5rem; height:1px; background:linear-gradient(90deg,transparent,rgba(var(--acc),.45),transparent); }
+  .acc-text { background:linear-gradient(180deg,rgba(var(--acc),1) 0%,rgba(var(--acc),.65) 100%); -webkit-background-clip:text; background-clip:text; color:transparent; }
+
+  /* Placeholders for images */
+  .ph-hero { background: radial-gradient(ellipse at 60% 30%, rgba(var(--acc),.22) 0%, rgba(var(--acc),.05) 45%, transparent 70%), linear-gradient(155deg,#0e0d0d,#121212,#0a0a0a); transition: background .5s; }
+  .ph-s1   { background: linear-gradient(145deg,rgba(var(--acc),.12),#0e0d0d); transition: background .5s; }
+  .ph-s2   { background: linear-gradient(135deg,rgba(var(--acc),.20),#111111,rgba(var(--acc),.10)); transition: background .5s; }
+  .ph-s3   { background: linear-gradient(155deg,#0e0d0d,rgba(var(--acc),.15),#111111); transition: background .5s; }
+  .ph-about{ background: radial-gradient(ellipse at 50% 35%,rgba(var(--acc),.18) 0%,#090909 65%),linear-gradient(170deg,#111111,#090909); transition: background .5s; }
+  .ph-g1   { background: linear-gradient(135deg,#101010,rgba(var(--acc),.18),#090909); transition: background .5s; }
+  .ph-g2   { background: linear-gradient(145deg,rgba(var(--acc),.22),#111111,rgba(var(--acc),.12)); transition: background .5s; }
+  .ph-g3   { background: linear-gradient(125deg,#090909,rgba(var(--acc),.18),#101010); transition: background .5s; }
+  .ph-g4   { background: linear-gradient(155deg,rgba(var(--acc),.16),#090909,rgba(var(--acc),.12)); transition: background .5s; }
+  .ph-g5   { background: linear-gradient(140deg,#111111,rgba(var(--acc),.22),#090909); transition: background .5s; }
+
+  /* Layout helpers */
+  .lift { transition: transform .3s ease, border-color .35s; }
+  .lift:hover { transform: translateY(-4px); }
+  .reveal { opacity:0; transform:translateY(16px); transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1); }
+  .reveal.in { opacity:1; transform:translateY(0); }
+  .rd1{transition-delay:.10s;} .rd2{transition-delay:.20s;} .rd3{transition-delay:.30s;}
+  details summary { cursor: pointer; list-style: none; }
+  details summary::-webkit-details-marker { display: none; }
+
+  /* Custom Scrollbar */
+  ::-webkit-scrollbar { width: 6px; height: 6px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: rgba(var(--acc), 0.2); border-radius: 10px; }
+  ::-webkit-scrollbar-thumb:hover { background: rgba(var(--acc), 0.4); }
+  * { scrollbar-width: thin; scrollbar-color: rgba(var(--acc), 0.2) transparent; }
+
+  /* Nicho switcher */
+  .nicho-btn { transition: background .25s, border-color .25s, color .25s; }
+  .nicho-btn.active { background: rgba(var(--acc),.18); border-color: rgba(var(--acc),.45); color: rgb(var(--acc)); }
+
+  /* Body background tint per nicho */
+  body.n-estetica  { background:#0c0608; color:#f5e8ef; }
+  body.n-dentista  { background:#060b10; color:#e8f4ff; }
+  body.n-veterinario{ background:#060c0a; color:#e8faf6; }
+</style>
+</head>
+<body class="antialiased n-estetica">
+
+<!-- Demo banner -->
+<div class="border-b text-center py-2 px-4 text-[11px] sm:text-xs font-mono tracking-wider uppercase" style="background:rgba(var(--acc),.08);border-color:rgba(var(--acc),.2)">
+  <span style="color:rgba(255,255,255,.55)">Demo · Template Institucional · </span>
+  <span class="c-acc" id="demo-label">Clínica Estética</span>
+  <span class="mx-2" style="opacity:.3">·</span>
+  <a href="../../Audiencia de Ouro.html#catalogo" class="c-acc hover:opacity-80 transition underline-offset-2 hover:underline">← Catálogo</a>
+</div>
+
+<!-- Nicho switcher -->
+<div class="flex justify-center gap-2 px-4 py-3 border-b" style="background:rgba(0,0,0,.3);border-color:rgba(255,255,255,.05)">
+  <span class="self-center text-[10px] font-mono tracking-wider uppercase text-white/30 mr-1">Nicho:</span>
+  <button data-nicho="estetica"   class="nicho-btn active h-8 px-4 rounded-full border border-white/10 text-[11px] font-bold tracking-wider uppercase text-white/60">✦ Estética</button>
+  <button data-nicho="dentista"   class="nicho-btn        h-8 px-4 rounded-full border border-white/10 text-[11px] font-bold tracking-wider uppercase text-white/60">⬡ Dentista</button>
+  <button data-nicho="veterinario"class="nicho-btn        h-8 px-4 rounded-full border border-white/10 text-[11px] font-bold tracking-wider uppercase text-white/60">❋ Veterinário</button>
+</div>
+
+<!-- Sticky header -->
+<header class="sticky top-0 z-40 backdrop-blur-md" style="background:rgba(10,5,8,.82);border-bottom:1px solid rgba(255,255,255,.05)">
+  <div class="max-w-6xl mx-auto px-5 sm:px-8 h-16 flex items-center justify-between">
+    <a href="#topo" class="flex items-center gap-3">
+      <div class="w-9 h-9 rounded-xl bg-acc-10 border border-acc-25 grid place-items-center shrink-0" style="background:rgba(var(--acc),.12);border-color:rgba(var(--acc),.3)">
+        <svg class="w-4 h-4 c-acc" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l7.5-7.5 7.5 7.5m-15 6l7.5-7.5 7.5 7.5"/></svg>
+      </div>
+      <div>
+        <span class="font-serif text-base tracking-tight block leading-tight" id="h-name">Clínica Lumina</span>
+        <span class="text-[10px] uppercase tracking-[0.22em] font-mono c-acc" id="h-sub">Estética Avançada</span>
+      </div>
+    </a>
+    <nav class="hidden md:flex items-center gap-7 text-sm" style="color:rgba(255,255,255,.55)">
+      <a href="#procedimentos" class="hover:text-white transition">Procedimentos</a>
+      <a href="#sobre" class="hover:text-white transition">Sobre</a>
+      <a href="#galeria" class="hover:text-white transition">Galeria</a>
+      <a href="#contato" class="hover:text-white transition">Contato</a>
+    </nav>
+    <a href="#contato" id="h-cta" class="hidden sm:inline-flex items-center h-10 px-6 rounded-full bg-acc text-[11px] font-bold tracking-wider uppercase transition shadow-acc" style="background:rgb(var(--acc));color:#050305">Agendar Avaliação</a>
+  </div>
+</header>
+
+<main>
+
+<!-- HERO -->
+<section id="topo" class="relative min-h-[90vh] flex items-center overflow-hidden">
+  <div class="absolute top-0 right-0 w-[700px] h-[500px] rounded-full blur-[120px] pointer-events-none" style="background:rgba(var(--acc),.12)"></div>
+  <div class="absolute bottom-0 left-0 w-[400px] h-[350px] rounded-full blur-[100px] pointer-events-none" style="background:rgba(var(--acc),.08)"></div>
+  <div class="relative max-w-6xl mx-auto px-5 sm:px-8 py-24 grid md:grid-cols-2 gap-12 items-center w-full">
+    <div>
+      <div class="reveal inline-flex items-center gap-2 px-3 py-1.5 rounded-full border font-mono text-[11px] tracking-wider uppercase mb-7 c-acc" style="border-color:rgba(var(--acc),.3);background:rgba(var(--acc),.10)">
+        <span class="w-1.5 h-1.5 rounded-full bg-acc animate-pulse" style="background:rgb(var(--acc))"></span>
+        <span id="hero-badge">+3.200 procedimentos realizados</span>
+      </div>
+      <h1 class="reveal text-[clamp(2.4rem,5.5vw,4rem)] font-extrabold leading-[1.06] tracking-tight mb-6">
+        <span id="h1-line1">Beleza com</span><br/>
+        <span class="font-serif italic font-normal acc-text" id="h1-accent">ciência e</span><br/>
+        <span id="h1-line3">propósito.</span>
+      </h1>
+      <p class="reveal text-base sm:text-lg max-w-lg leading-relaxed mb-9" style="color:rgba(255,255,255,.7)" id="hero-desc">Procedimentos estéticos avançados com técnica refinada, produtos certificados e um cuidado que respeita a sua identidade. Realce sua beleza — com segurança e naturalidade.</p>
+      <div class="reveal flex flex-wrap gap-3">
+        <a href="#contato" class="inline-flex items-center gap-2 px-7 py-3.5 rounded-full font-bold text-sm tracking-wider uppercase transition shadow-acc" style="background:rgb(var(--acc));color:#050305">Agendar avaliação <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"/></svg></a>
+        <a href="#procedimentos" class="inline-flex items-center gap-2 px-7 py-3.5 rounded-full border font-semibold text-sm transition" style="border-color:rgba(255,255,255,.12);color:rgba(255,255,255,.75)" onmouseover="this.style.borderColor='rgba(var(--acc),.4)'" onmouseout="this.style.borderColor='rgba(255,255,255,.12)'" id="hero-btn2">Ver procedimentos</a>
+      </div>
+      <div class="reveal mt-10 flex flex-wrap gap-5 font-mono text-[11px] tracking-wider uppercase" style="color:rgba(255,255,255,.45)" id="trust-row">
+        <span class="inline-flex items-center gap-2"><svg class="w-3.5 h-3.5 c-acc" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m5 12 5 5L20 7"/></svg><span id="t1">CRBM Registrada</span></span>
+        <span class="inline-flex items-center gap-2"><svg class="w-3.5 h-3.5 c-acc" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m5 12 5 5L20 7"/></svg><span id="t2">Produtos certificados Anvisa</span></span>
+        <span class="inline-flex items-center gap-2"><svg class="w-3.5 h-3.5 c-acc" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m5 12 5 5L20 7"/></svg><span id="t3">10 anos de experiência</span></span>
+      </div>
+    </div>
+    <!-- Visual -->
+    <div class="reveal relative hidden md:flex justify-center">
+      <div class="relative w-full max-w-sm">
+        <div class="ph-hero rounded-3xl aspect-[4/5] overflow-hidden border" style="border-color:rgba(var(--acc),.15);box-shadow:0 24px 80px -24px rgba(var(--acc),.3)">
+          <div class="w-full h-full flex flex-col items-center justify-center gap-4" style="opacity:.45">
+            <div class="w-20 h-20 rounded-full" style="background:rgba(var(--acc),.3);border:1px solid rgba(var(--acc),.4)"></div>
+            <div class="w-32 h-56 rounded-t-full" style="background:rgba(var(--acc),.15);border:1px solid rgba(var(--acc),.2)"></div>
+          </div>
+          <div class="absolute bottom-5 left-5 right-5 backdrop-blur-sm rounded-2xl p-4" style="background:rgba(10,5,8,.8);border:1px solid rgba(var(--acc),.22)">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-full grid place-items-center shrink-0" style="background:rgba(var(--acc),.2);border:1px solid rgba(var(--acc),.35)">
+                <svg class="w-5 h-5 c-acc" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75m-3-7.036A11.959 11.959 0 0 1 3.598 6 11.99 11.99 0 0 0 3 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285Z"/></svg>
+              </div>
+              <div>
+                <p class="text-sm font-semibold" id="hero-doc-name">Dra. Marina Vasconcellos</p>
+                <p class="text-[10px] font-mono uppercase tracking-wider c-acc" id="hero-doc-role">Biomédica Esteta · CRBM 12847</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="absolute -left-8 top-16 backdrop-blur-sm rounded-2xl px-4 py-3 shadow-xl" style="background:rgba(10,5,8,.9);border:1px solid rgba(var(--acc),.22)">
+          <p class="text-2xl font-extrabold acc-text" id="hero-stat1-val">3.2k+</p>
+          <p class="text-[10px] font-mono uppercase tracking-wider" style="color:rgba(255,255,255,.45)" id="hero-stat1-label">Procedimentos</p>
+        </div>
+        <div class="absolute -right-6 bottom-28 backdrop-blur-sm rounded-2xl px-4 py-3 shadow-xl" style="background:rgba(10,5,8,.9);border:1px solid rgba(var(--acc),.22)">
+          <p class="text-2xl font-extrabold acc-text" id="hero-stat2-val">98%</p>
+          <p class="text-[10px] font-mono uppercase tracking-wider" style="color:rgba(255,255,255,.45)" id="hero-stat2-label">Satisfação</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Stats bar -->
+<div class="border-y py-7" style="background:rgba(255,255,255,.02);border-color:rgba(255,255,255,.05)">
+  <div class="max-w-5xl mx-auto px-5 sm:px-8 grid grid-cols-2 sm:grid-cols-4 gap-6 text-center" id="stats-bar">
+    <div><p class="text-2xl sm:text-3xl font-extrabold acc-text" id="s1v">10+</p><p class="text-[11px] font-mono uppercase tracking-wider mt-1" style="color:rgba(255,255,255,.4)" id="s1l">Anos de clínica</p></div>
+    <div><p class="text-2xl sm:text-3xl font-extrabold acc-text" id="s2v">3.2k</p><p class="text-[11px] font-mono uppercase tracking-wider mt-1" style="color:rgba(255,255,255,.4)" id="s2l">Procedimentos</p></div>
+    <div><p class="text-2xl sm:text-3xl font-extrabold acc-text" id="s3v">98%</p><p class="text-[11px] font-mono uppercase tracking-wider mt-1" style="color:rgba(255,255,255,.4)" id="s3l">Satisfação</p></div>
+    <div><p class="text-2xl sm:text-3xl font-extrabold acc-text" id="s4v">5★</p><p class="text-[11px] font-mono uppercase tracking-wider mt-1" style="color:rgba(255,255,255,.4)" id="s4l">Avaliação média</p></div>
+  </div>
+</div>
+
+<!-- PROCEDIMENTOS -->
+<section id="procedimentos" class="py-20 sm:py-28">
+  <div class="max-w-6xl mx-auto px-5 sm:px-8">
+    <div class="reveal text-center mb-14">
+      <div class="text-[11px] tracking-[0.22em] uppercase font-mono font-semibold mb-4 c-acc" id="srv-section-label">Procedimentos</div>
+      <h2 class="font-serif text-4xl sm:text-5xl mb-4" id="srv-title">Cuidado completo, da raiz à pele.</h2>
+      <p class="max-w-xl mx-auto text-base leading-relaxed" style="color:rgba(255,255,255,.6)" id="srv-desc">Protocolos personalizados com produtos certificados e técnica refinada.</p>
+    </div>
+    <div class="grid md:grid-cols-3 gap-5" id="services-grid">
+      <!-- Rendered by JS -->
+    </div>
+    <div class="reveal text-center mt-12">
+      <a href="#contato" class="inline-flex items-center gap-2 h-12 px-8 rounded-full border font-semibold text-sm transition c-acc" style="border-color:rgba(var(--acc),.3)" onmouseover="this.style.background='rgba(var(--acc),.08)'" onmouseout="this.style.background='transparent'">
+        <span id="srv-cta">Agendar avaliação gratuita</span>
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- SOBRE -->
+<section id="sobre" class="py-20 sm:py-28 border-t" style="background:rgba(255,255,255,.015);border-color:rgba(255,255,255,.05)">
+  <div class="max-w-6xl mx-auto px-5 sm:px-8">
+    <div class="grid md:grid-cols-5 gap-12 md:gap-16 items-start">
+      <div class="md:col-span-2 reveal">
+        <div class="ph-about rounded-3xl aspect-[4/5] overflow-hidden border relative" style="border-color:rgba(var(--acc),.15);box-shadow:0 24px 60px -24px rgba(var(--acc),.2)">
+          <div class="absolute inset-0 flex flex-col items-center justify-end pb-6 gap-3" style="opacity:.38">
+            <div class="w-24 h-24 rounded-full mt-16" style="background:rgba(var(--acc),.3);border:1px solid rgba(var(--acc),.4)"></div>
+            <div class="w-40 h-48 rounded-t-full" style="background:rgba(var(--acc),.18)"></div>
+          </div>
+          <div class="absolute bottom-4 left-4 right-4 backdrop-blur-sm rounded-2xl p-4" style="background:rgba(8,4,7,.88);border:1px solid rgba(var(--acc),.25)">
+            <p class="text-[10px] font-mono uppercase tracking-wider c-acc mb-1">Credenciais</p>
+            <p class="text-xs font-semibold" id="about-reg">CRBM 12847 · CBO 2236-20</p>
+            <p class="text-[10px] mt-0.5" style="color:rgba(255,255,255,.45)" id="about-reg-sub">Biomédica Esteta Registrada</p>
+          </div>
+        </div>
+      </div>
+      <div class="md:col-span-3 reveal rd1">
+        <div class="text-[11px] tracking-[0.22em] uppercase font-mono font-semibold mb-5 c-acc" id="about-section-label">Sobre a Dra. Marina</div>
+        <h2 class="font-serif text-4xl sm:text-[2.75rem] leading-tight mb-6" id="about-headline">Beleza com propósito, cuidado com verdade.</h2>
+        <p class="leading-relaxed mb-4" style="color:rgba(255,255,255,.65)" id="about-p1">Sou a <strong>Dra. Marina Vasconcellos</strong>, biomédica esteta com mais de 10 anos dedicados à estética clínica de alto padrão.</p>
+        <p class="leading-relaxed mb-4" style="color:rgba(255,255,255,.65)" id="about-p2">Minha abordagem começa pela escuta. Cada plano de tratamento nasce de uma avaliação criteriosa e um diálogo honesto.</p>
+        <p class="leading-relaxed mb-8" style="color:rgba(255,255,255,.65)" id="about-p3">O objetivo é revelar você em sua melhor versão, com total segurança e naturalidade.</p>
+        <div class="rounded-2xl p-6 mb-8" style="background:rgba(255,255,255,.04);border:1px solid rgba(var(--acc),.15)">
+          <h3 class="font-serif text-xl mb-3" id="cred-title">Formação e especialização</h3>
+          <ul class="space-y-2 text-sm" style="color:rgba(255,255,255,.65)" id="credentials-list">
+            <!-- Rendered by JS -->
+          </ul>
+        </div>
+        <div class="grid grid-cols-2 gap-3 mb-8">
+          <div class="ph-s1 rounded-xl aspect-[3/2] border flex items-center justify-center" style="border-color:rgba(var(--acc),.15)"><span class="text-[10px] font-mono uppercase tracking-wider c-acc" style="opacity:.55">Certificado 01</span></div>
+          <div class="ph-s2 rounded-xl aspect-[3/2] border flex items-center justify-center" style="border-color:rgba(var(--acc),.15)"><span class="text-[10px] font-mono uppercase tracking-wider c-acc" style="opacity:.55">Certificado 02</span></div>
+        </div>
+        <a href="#contato" class="inline-flex items-center gap-2 h-12 px-7 rounded-full font-bold text-sm tracking-wider uppercase transition shadow-acc" style="background:rgb(var(--acc));color:#050305">
+          <span id="about-cta">Agendar consulta</span> →
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DIFERENCIAIS -->
+<section class="py-20 sm:py-28 border-t" style="background:linear-gradient(160deg,#0c0c0c,#080808,#0c0c0c);border-color:rgba(255,255,255,.05)">
+  <div class="max-w-6xl mx-auto px-5 sm:px-8">
+    <div class="reveal mb-12">
+      <div class="text-[11px] tracking-[0.22em] uppercase font-mono font-semibold mb-4 c-acc">Por que escolher</div>
+      <h2 class="font-serif text-4xl sm:text-5xl max-w-2xl mb-4" id="diff-headline">Três compromissos que guiam cada atendimento.</h2>
+      <p class="max-w-xl" style="color:rgba(255,255,255,.6)" id="diff-desc">Cada decisão começa pelo cuidado. Veja o que nos torna diferentes.</p>
+    </div>
+    <div class="grid md:grid-cols-3 gap-4" id="diff-grid">
+      <!-- Rendered by JS -->
+    </div>
+  </div>
+</section>
+
+<!-- GALERIA -->
+<section id="galeria" class="py-20 sm:py-28 border-t" style="border-color:rgba(255,255,255,.05)">
+  <div class="max-w-6xl mx-auto px-5 sm:px-8">
+    <div class="reveal mb-10">
+      <div class="text-[11px] tracking-[0.22em] uppercase font-mono font-semibold mb-4 c-acc">Galeria</div>
+      <h2 class="font-serif text-4xl sm:text-5xl max-w-2xl" id="gal-title">Bastidores do cuidado.</h2>
+    </div>
+    <div class="grid md:grid-cols-12 gap-3" id="gallery-grid">
+      <!-- Rendered by JS -->
+    </div>
+  </div>
+</section>
+
+<!-- DEPOIMENTOS -->
+<section class="py-20 sm:py-28 border-t" style="background:rgba(255,255,255,.015);border-color:rgba(255,255,255,.05)">
+  <div class="max-w-5xl mx-auto px-5 sm:px-8">
+    <div class="reveal text-center mb-12">
+      <div class="text-[11px] tracking-[0.22em] uppercase font-mono font-semibold mb-4 c-acc">Depoimentos</div>
+      <h2 class="font-serif text-4xl sm:text-5xl" id="test-title">O que dizem as pacientes.</h2>
+    </div>
+    <div class="reveal grid md:grid-cols-2 gap-4" id="testimonials-grid">
+      <!-- Rendered by JS -->
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="py-20 sm:py-24 border-t" style="border-color:rgba(255,255,255,.05)">
+  <div class="max-w-2xl mx-auto px-5 sm:px-8">
+    <div class="reveal text-center mb-10">
+      <h2 class="font-serif text-3xl sm:text-4xl">Perguntas frequentes</h2>
+    </div>
+    <div class="reveal space-y-3" id="faq-list">
+      <!-- Rendered by JS -->
+    </div>
+  </div>
+</section>
+
+<!-- CONTATO -->
+<section id="contato" class="py-20 sm:py-28 border-t" style="background:linear-gradient(160deg,#0c0c0c,#080808,#080808);border-color:rgba(var(--acc),.15)">
+  <div class="max-w-4xl mx-auto px-5 sm:px-8 text-center">
+    <div class="reveal">
+      <div class="text-[11px] tracking-[0.22em] uppercase font-mono font-semibold mb-5 c-acc">Contato</div>
+      <h2 class="font-serif text-4xl sm:text-5xl md:text-6xl leading-tight mb-6"><span id="cta-hl-text">Vamos conversar sobre</span><br class="hidden sm:block"/> <span class="acc-text" id="cta-accent">seu próximo passo.</span></h2>
+      <p class="max-w-xl mx-auto mb-12 text-base leading-relaxed" style="color:rgba(255,255,255,.6)" id="cta-desc">Avaliação personalizada, escuta atenta e um plano feito sob medida para os seus objetivos.</p>
+    </div>
+    <div class="reveal grid sm:grid-cols-3 gap-4 max-w-3xl mx-auto mb-12 text-left" id="contact-cards">
+      <!-- Rendered by JS -->
+    </div>
+    <div class="reveal" id="cta-final">
+      <!-- Rendered by JS -->
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="border-t py-8 px-5 sm:px-8" style="border-color:rgba(255,255,255,.05)">
+  <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+    <div class="flex items-center gap-3">
+      <div class="w-8 h-8 rounded-lg grid place-items-center shrink-0" style="background:rgba(var(--acc),.18);border:1px solid rgba(var(--acc),.3)">
+        <svg class="w-3.5 h-3.5 c-acc" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l7.5-7.5 7.5 7.5m-15 6l7.5-7.5 7.5 7.5"/></svg>
+      </div>
+      <span class="font-serif" id="footer-name">Clínica Lumina · Estética Avançada</span>
+    </div>
+    <div class="text-[11px] font-mono text-center" style="color:rgba(255,255,255,.3)">© 2025 — Todos os direitos reservados.</div>
+    <div class="text-[11px] font-mono text-center" style="color:rgba(255,255,255,.3)">
+      Demo · <a href="../../Audiencia de Ouro.html#catalogo" class="c-acc hover:opacity-80 transition">Audiência de Ouro</a>
+      <span class="mx-1.5" style="opacity:.3">·</span>Conteúdo fictício.
+    </div>
+  </div>
+</footer>
+
+<script>
+// ─── Data ────────────────────────────────────────────────────────────────────
+const NICHOS = {
+  estetica: {
+    acc: '200,79,132', bodyClass: 'n-estetica',
+    demoLabel: 'Clínica Estética',
+    hName: 'Clínica Lumina', hSub: 'Estética Avançada',
+    badge: '+3.200 procedimentos realizados',
+    h1l1: 'Beleza com', h1acc: 'ciência e', h1l3: 'propósito.',
+    heroBg: 'rgba(200,79,132,.12)', heroBg2: 'rgba(200,79,132,.08)',
+    desc: 'Procedimentos estéticos avançados com técnica refinada, produtos certificados e um cuidado que respeita a sua identidade. Realce sua beleza — com segurança e naturalidade.',
+    trust: ['CRBM Registrada', 'Produtos certificados Anvisa', '10 anos de experiência'],
+    hStat1: { v:'3.2k+', l:'Procedimentos' }, hStat2: { v:'98%', l:'Satisfação' },
+    docName: 'Dra. Marina Vasconcellos', docRole: 'Biomédica Esteta · CRBM 12847',
+    stats: [{v:'10+',l:'Anos de clínica'},{v:'3.2k',l:'Procedimentos'},{v:'98%',l:'Satisfação'},{v:'5★',l:'Avaliação média'}],
+    srvTitle: 'Cuidado completo, da raiz à pele.',
+    srvDesc: 'Protocolos personalizados com produtos certificados e técnica refinada — pensados para o seu momento.',
+    srvCta: 'Agendar avaliação gratuita',
+    services: [
+      { name:'Harmonização Facial', desc:'Toxina botulínica e bioestimuladores aplicados com precisão para realçar seus traços e devolver naturalidade à expressão.', badge:'Mais procurado' },
+      { name:'Skin Care Clínico',   desc:'Limpeza de pele profissional, peelings e protocolos para acne, melasma e manchas com ativos de última geração.', badge:'Destaque', featured:true },
+      { name:'Tricologia',          desc:'Diagnóstico tricoscópico avançado com protocolos individualizados para queda capilar e saúde do couro cabeludo.', badge:'' },
+    ],
+    aboutLabel: 'Sobre a Dra. Marina', aboutCta: 'Agendar consulta',
+    aboutHeadline: 'Beleza com propósito, cuidado com verdade.',
+    aboutP1: 'Sou a <strong>Dra. Marina Vasconcellos</strong>, biomédica esteta com mais de 10 anos dedicados à estética clínica de alto padrão. Formada pela USP com especialização em Estética Avançada e Tricologia Clínica.',
+    aboutP2: 'Minha abordagem começa pela escuta. Cada plano de tratamento nasce de uma avaliação criteriosa, um diálogo honesto sobre expectativas e um cuidado que vai além do procedimento em si.',
+    aboutP3: 'Na Clínica Lumina, o objetivo não é transformar — é revelar. Você, em sua melhor versão, com total segurança e naturalidade.',
+    aboutReg: 'CRBM 12847 · CBO 2236-20', aboutRegSub: 'Biomédica Esteta Registrada',
+    credTitle: 'Formação e especialização',
+    creds: ['Graduação em Biomedicina — USP São Paulo','Pós-graduação em Estética Avançada — Instituto Albert Einstein','Especialização em Tricologia Clínica — SBME','Certificação Internacional em Bioestimuladores — Paris, França'],
+    diffs: [
+      { title:'Segurança em primeiro lugar', desc:'Materiais descartáveis, produtos Anvisa e protocolos baseados em evidência. Cada procedimento começa por uma avaliação criteriosa.' },
+      { title:'Resultado natural',           desc:'Acredito em uma beleza que respeita seus traços. Nada de excessos — o objetivo é realçar, nunca mascarar.' },
+      { title:'Atendimento humanizado',      desc:'Escuta atenta, plano personalizado e acompanhamento próximo. Você é o centro de cada decisão.' },
+    ],
+    galLabels: ['Ambiente da clínica','Procedimento injetável','Tricologia','Skin care','Atendimento'],
+    galTitle: 'Bastidores do cuidado.',
+    tests: [
+      { text:'"A Dra. Marina tem uma sensibilidade incrível. Fiz harmonização e o resultado ficou absolutamente natural — exatamente o que eu queria."', name:'Camila F.', detail:'Harmonização Facial · São Paulo/SP', ini:'CF' },
+      { text:'"Sofria com queda de cabelo há anos. O diagnóstico de tricologia mudou tudo. Em 4 meses de protocolo já vejo cabelos novos crescendo."',   name:'Renata M.', detail:'Tricologia · Campinas/SP', ini:'RM' },
+      { text:'"Fiz limpeza de pele e peeling. O melasma que me incomodava clareou visivelmente. O ambiente é impecável. Virei cliente fiel."',           name:'Juliana S.', detail:'Skin Care · São Paulo/SP', ini:'JS' },
+      { text:'"Fiz toxina com medo de ficar com cara plástica. O resultado ficou delicado e natural. Nunca mais vou ter medo de procedimentos estéticos."', name:'Ana P.', detail:'Harmonização · Guarulhos/SP', ini:'AP' },
+    ],
+    testTitle: 'O que dizem as pacientes.',
+    faqs: [
+      { q:'A harmonização facial dói?', a:'Os procedimentos são realizados com cremes anestésicos tópicos e material de ponta, tornando a experiência bastante confortável.' },
+      { q:'Quanto tempo dura o efeito da toxina?', a:'O efeito dura em média de 4 a 6 meses, variando conforme o metabolismo de cada paciente.' },
+      { q:'Preciso de consulta antes dos procedimentos?', a:'Sim. A avaliação inicial é fundamental para entender seu histórico, objetivos e indicar os melhores protocolos.' },
+      { q:'Como funciona o diagnóstico de tricologia?', a:'Utilizamos tricoscópio de alta definição para avaliar o couro cabeludo, a densidade e a qualidade dos fios.' },
+    ],
+    wp:'5511978004512', phone:'(11) 97800-4512', email:'contato@clinicalumina.com.br', loc:'Pinheiros · SP/SP', addr:'R. dos Pinheiros, 482',
+    srvLabel: 'Procedimentos', ctaHdr: 'Agendar Avaliação',
+    ctaHL: 'Vamos conversar sobre', ctaAccent: 'seu próximo passo.',
+    ctaDesc: 'Avaliação personalizada, escuta atenta e um plano feito sob medida para os seus objetivos.',
+    ctaBtn: 'Agendar avaliação no WhatsApp →', ctaBtnSub: 'Resposta em até 2h · Avaliação sem custo',
+    footerName: 'Clínica Lumina · Estética Avançada',
+    diffHL: 'Três compromissos que guiam cada atendimento.', diffDesc: 'Cada decisão aqui começa pelo cuidado. Veja o que torna a Clínica Lumina diferente.',
+  },
+
+  dentista: {
+    acc: '14,165,233', bodyClass: 'n-dentista',
+    demoLabel: 'Clínica Odontológica',
+    hName: 'Oral Prime', hSub: 'Odontologia Avançada',
+    badge: '+8.000 procedimentos realizados',
+    h1l1: 'Sorriso perfeito,', h1acc: 'vida', h1l3: 'transformada.',
+    heroBg: 'rgba(14,165,233,.12)', heroBg2: 'rgba(14,165,233,.08)',
+    desc: 'Tratamentos odontológicos completos com tecnologia de ponta, anestesia confortável e resultados duradouros — para você sorrir com total confiança.',
+    trust: ['CRO Registrado', 'Equipamentos certificados Inmetro', '15 anos de experiência'],
+    hStat1: { v:'8k+', l:'Procedimentos' }, hStat2: { v:'99%', l:'Satisfação' },
+    docName: 'Dr. Rafael Augusto', docRole: 'Cirurgião-Dentista · CRO 45892/SP',
+    stats: [{v:'15+',l:'Anos de clínica'},{v:'8.0k',l:'Procedimentos'},{v:'99%',l:'Satisfação'},{v:'5★',l:'Avaliação média'}],
+    srvTitle: 'Soluções completas para o seu sorriso.',
+    srvDesc: 'Tecnologia de última geração aliada à técnica refinada para resultados duradouros e seguros.',
+    srvCta: 'Agendar avaliação gratuita',
+    services: [
+      { name:'Implantes Dentários',    desc:'Implantes osseointegrados com protocolo cirúrgico avançado para devolver função e estética com naturalidade e durabilidade.', badge:'Mais procurado' },
+      { name:'Clareamento Dental',     desc:'Clareamento a laser e moldeira personalizada com géis de alta concentração — até 8 tons mais claro com segurança e conforto.', badge:'Destaque', featured:true },
+      { name:'Ortodontia & Alinhadores', desc:'Aparelho fixo e alinhadores transparentes para corrigir o alinhamento dental com discrição e eficácia comprovada.', badge:'' },
+    ],
+    aboutLabel: 'Sobre o Dr. Rafael', aboutCta: 'Agendar consulta',
+    aboutHeadline: 'Técnica precisa, sorriso transformado.',
+    aboutP1: 'Sou o <strong>Dr. Rafael Augusto</strong>, cirurgião-dentista especializado em implantodontia e estética dental. Com 15 anos de clínica e mais de 8.000 procedimentos realizados, minha missão é devolver confiança através de sorrisos saudáveis.',
+    aboutP2: 'Acredito que cada sorriso é único. O tratamento começa com uma avaliação completa, radiografias digitais e um planejamento transparente — para que você saiba exatamente o que esperar.',
+    aboutP3: 'Na Oral Prime, investimos continuamente em tecnologia e atualização profissional para oferecer o que há de mais moderno na odontologia brasileira.',
+    aboutReg: 'CRO 45892 · CFO Certificado', aboutRegSub: 'Cirurgião-Dentista Registrado',
+    credTitle: 'Formação e especialização',
+    creds: ['Graduação em Odontologia — FOUSP São Paulo','Especialização em Implantodontia — ABO/SP','Certificação em Estética Dental — APCD','Invisalign Gold Provider · Alinhadores Invisíveis'],
+    diffs: [
+      { title:'Tecnologia de ponta',   desc:'Radiografia digital, scanner 3D intraoral e equipamentos certificados para diagnóstico preciso e tratamento previsível.' },
+      { title:'Conforto no tratamento', desc:'Anestesia com agulha ultrafina, sedação consciente opcional e protocolos especializados para pacientes ansiosos.' },
+      { title:'Transparência total',   desc:'Orçamento detalhado, prazo realista e acompanhamento em todas as etapas — do planejamento digital à manutenção.' },
+    ],
+    galLabels: ['Sala de atendimento','Scanner 3D','Clareamento','Centro cirúrgico','Consultório'],
+    galTitle: 'Nossa estrutura.',
+    tests: [
+      { text:'"Perdi um dente há 2 anos e postergava o implante de medo. O Dr. Rafael foi incrível — não senti nada durante o procedimento. O resultado ficou idêntico ao dente natural."', name:'Marcos T.', detail:'Implante Dentário · São Paulo/SP', ini:'MT' },
+      { text:'"Clareei os dentes aqui e fiquei impressionado. 6 tons mais claro em uma sessão! O Dr. foi muito cuidadoso e o pós não teve sensibilidade nenhuma."', name:'Fernanda L.', detail:'Clareamento · Santo André/SP', ini:'FL' },
+      { text:'"Uso alinhadores há 8 meses e a evolução é visível a cada troca. O planejamento digital mostrou o resultado final antes de começar. Confiança total."', name:'Lucas M.', detail:'Ortodontia · São Paulo/SP', ini:'LM' },
+      { text:'"Tinha medo de dentista desde criança. Aqui foi completamente diferente — anestesia sem dor, equipe calma e resultado incrível. Finalmente curei o meu sorriso."', name:'Patricia R.', detail:'Restaurações · São Paulo/SP', ini:'PR' },
+    ],
+    testTitle: 'O que dizem os pacientes.',
+    faqs: [
+      { q:'O implante dentário dói?', a:'O procedimento é realizado com anestesia local e é praticamente indolor. O pós-operatório é simples, com desconforto leve nos primeiros dias.' },
+      { q:'Quanto tempo dura o clareamento?', a:'Com boa higiene e evitando alimentos pigmentantes, o resultado dura de 1 a 2 anos. Retoques simples podem prolongar o efeito.' },
+      { q:'Quanto tempo dura o tratamento com alinhadores?', a:'Casos simples: 4–6 meses. Casos moderados: 12–18 meses. O planejamento digital mostra o resultado antes de começar.' },
+      { q:'A clínica atende planos odontológicos?', a:'Trabalhamos com os principais planos. Consulte nossa equipe para verificar a cobertura do seu plano para cada procedimento.' },
+    ],
+    wp:'5511976005210', phone:'(11) 97600-5210', email:'contato@oralprime.com.br', loc:'Vila Mariana · SP/SP', addr:'Av. Domingos de Morais, 1121',
+    srvLabel: 'Tratamentos', ctaHdr: 'Agendar Avaliação',
+    ctaHL: 'Pronto para transformar', ctaAccent: 'o seu sorriso?',
+    ctaDesc: 'Avaliação gratuita, planejamento digital e orçamento sem compromisso. Dê o primeiro passo hoje.',
+    ctaBtn: 'Agendar avaliação no WhatsApp →', ctaBtnSub: 'Resposta em até 2h · Avaliação gratuita',
+    footerName: 'Oral Prime · Odontologia Avançada',
+    diffHL: 'Três diferenciais que garantem o melhor resultado.', diffDesc: 'Combinamos tecnologia avançada com atendimento humanizado para um tratamento de alta qualidade.',
+  },
+
+  veterinario: {
+    acc: '20,184,166', bodyClass: 'n-veterinario',
+    demoLabel: 'Clínica Veterinária',
+    hName: 'VitaPet', hSub: 'Medicina Veterinária',
+    badge: '+5.000 consultas realizadas',
+    h1l1: 'Cuidado que eles', h1acc: 'merecem,', h1l3: 'amor que sentem.',
+    heroBg: 'rgba(20,184,166,.12)', heroBg2: 'rgba(20,184,166,.08)',
+    desc: 'Saúde completa para cães, gatos e animais exóticos — com diagnóstico preciso, tratamentos modernos e o carinho que cada pet merece.',
+    trust: ['CRMV Registrada', 'Equipamentos certificados', '12 anos de experiência'],
+    hStat1: { v:'5k+', l:'Consultas' }, hStat2: { v:'99%', l:'Satisfação' },
+    docName: 'Dra. Carla Mendonça', docRole: 'Médica Veterinária · CRMV 8741/SP',
+    stats: [{v:'12+',l:'Anos de clínica'},{v:'5.0k',l:'Consultas'},{v:'99%',l:'Satisfação'},{v:'5★',l:'Avaliação média'}],
+    srvTitle: 'Saúde completa para o seu pet.',
+    srvDesc: 'Da prevenção ao tratamento especializado — porque cada animal merece o melhor cuidado possível.',
+    srvCta: 'Agendar consulta agora',
+    services: [
+      { name:'Clínica Geral',          desc:'Consultas de rotina, diagnóstico por imagem, exames laboratoriais e acompanhamento da saúde do seu pet em todas as fases da vida.', badge:'Mais procurado' },
+      { name:'Cirurgia Veterinária',   desc:'Centro cirúrgico com monitoramento multiparamétrico, anestesia inalatória e equipe especializada para procedimentos de alta complexidade.', badge:'Destaque', featured:true },
+      { name:'Vacinas & Prevenção',    desc:'Calendário vacinal completo, antiparasitários, microchipagem e orientação nutricional para uma vida longa e saudável ao seu pet.', badge:'' },
+    ],
+    aboutLabel: 'Sobre a Dra. Carla', aboutCta: 'Agendar consulta',
+    aboutHeadline: 'Paixão pelos animais, precisão no cuidado.',
+    aboutP1: 'Sou a <strong>Dra. Carla Mendonça</strong>, médica veterinária com 12 anos de experiência em clínica de pequenos animais. Especialista em diagnóstico por imagem e oncologia veterinária, cuido de cada paciente como se fosse meu próprio pet.',
+    aboutP2: 'Entendo que seu animal de estimação é um membro da família. Por isso, além do tratamento técnico, ofereço comunicação transparente — com clareza no diagnóstico e honestidade no prognóstico.',
+    aboutP3: 'Na VitaPet, combinamos equipamentos de última geração com uma equipe apaixonada para garantir que o seu pet receba o cuidado que merece.',
+    aboutReg: 'CRMV 8741/SP · CFMV Certificada', aboutRegSub: 'Médica Veterinária Registrada',
+    credTitle: 'Formação e especialização',
+    creds: ['Graduação em Medicina Veterinária — USP São Paulo','Especialização em Diagnóstico por Imagem — ANCLIVEPA','Residência em Oncologia Veterinária — HV-USP','Certificação em Emergência e UTI — SEVC'],
+    diffs: [
+      { title:'Diagnóstico preciso',      desc:'Ultrassom, radiografia digital e laboratório próprio para resultados rápidos e tratamento assertivo.' },
+      { title:'Centro cirúrgico completo', desc:'Equipamentos modernos, anestesia segura e monitoramento contínuo durante todos os procedimentos.' },
+      { title:'Cuidado com carinho',       desc:'Equipe treinada para reduzir o estresse do seu pet, com ambiente acolhedor e comunicação constante.' },
+    ],
+    galLabels: ['Sala de espera','Centro cirúrgico','Radiografia Digital','Consulta','UTI Pet'],
+    galTitle: 'Nossa estrutura.',
+    tests: [
+      { text:'"Minha Golden passou por cirurgia complexa aqui. A Dra. Carla me explicou tudo, ficou disponível durante toda a recuperação e o resultado foi incrível."', name:'Beatriz A.', detail:'Cirurgia · São Paulo/SP', ini:'BA' },
+      { text:'"Meu gato ficou internado 3 dias e a equipe me mandava fotos e atualizações o tempo todo. O tratamento foi impecável e ele se recuperou completamente."', name:'Gabriel N.', detail:'Internação · Osasco/SP', ini:'GN' },
+      { text:'"Levo minha cachorra para consultas de rotina há 5 anos. A Dra. Carla é cuidadosa, explica tudo com calma e minha pet adora ir lá. Melhor veterinária que já encontrei."', name:'Mônica B.', detail:'Clínica Geral · São Paulo/SP', ini:'MB' },
+      { text:'"Descobriram o câncer do meu pet cedo graças ao exame preventivo. O protocolo foi certeiro. Hoje ele está em remissão e cheio de energia."', name:'Paulo S.', detail:'Oncologia · São Caetano/SP', ini:'PS' },
+    ],
+    testTitle: 'O que dizem os tutores.',
+    faqs: [
+      { q:'A clínica atende emergências?', a:'Sim. Temos plantão de emergência 24h para casos urgentes. Em situações de risco, ligue antes de vir para que nossa equipe se prepare.' },
+      { q:'Com qual frequência devo vacinar meu pet?', a:'O calendário varia conforme a espécie e estilo de vida. Na consulta inicial, elaboramos um protocolo personalizado e gratuito.' },
+      { q:'A clínica faz internação?', a:'Sim. Temos UTI com monitoramento 24h, acompanhamento médico diário e comunicação constante com o tutor sobre a evolução do pet.' },
+      { q:'Vocês atendem animais exóticos?', a:'Sim. Cães, gatos, aves, coelhos, roedores e répteis. Para exóticos, recomendamos agendamento prévio para garantir o especialista disponível.' },
+    ],
+    wp:'5511975003301', phone:'(11) 97500-3301', email:'contato@vitapetclinica.com.br', loc:'Moema · SP/SP', addr:'Av. Moaci, 653',
+    srvLabel: 'Serviços', ctaHdr: 'Agendar Consulta',
+    ctaHL: 'Agende a consulta do', ctaAccent: 'seu pet hoje.',
+    ctaDesc: 'Primeira consulta sem taxa de avaliação para novos pacientes. Cuide de quem você ama.',
+    ctaBtn: 'Agendar consulta no WhatsApp →', ctaBtnSub: 'Resposta em até 2h · Primeiros pacientes sem taxa',
+    footerName: 'VitaPet · Medicina Veterinária',
+    diffHL: 'Três diferenciais que colocam a saúde do seu pet em primeiro lugar.', diffDesc: 'Tecnologia, carinho e experiência para cuidar de quem você ama.',
+  },
+};
+
+// ─── Render helpers ───────────────────────────────────────────────────────────
+function set(id, html) { const el = document.getElementById(id); if(el) el.innerHTML = html; }
+function txt(id, val)  { const el = document.getElementById(id); if(el) el.textContent = val; }
+
+function renderServices(d) {
+  return d.services.map((s,i) => `
+    <article class="lift reveal ${i===1?'rd1':i===2?'rd2':''} rounded-3xl overflow-hidden border flex flex-col ${s.featured?'border-acc-30 ring-acc top-line relative':'border-white/[.07] hover:border-acc-25'} transition-all duration-500" style="background:rgba(255,255,255,.025);border-color:rgba(var(--acc),${s.featured?.3:.07})">
+      <div class="${['ph-s1','ph-s2','ph-s3'][i]} aspect-[4/5] relative overflow-hidden">
+        <div class="absolute inset-0 flex items-center justify-center" style="opacity:.45">
+          <svg class="w-20 h-20 c-acc" fill="none" stroke="currentColor" stroke-width="1" viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="9"/><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3"/>
+          </svg>
+        </div>
+        ${s.badge ? `<div class="absolute top-4 left-4"><span class="inline-flex items-center px-2.5 py-1 rounded-full font-mono text-[10px] uppercase tracking-wider" style="background:rgba(var(--acc),.${s.featured?'3':'2'});border:1px solid rgba(var(--acc),.${s.featured?'4':'3'});color:rgb(var(--acc))">${s.badge}</span></div>` : ''}
+      </div>
+      <div class="p-6 flex flex-col flex-1">
+        <h3 class="font-serif text-2xl mb-2">${s.name}</h3>
+        <p class="text-sm leading-relaxed flex-1" style="color:rgba(255,255,255,.6)">${s.desc}</p>
+        <div class="mt-5 pt-4 flex items-center justify-between" style="border-top:1px solid rgba(var(--acc),.${s.featured?'15':'07'})">
+          <span class="text-[11px] font-mono uppercase tracking-wider" style="color:rgba(255,255,255,.4)">A partir de</span>
+          <span class="font-bold text-sm c-acc">Consulte</span>
+        </div>
+      </div>
+    </article>`).join('');
+}
+
+function renderDiffs(d) {
+  return d.diffs.map((df,i) => `
+    <div class="reveal ${['','rd1','rd2'][i]} rounded-3xl border p-8 transition-all duration-500" style="background:rgba(255,255,255,.025);border-color:rgba(var(--acc),.${i===1?'3':'2'})">
+      <div class="w-12 h-12 rounded-2xl grid place-items-center mb-6" style="background:rgba(var(--acc),.18);border:1px solid rgba(var(--acc),.3)">
+        <svg class="w-6 h-6 c-acc" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+          ${i===0?'<path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75m-3-7.036A11.959 11.959 0 0 1 3.598 6 11.99 11.99 0 0 0 3 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285Z"/>'
+          :i===1?'<path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09Z"/>'
+          :'<path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z"/>'}
+        </svg>
+      </div>
+      <div class="font-serif text-4xl mb-3" style="color:rgba(var(--acc),.4)">0${i+1}</div>
+      <h3 class="font-serif text-2xl mb-3">${df.title}</h3>
+      <p class="text-sm leading-relaxed" style="color:rgba(255,255,255,.6)">${df.desc}</p>
+    </div>`).join('');
+}
+
+function renderGallery(d) {
+  const cls = ['ph-g1','ph-g2','ph-g3','ph-g4','ph-g5'];
+  const lbl = d.galLabels;
+  return `
+    <div class="md:col-span-7 aspect-[16/10] rounded-3xl overflow-hidden ${cls[0]} border flex items-end p-5" style="border-color:rgba(var(--acc),.12)"><span class="text-[10px] font-mono uppercase tracking-wider c-acc rounded-lg px-3 py-1.5" style="opacity:.7;background:rgba(10,5,8,.6)">${lbl[0]}</span></div>
+    <div class="md:col-span-5 aspect-[16/10] rounded-3xl overflow-hidden ${cls[1]} border flex items-end p-5" style="border-color:rgba(var(--acc),.12)"><span class="text-[10px] font-mono uppercase tracking-wider c-acc rounded-lg px-3 py-1.5" style="opacity:.7;background:rgba(10,5,8,.6)">${lbl[1]}</span></div>
+    <div class="md:col-span-4 aspect-square rounded-3xl overflow-hidden ${cls[2]} border flex items-end p-5" style="border-color:rgba(var(--acc),.12)"><span class="text-[10px] font-mono uppercase tracking-wider c-acc rounded-lg px-3 py-1.5" style="opacity:.7;background:rgba(10,5,8,.6)">${lbl[2]}</span></div>
+    <div class="md:col-span-4 aspect-square rounded-3xl overflow-hidden ${cls[3]} border flex items-end p-5" style="border-color:rgba(var(--acc),.12)"><span class="text-[10px] font-mono uppercase tracking-wider c-acc rounded-lg px-3 py-1.5" style="opacity:.7;background:rgba(10,5,8,.6)">${lbl[3]}</span></div>
+    <div class="md:col-span-4 aspect-square rounded-3xl overflow-hidden ${cls[4]} border flex items-end p-5" style="border-color:rgba(var(--acc),.12)"><span class="text-[10px] font-mono uppercase tracking-wider c-acc rounded-lg px-3 py-1.5" style="opacity:.7;background:rgba(10,5,8,.6)">${lbl[4]}</span></div>`;
+}
+
+function renderTests(d) {
+  return d.tests.map((t,i) => `
+    <blockquote class="p-7 rounded-3xl border ${i===1?'ring-acc':''}" style="background:rgba(255,255,255,.025);border-color:rgba(var(--acc),.${i===1?'28':'08'})">
+      <div class="flex gap-0.5 mb-4"><span style="color:rgb(var(--acc))">★★★★★</span></div>
+      <p class="text-sm leading-relaxed" style="color:rgba(255,255,255,.65)">${t.text}</p>
+      <footer class="mt-5 flex items-center gap-3">
+        <span class="w-10 h-10 rounded-full grid place-items-center text-xs font-bold shrink-0" style="background:rgba(var(--acc),.2);border:1px solid rgba(var(--acc),.3);color:rgb(var(--acc))">${t.ini}</span>
+        <div>
+          <p class="text-sm font-semibold">${t.name}</p>
+          <p class="text-[11px] font-mono" style="color:rgba(255,255,255,.4)">${t.detail}</p>
+        </div>
+      </footer>
+    </blockquote>`).join('');
+}
+
+function renderFaq(d) {
+  return d.faqs.map(f => `
+    <details class="group rounded-2xl overflow-hidden" style="border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.025)">
+      <summary class="flex items-center justify-between p-5 text-sm font-semibold">
+        ${f.q}
+        <span class="c-acc group-open:rotate-45 transition text-lg leading-none shrink-0 ml-4">+</span>
+      </summary>
+      <p class="px-5 pb-5 text-sm leading-relaxed" style="color:rgba(255,255,255,.6)">${f.a}</p>
+    </details>`).join('');
+}
+
+function renderContact(d) {
+  document.getElementById('contact-cards').innerHTML = `
+    <a href="https://wa.me/${d.wp}" target="_blank" rel="noreferrer" class="p-6 rounded-2xl transition group" style="background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.08)" onmouseover="this.style.borderColor='rgba(var(--acc),.35)'" onmouseout="this.style.borderColor='rgba(255,255,255,.08)'">
+      <div class="text-[10px] uppercase tracking-wider font-mono mb-2" style="color:rgba(255,255,255,.4)">WhatsApp</div>
+      <div class="font-serif text-lg transition" onmouseover="this.style.color='rgb(var(--acc))'" onmouseout="this.style.color=''">${d.phone}</div>
+      <div class="text-[10px] font-mono mt-1" style="color:rgba(255,255,255,.4)">Seg–Sáb · 8h às 19h</div>
+    </a>
+    <a href="mailto:${d.email}" class="p-6 rounded-2xl transition group" style="background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.08)" onmouseover="this.style.borderColor='rgba(var(--acc),.35)'" onmouseout="this.style.borderColor='rgba(255,255,255,.08)'">
+      <div class="text-[10px] uppercase tracking-wider font-mono mb-2" style="color:rgba(255,255,255,.4)">E-mail</div>
+      <div class="font-serif text-base break-all">${d.email}</div>
+    </a>
+    <div class="p-6 rounded-2xl" style="background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.08)">
+      <div class="text-[10px] uppercase tracking-wider font-mono mb-2" style="color:rgba(255,255,255,.4)">Localização</div>
+      <div class="font-serif text-lg">${d.loc}</div>
+      <div class="text-[10px] font-mono mt-1" style="color:rgba(255,255,255,.4)">${d.addr}</div>
+    </div>`;
+  document.getElementById('cta-final').innerHTML = `
+    <a href="https://wa.me/${d.wp}" target="_blank" rel="noreferrer" class="inline-flex items-center gap-3 h-14 px-10 rounded-full font-bold text-sm tracking-wider uppercase transition shadow-acc" style="background:rgb(var(--acc));color:#050305">
+      <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.556 4.122 1.524 5.855L.057 23.943l6.088-1.467A11.95 11.95 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.925 0-3.722-.526-5.262-1.435l-.377-.224-3.915.943.984-3.805-.246-.389A9.938 9.938 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+      ${d.ctaBtn}
+    </a>
+    <p class="mt-4 text-[11px] font-mono tracking-wider uppercase" style="color:rgba(255,255,255,.3)">${d.ctaBtnSub}</p>`;
+}
+
+// ─── Switch nicho ────────────────────────────────────────────────────────────
+function switchNicho(key) {
+  const d = NICHOS[key];
+  document.documentElement.style.setProperty('--acc', d.acc);
+  document.body.className = `antialiased ${d.bodyClass}`;
+
+  txt('demo-label', d.demoLabel);
+  txt('h-name', d.hName); txt('h-sub', d.hSub);
+  txt('hero-badge', d.badge);
+  txt('h1-line1', d.h1l1); txt('h1-accent', d.h1acc); txt('h1-line3', d.h1l3);
+  txt('hero-desc', d.desc);
+  txt('t1', d.trust[0]); txt('t2', d.trust[1]); txt('t3', d.trust[2]);
+  txt('hero-stat1-val', d.hStat1.v); txt('hero-stat1-label', d.hStat1.l);
+  txt('hero-stat2-val', d.hStat2.v); txt('hero-stat2-label', d.hStat2.l);
+  txt('hero-doc-name', d.docName); txt('hero-doc-role', d.docRole);
+  txt('s1v', d.stats[0].v); txt('s1l', d.stats[0].l);
+  txt('s2v', d.stats[1].v); txt('s2l', d.stats[1].l);
+  txt('s3v', d.stats[2].v); txt('s3l', d.stats[2].l);
+  txt('s4v', d.stats[3].v); txt('s4l', d.stats[3].l);
+  txt('srv-section-label', d.srvLabel); txt('srv-title', d.srvTitle); txt('srv-desc', d.srvDesc); txt('srv-cta', d.srvCta);
+  set('services-grid', renderServices(d));
+  txt('about-section-label', d.aboutLabel); txt('about-cta', d.aboutCta);
+  txt('about-headline', d.aboutHeadline);
+  set('about-p1', d.aboutP1); txt('about-p2', d.aboutP2); txt('about-p3', d.aboutP3);
+  txt('about-reg', d.aboutReg); txt('about-reg-sub', d.aboutRegSub);
+  txt('cred-title', d.credTitle);
+  set('credentials-list', d.creds.map(c => `<li class="flex gap-2.5"><svg class="w-4 h-4 c-acc shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m5 12 5 5L20 7"/></svg>${c}</li>`).join(''));
+  txt('diff-headline', d.diffHL); txt('diff-desc', d.diffDesc);
+  set('diff-grid', renderDiffs(d));
+  txt('gal-title', d.galTitle);
+  set('gallery-grid', renderGallery(d));
+  txt('test-title', d.testTitle);
+  set('testimonials-grid', renderTests(d));
+  set('faq-list', renderFaq(d));
+  txt('cta-hl-text', d.ctaHL); txt('cta-accent', d.ctaAccent); txt('cta-desc', d.ctaDesc);
+  renderContact(d);
+  txt('h-cta', d.ctaHdr);
+  txt('footer-name', d.footerName);
+  txt('hero-btn2', key === 'dentista' ? 'Ver tratamentos' : key === 'veterinario' ? 'Ver serviços' : 'Ver procedimentos');
+
+  // Update nicho switcher active state
+  document.querySelectorAll('.nicho-btn').forEach(btn => btn.classList.toggle('active', btn.dataset.nicho === key));
+
+  // Re-observe reveals
+  document.querySelectorAll('.reveal').forEach(el => el.classList.remove('in'));
+  setTimeout(() => observeReveals(), 50);
+}
+
+function observeReveals() {
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if(e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
+  document.querySelectorAll('.reveal:not(.in)').forEach(el => io.observe(el));
+}
+
+// ─── Init ────────────────────────────────────────────────────────────────────
+document.querySelectorAll('.nicho-btn').forEach(btn => {
+  btn.addEventListener('click', () => { window.scrollTo({ top: 0, behavior: 'smooth' }); switchNicho(btn.dataset.nicho); });
+});
+switchNicho('estetica');
+</script>
+</body>
+</html>

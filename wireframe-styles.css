@@ -15,7 +15,12 @@
   --font-mono: 'JetBrains Mono', 'Courier New', monospace;
 }
 
-* { box-sizing: border-box; }
+/* Custom Scrollbar */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(212, 160, 23, 0.2); border-radius: 10px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(212, 160, 23, 0.4); }
+* { scrollbar-width: thin; scrollbar-color: rgba(212, 160, 23, 0.2) transparent; box-sizing: border-box; }
 
 .wf {
   background: var(--paper);

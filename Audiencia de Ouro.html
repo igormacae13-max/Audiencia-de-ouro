@@ -144,6 +144,13 @@ tailwind.config = {
   /* nav blur */
   .navbar { backdrop-filter: saturate(160%) blur(14px); -webkit-backdrop-filter: saturate(160%) blur(14px); }
 
+  /* Custom Scrollbar */
+  ::-webkit-scrollbar { width: 6px; height: 6px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: rgba(232, 181, 71, 0.2); border-radius: 10px; }
+  ::-webkit-scrollbar-thumb:hover { background: rgba(232, 181, 71, 0.4); }
+  * { scrollbar-width: thin; scrollbar-color: rgba(232, 181, 71, 0.2) transparent; }
+
   /* Selection */
   ::selection { background: rgba(232,181,71,0.35); color: #0a0907; }
   .dark ::selection { color: #fdf6dc; }
@@ -399,7 +406,7 @@ tailwind.config = {
         <span>⊹ Operação 100% remota</span>
         <span>◆ Cases em e-commerce, B2B, infoprodutos</span>
         <span>✦ Stack: Meta · Google · TikTok · GA4</span>
-        <span>◇ Entrega 7 dias úteis</span>
+        <span>◇ Entrega em 7 dias úteis</span>
       </template>
       <div class="flex gap-12" id="m1"></div>
       <div class="flex gap-12" id="m2" aria-hidden="true"></div>
@@ -522,7 +529,7 @@ tailwind.config = {
           <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 3v18h18M7 14l4-4 4 4 5-7"/></svg>
         </div>
         <div class="flex-1 min-w-0">
-          <div class="text-[10px] tracking-[0.16em] uppercase text-paper-400 font-mono font-semibold">+ extra</div>
+          <div class="text-[10px] tracking-[0.2em] uppercase text-paper-400 font-mono font-semibold">+ extra</div>
           <div class="mt-1 font-semibold text-paper-100">Pixel, GA4 & dashboards</div>
           <div class="text-xs text-paper-400 mt-0.5">Tudo rastreado, do clique à venda confirmada.</div>
         </div>
@@ -545,16 +552,14 @@ tailwind.config = {
           O <span class="font-serif italic font-normal gold-text">catálogo</span>.
         </h2>
         <p class="mt-3 text-paper-300 max-w-xl">
-          Seis modelos testados em mercado real. Cada um otimizado pra um tipo de oferta. Clica no demo, navega como se fosse seu.
+          Modelos testados em mercado real. Cada um otimizado pra um tipo de oferta. Clica no demo, navega como se fosse seu.
         </p>
       </div>
       <!-- Filters -->
       <div class="flex flex-wrap gap-2" id="filters">
-        <button data-filter="all" class="filter-btn active px-3.5 h-9 rounded-full bg-gold-400 text-ink-950 text-[11px] font-semibold tracking-wider uppercase transition">Todos · 6</button>
-        <button data-filter="vsl" class="filter-btn px-3.5 h-9 rounded-full bg-white/[0.04] hover:bg-white/[0.08] border border-white/10 text-paper-200 text-[11px] font-semibold tracking-wider uppercase transition">VSL</button>
-        <button data-filter="ecom" class="filter-btn px-3.5 h-9 rounded-full bg-white/[0.04] hover:bg-white/[0.08] border border-white/10 text-paper-200 text-[11px] font-semibold tracking-wider uppercase transition">E-commerce</button>
+        <button data-filter="all" class="filter-btn active px-3.5 h-9 rounded-full bg-gold-400 text-ink-950 text-[11px] font-semibold tracking-wider uppercase transition">Todos · 3</button>
         <button data-filter="b2b" class="filter-btn px-3.5 h-9 rounded-full bg-white/[0.04] hover:bg-white/[0.08] border border-white/10 text-paper-200 text-[11px] font-semibold tracking-wider uppercase transition">B2B</button>
-        <button data-filter="oferta" class="filter-btn px-3.5 h-9 rounded-full bg-white/[0.04] hover:bg-white/[0.08] border border-white/10 text-paper-200 text-[11px] font-semibold tracking-wider uppercase transition">Oferta</button>
+        <button data-filter="clinica" class="filter-btn px-3.5 h-9 rounded-full bg-white/[0.04] hover:bg-white/[0.08] border border-white/10 text-paper-200 text-[11px] font-semibold tracking-wider uppercase transition">Clínicas</button>
       </div>
     </div>
 
@@ -564,8 +569,15 @@ tailwind.config = {
     </div>
 
     <!-- See more -->
-    <div class="reveal mt-12 text-center">
-      <p class="text-paper-400 text-sm">Não viu o que precisava? <a href="#contato" class="text-gold-400 hover:text-gold-300 underline-offset-4 hover:underline">A gente cria do zero pra você.</a></p>
+    <div class="reveal mt-16 text-center">
+      <div class="inline-block px-8 py-6 rounded-2xl bg-white/[0.03] border border-white/10 backdrop-blur-sm">
+        <p class="text-paper-200 text-lg font-medium">
+          Não viu o que precisava? 
+          <a href="#contato" class="block mt-2 sm:mt-0 sm:inline-block text-gold-400 hover:text-gold-300 underline-offset-8 hover:underline decoration-2 transition-all">
+            A gente cria do zero pra você.
+          </a>
+        </p>
+      </div>
     </div>
   </div>
 </section>
@@ -983,36 +995,16 @@ const templates = [
     demoUrl: 'templates/demos/cyber-vsl-mentoria.html', // Placeholder for actual demo
   },
   {
-    id: 't2', name: 'Cyber VSL', tags: ['VSL', 'oferta'], cats: ['vsl', 'oferta'],
-    desc: 'Página de oferta com vídeo no topo, contador, garantia, depoimentos e checkout.',
-    accent: 'dark',
-    demoUrl: 'templates/demos/cyber-vsl-saude.html',
-    escolherUrl: 'templates/cyber-vsl.html',
-    escolherLabel: 'Ver variações →',
-  },
-  {
     id: 't3', name: 'Corporate Trust', tags: ['B2B', 'institucional'], cats: ['b2b'],
     desc: 'Para empresas que vendem pra outras empresas. Cases, certificações, formulário.',
     accent: 'blue',
     demoUrl: 'templates/demos/cyber-vsl-financas.html',
   },
   {
-    id: 't4', name: 'Shopify Pro', tags: ['E-commerce', 'lojavirtual'], cats: ['ecom'],
-    desc: 'Loja virtual otimizada pra tráfego pago. Checkout em 2 cliques, recuperação de carrinho.',
-    accent: 'gold',
-    demoUrl: 'templates/demos/cyber-vsl-suplementos.html',
-  },
-  {
-    id: 't5', name: 'Lead Magnet', tags: ['captura', 'isca'], cats: ['oferta'],
-    desc: 'Página de captura curta e direta. Ímã digital + nutrição por e-mail integrada.',
-    accent: 'soft',
-    demoUrl: 'templates/demos/cyber-vsl-curso.html',
-  },
-  {
-    id: 't6', name: 'Black Friday', tags: ['oferta', 'urgência'], cats: ['oferta', 'ecom'],
-    desc: 'Página de oferta com contador, escassez e gatilhos de urgência. Pico de conversão.',
-    accent: 'red',
-    demoUrl: 'templates/demos/cyber-vsl-carreira.html',
+    id: 't7', name: 'Clínica Pro', tags: ['Clínica', 'Saúde', 'B2B'], cats: ['clinica', 'b2b'],
+    desc: 'Site institucional para clínicas estéticas e de saúde. Procedimentos, sobre, galeria e agendamento.',
+    accent: 'rose',
+    demoUrl: 'templates/demos/cyber-vsl-clinica.html',
   },
 ];
 
@@ -1123,13 +1115,28 @@ function previewSVG(accent) {
         <div class="h-2 w-2/3 bg-red-400/50 rounded"></div>
         <div class="mt-auto h-7 bg-red-500 rounded grid place-items-center text-[10px] text-white font-bold">-70% HOJE</div>
       </div>`,
+    rose: `
+      <div class="absolute inset-0 p-4 flex flex-col gap-2">
+        <div class="flex items-center justify-between">
+          <div class="h-1.5 w-10 bg-pink-400/70 rounded"></div>
+          <div class="h-7 w-20 bg-pink-500/30 rounded-full"></div>
+        </div>
+        <div class="h-3 w-2/3 bg-white/80 rounded mt-1"></div>
+        <div class="h-1.5 w-1/2 bg-pink-300/40 rounded"></div>
+        <div class="grid grid-cols-3 gap-1.5 mt-1">
+          <div class="aspect-[3/4] bg-pink-500/15 rounded border border-pink-500/20"></div>
+          <div class="aspect-[3/4] bg-pink-500/25 rounded border border-pink-500/30"></div>
+          <div class="aspect-[3/4] bg-pink-500/15 rounded border border-pink-500/20"></div>
+        </div>
+        <div class="h-6 bg-pink-500/70 rounded mt-1"></div>
+      </div>`,
   };
   return variants[accent] || variants.neutral;
 }
 
 function templateCard(t, featured) {
   return `
-    <article class="reveal lift template-card group bg-ink-900/60 rounded-2xl border border-white/5 hover:border-gold-400/30 transition overflow-hidden flex flex-col ${featured ? 'lg:col-span-2 lg:row-span-2' : ''}" data-cats="${t.cats.join(',')}">
+    <article class="reveal lift template-card group bg-ink-900/60 rounded-2xl border border-white/5 hover:border-gold-400/30 transition overflow-hidden flex flex-col ring-grad ${featured ? 'lg:col-span-2 lg:row-span-2' : ''}" data-cats="${t.cats.join(',')}">
       <div class="frame relative ${featured ? 'aspect-[16/10]' : 'aspect-[4/3]'} ${featured ? 'min-h-[260px]' : ''} m-3 mb-0">
         <div class="frame-bar"><i></i><i></i><i></i></div>
         ${renderPreview(t.demoUrl, t.accent)}
