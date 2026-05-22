@@ -1,0 +1,290 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Vanguard &amp; Co. — Demo · Premium Clean</title>
+<meta name="description" content="Site institucional B2B de alto ticket. Consultoria estratégica para capital institucional. Demo · Template Premium Clean." />
+<meta name="robots" content="noindex" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      fontFamily: {
+        sans: ['Inter', 'system-ui', 'sans-serif'],
+        serif: ['"Playfair Display"', 'Georgia', 'serif'],
+        mono: ['"JetBrains Mono"', 'ui-monospace', 'monospace'],
+      },
+      colors: {
+        cream: {
+          50:  '#fdfaf3',
+          100: '#f8f4ea',
+          200: '#f0ebe0',
+          300: '#e0d9c8',
+        },
+        navy: {
+          900: '#1b2032',
+          700: '#2c3451',
+          500: '#5c6272',
+          300: '#8f96a8',
+        },
+        amber: {
+          500: '#c17b20',
+          400: '#d4921e',
+          300: '#e8aa2e',
+        },
+      },
+    },
+  },
+};
+</script>
+
+<style>
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { background: #f8f4ea; color: #1b2032; font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; }
+
+  .font-display { font-family: 'Playfair Display', serif; }
+  .font-mono-custom { font-family: 'JetBrains Mono', monospace; }
+
+  /* Demo banner */
+  .demo-banner { background: #1b2032; }
+
+  /* Underline grow on card hover */
+  .service-card .underline-grow { width: 0; height: 2px; background: #c17b20; transition: width 0.5s cubic-bezier(.16,1,.3,1); }
+  .service-card:hover .underline-grow { width: 100%; }
+
+  /* Reveal on scroll */
+  .reveal { opacity: 0; transform: translateY(18px); transition: opacity .8s cubic-bezier(.16,1,.3,1), transform .8s cubic-bezier(.16,1,.3,1); }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+  .reveal-d1 { transition-delay: .1s; }
+  .reveal-d2 { transition-delay: .2s; }
+  .reveal-d3 { transition-delay: .3s; }
+
+  /* Selection */
+  ::selection { background: rgba(193,123,32,.2); }
+</style>
+</head>
+
+<body class="antialiased">
+
+<!-- ===== DEMO BANNER ===== -->
+<div class="demo-banner border-b border-white/10 text-center py-2 px-4 text-[11px] font-mono-custom tracking-wider uppercase text-amber-400/80">
+  <span class="text-white/60">Demo · Template Premium Clean · Site Institucional B2B</span>
+  <span class="mx-2 opacity-30">·</span>
+  <a href="../../index.html" class="hover:text-amber-300 transition underline-offset-2 hover:underline">← Voltar ao catálogo</a>
+</div>
+
+<!-- ===== NAV ===== -->
+<nav class="sticky top-0 z-50 border-b bg-[#f8f4ea]/90 backdrop-blur-md" style="border-color: rgba(27,32,50,0.1);">
+  <div class="mx-auto flex h-16 max-w-7xl items-center justify-between px-6">
+    <!-- Logo -->
+    <div class="flex items-center gap-3">
+      <div class="w-6 h-6 bg-navy-900" style="background:#1b2032;"></div>
+      <span class="font-mono-custom text-sm font-bold tracking-tighter uppercase text-navy-900">Vanguard &amp; Co.</span>
+    </div>
+    <!-- Links -->
+    <div class="hidden md:flex items-center gap-10">
+      <a href="#services" class="text-xs font-medium uppercase tracking-widest text-navy-500 hover:text-amber-500 transition-colors">Serviços</a>
+      <a href="#intelligence" class="text-xs font-medium uppercase tracking-widest text-navy-500 hover:text-amber-500 transition-colors">Inteligência</a>
+      <a href="#about" class="text-xs font-medium uppercase tracking-widest text-navy-500 hover:text-amber-500 transition-colors">Sobre</a>
+      <a href="#contact" class="bg-navy-900 text-cream-100 px-5 py-2 text-xs font-medium uppercase tracking-widest hover:bg-amber-500 hover:text-white transition-colors" style="background:#1b2032; color:#f8f4ea;">Consultoria</a>
+    </div>
+    <!-- Mobile CTA -->
+    <a href="#contact" class="md:hidden text-xs font-medium uppercase tracking-widest bg-navy-900 text-cream-100 px-4 py-2" style="background:#1b2032; color:#f8f4ea;">Contato</a>
+  </div>
+</nav>
+
+<main>
+
+<!-- ===== HERO ===== -->
+<section class="relative flex flex-col items-center justify-center overflow-hidden px-6 pt-32 pb-24 text-center md:pt-48 md:pb-40">
+  <div class="max-w-4xl reveal">
+    <span class="font-mono-custom text-[10px] font-medium uppercase tracking-[0.3em] text-amber-500 mb-8 block">
+      Fundada em 1994 — Consultoria Estratégica
+    </span>
+    <h1 class="font-display text-5xl md:text-7xl lg:text-8xl leading-[1.1] tracking-tight text-balance mb-10" style="font-size: clamp(2.8rem, 8vw, 6rem);">
+      A arquitetura do capital <em>sustentável</em>.
+    </h1>
+    <p class="mx-auto max-w-xl text-lg font-light leading-relaxed mb-12 text-pretty text-navy-500">
+      Décadas de expertise institucional aplicadas para navegar mercados globais complexos e reestruturações operacionais em classes de ativos de alto ticket.
+    </p>
+    <div class="flex flex-col sm:flex-row items-center justify-center gap-6">
+      <div class="h-px w-12 hidden sm:block" style="background: rgba(27,32,50,0.15);"></div>
+      <a href="#services" class="group flex items-center gap-3 text-xs font-bold uppercase tracking-[0.2em] text-navy-900 hover:text-amber-500 transition-colors">
+        Ver Competências
+        <span class="transition-transform group-hover:translate-x-1">→</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CREDIBILITY ===== -->
+<section aria-label="Parceiros institucionais" class="border-y" style="border-color: rgba(27,32,50,0.1); background: rgba(27,32,50,0.04);">
+  <div class="mx-auto max-w-7xl px-6 py-12">
+    <div class="grid grid-cols-2 md:grid-cols-5 gap-12 items-center opacity-40">
+      <div class="text-center font-display text-xl font-bold italic tracking-tighter">AETERNA</div>
+      <div class="text-center font-mono-custom text-sm font-bold">PRISM CAPITAL</div>
+      <div class="text-center font-display text-2xl tracking-widest">HELM</div>
+      <div class="text-center font-sans font-black tracking-tight text-lg">STRATOS</div>
+      <div class="text-center font-mono-custom text-xs uppercase">Lumina Group</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SERVICES ===== -->
+<section id="services" class="mx-auto max-w-7xl px-6 py-32">
+  <div class="mb-20 flex flex-col md:flex-row md:items-end justify-between gap-8">
+    <div class="max-w-xl reveal">
+      <h2 class="font-display text-4xl mb-6">Intervenção de Precisão</h2>
+      <p class="text-navy-500 leading-relaxed">
+        Práticas especializadas na intersecção entre eficiência operacional e crescimento estratégico de longo prazo.
+      </p>
+    </div>
+    <div class="font-mono-custom text-[10px] uppercase tracking-widest text-navy-300 reveal reveal-d1">Seção (02/05)</div>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-px bg-navy-900/10">
+
+    <article class="service-card bg-[#f8f4ea] p-10 hover:bg-[#f0ebe0] transition-colors cursor-default reveal">
+      <span class="font-mono-custom text-xs text-amber-500 mb-12 block">01.</span>
+      <h3 class="font-display text-2xl mb-4">Assessoria de Capital</h3>
+      <p class="text-sm text-navy-500 leading-relaxed mb-8">
+        Reestruturação de balanços para estabilidade multigeracional e resiliência institucional.
+      </p>
+      <div class="underline-grow"></div>
+    </article>
+
+    <article class="service-card bg-[#f8f4ea] p-10 hover:bg-[#f0ebe0] transition-colors cursor-default reveal reveal-d1">
+      <span class="font-mono-custom text-xs text-amber-500 mb-12 block">02.</span>
+      <h3 class="font-display text-2xl mb-4">Inteligência de Mercado</h3>
+      <p class="text-sm text-navy-500 leading-relaxed mb-8">
+        Análise quantitativa aprofundada e previsão algorítmica para corredores globais emergentes.
+      </p>
+      <div class="underline-grow"></div>
+    </article>
+
+    <article class="service-card bg-[#f8f4ea] p-10 hover:bg-[#f0ebe0] transition-colors cursor-default reveal reveal-d2">
+      <span class="font-mono-custom text-xs text-amber-500 mb-12 block">03.</span>
+      <h3 class="font-display text-2xl mb-4">Alpha Operacional</h3>
+      <p class="text-sm text-navy-500 leading-relaxed mb-8">
+        Refinamento de sistemas internos para eliminar atritos e maximizar a produtividade corporativa.
+      </p>
+      <div class="underline-grow"></div>
+    </article>
+
+  </div>
+</section>
+
+<!-- ===== CASE STUDY ===== -->
+<section id="intelligence" style="background: #1b2032; color: #f8f4ea;">
+  <div class="mx-auto max-w-7xl px-6 py-32 grid grid-cols-1 md:grid-cols-2 gap-20 items-center">
+
+    <!-- Image -->
+    <div class="order-2 md:order-1 reveal">
+      <img
+        src="./skyscraper.jpg"
+        alt="Edifício institucional de vidro"
+        class="w-full object-cover outline outline-1 -outline-offset-1"
+        style="aspect-ratio: 4/5; outline-color: rgba(255,255,255,0.1);"
+        loading="lazy"
+        onerror="this.style.background='rgba(255,255,255,0.05)'; this.removeAttribute('src');"
+      />
+    </div>
+
+    <!-- Content -->
+    <div class="order-1 md:order-2 reveal reveal-d1">
+      <span class="font-mono-custom text-[10px] uppercase tracking-widest text-amber-500 mb-8 block">
+        Caso em Destaque
+      </span>
+      <h2 class="font-display text-4xl md:text-5xl leading-tight mb-8">
+        Reestruturação Soberana de US$ 2,4 bi
+      </h2>
+      <p class="text-lg font-light leading-relaxed mb-10" style="color: rgba(248,244,234,0.6);">
+        Como conduzimos a modernização integral de portfólios de ativos patrimoniais em três continentes, preservando benchmarks de paridade de risco.
+      </p>
+      <ul class="space-y-6 mb-12 pt-8" style="border-top: 1px solid rgba(255,255,255,0.1);">
+        <li class="flex justify-between items-center">
+          <span class="text-xs uppercase tracking-widest" style="color:rgba(248,244,234,0.4);">Duração</span>
+          <span class="font-mono-custom text-xs">18 Meses</span>
+        </li>
+        <li class="flex justify-between items-center">
+          <span class="text-xs uppercase tracking-widest" style="color:rgba(248,244,234,0.4);">Resultado</span>
+          <span class="font-mono-custom text-xs">+14,2% de Rendimento Operacional</span>
+        </li>
+      </ul>
+      <a href="#contact" class="inline-block border border-amber-500 text-amber-500 px-8 py-4 text-xs font-bold uppercase tracking-widest hover:bg-amber-500 transition-all" style="color: #c17b20; border-color: #c17b20;">
+        Ler Relatório Completo
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<!-- ===== ABOUT ===== -->
+<section id="about" class="mx-auto max-w-4xl px-6 py-32 text-center">
+  <span class="font-mono-custom text-[10px] uppercase tracking-[0.3em] text-amber-500 mb-8 block reveal">Sobre a Firma</span>
+  <p class="font-display text-3xl md:text-4xl leading-snug text-balance reveal reveal-d1">
+    Há três décadas, a Vanguard &amp; Co. assessora fundos soberanos, family offices e conselhos da Fortune&nbsp;100 nas transições mais determinantes do capital moderno.
+  </p>
+</section>
+
+<!-- ===== CONTACT CTA ===== -->
+<section id="contact" class="mx-auto max-w-7xl px-6 py-40 text-center">
+  <div class="max-w-2xl mx-auto reveal">
+    <h2 class="font-display text-4xl md:text-6xl mb-10">Inicie uma conversa.</h2>
+    <p class="text-navy-500 mb-12 text-lg leading-relaxed">
+      Aceitamos um número limitado de novos clientes institucionais por trimestre para garantir o envolvimento direto dos sócios sêniores em cada projeto.
+    </p>
+    <form class="relative max-w-md mx-auto" onsubmit="return false;">
+      <label for="email" class="sr-only">E-mail Institucional</label>
+      <input
+        id="email"
+        type="email"
+        placeholder="E-mail Institucional"
+        class="w-full bg-transparent py-4 px-2 outline-none text-lg text-navy-900 placeholder-navy-300 transition-colors"
+        style="border-bottom: 2px solid rgba(27,32,50,0.15);"
+        onfocus="this.style.borderBottomColor='#c17b20';"
+        onblur="this.style.borderBottomColor='rgba(27,32,50,0.15)';"
+      />
+      <button type="submit" class="absolute right-0 bottom-4 font-mono-custom text-xs font-bold text-amber-500 uppercase tracking-widest hover:text-amber-400 transition-colors">
+        Solicitar Acesso
+      </button>
+    </form>
+  </div>
+</section>
+
+</main>
+
+<!-- ===== FOOTER ===== -->
+<footer class="py-12 px-6" style="border-top: 1px solid rgba(27,32,50,0.1);">
+  <div class="mx-auto max-w-7xl flex flex-col md:flex-row justify-between items-start md:items-center gap-8">
+    <div class="font-mono-custom text-[10px] uppercase tracking-widest text-navy-300">
+      © 2026 Vanguard &amp; Co. Advisory Group. Todos os direitos reservados.
+    </div>
+    <div class="flex gap-8">
+      <span class="text-[10px] font-bold uppercase tracking-[0.2em] text-navy-300">São Paulo</span>
+      <span class="text-[10px] font-bold uppercase tracking-[0.2em] text-navy-300">Londres</span>
+      <span class="text-[10px] font-bold uppercase tracking-[0.2em] text-navy-300">Nova York</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ===== JS ===== -->
+<script>
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+
+</body>
+</html>
